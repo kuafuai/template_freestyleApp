@@ -39,6 +39,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKER_REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           chmod +x docker-build.sh
           ./docker-build.sh
