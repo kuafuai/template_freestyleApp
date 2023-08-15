@@ -33,7 +33,16 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo test, and deploy your project.
+          pwd
+          ls -alh
+      - name: Run Docker Build Script
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKER_REPO: ${{ secrets.DOCKERHUB_REPO }}
+        run: |
+          chmod +x docker-build.sh
+          ./docker-build.sh
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
