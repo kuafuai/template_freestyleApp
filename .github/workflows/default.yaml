@@ -35,6 +35,13 @@ jobs:
           echo Add other actions to build,
           pwd
           ls -alh
+      - name: Run Docker Build Script
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          chmod +x docker-build.sh
+          ./docker-build.sh
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
