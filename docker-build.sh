@@ -10,5 +10,5 @@ docker build -t kuafuai/template-freestyleapp:${COMMIT_SHA} -t your-docker-usern
 echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
 # Push the Docker image
-docker push your-docker-username/nginx-image:${COMMIT_SHA}
-docker push your-docker-username/nginx-image:latest
+docker push kuafuai/template-freestyleapp:${COMMIT_SHA}
+docker push kuafuai/template-freestyleapp:latest
