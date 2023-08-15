@@ -4,11 +4,11 @@
 COMMIT_SHA=$(git rev-parse HEAD)
 
 # Build the Docker image
-docker build -t kuafuai/template-freestyleapp:${COMMIT_SHA} -t kuafuai/template-freestyleapp:latest -f Dockerfile .
+docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
 
 # Login to Docker Hub
 echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
 # Push the Docker image
-docker push kuafuai/template-freestyleapp:${COMMIT_SHA}
-docker push kuafuai/template-freestyleapp:latest
+docker push ${DOCKER_REPO}:${COMMIT_SHA}
+docker push ${DOCKER_REPO}:latest
