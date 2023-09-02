@@ -1,0 +1,4 @@
+/* This file contains the styles for the game interface */
+canvas {
+  border: 1px solid black;
+}
