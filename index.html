@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div class="ui list">
+        <div class="item" id="articles"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        // Function to fetch the JSON data and display it in the list
+        function fetchAndDisplayData() {
+            $.ajax({
+                url: '/get_data',
+                type: 'GET',
+                success: function(data) {
+                    var articles = data.articles;
+                    var $articlesDiv = $('#articles');
+
+                    // Clear the existing content
+                    $articlesDiv.empty();
+
+                    // Append each article to the list
+                    articles.forEach(function(article) {
+                        var $title = $('<div class="header"></div>').text(article.title);
+                        var $pureText = $('<div class="description"></div>').text(article.pure_text);
+                        var $url = $('<a></a>').attr('href', article.url).text('Read More');
+
+                        var $item = $('<div class="item"></div>').append($title, $pureText, $url);
+                        $articlesDiv.append($item);
+                    });
+                }
+            });
+        }
+
+        // Call the fetchAndDisplayData function on page load
+        $(document).ready(function() {
+            fetchAndDisplayData();
+        });
+    </script>
+</body>
+</html>
