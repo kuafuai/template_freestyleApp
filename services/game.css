@@ -1,0 +1,26 @@
+/* This file contains the CSS styles for the game interface */
+
+/* Game interface styles */
+#playfield {
+  /* styles for the playfield */
+}
+
+#score {
+  /* styles for the score display */
+}
+
+#level {
+  /* styles for the level display */
+}
+
+#start {
+  /* styles for the start button */
+}
+
+#exit {
+  /* styles for the exit button */
+}
+
+#leaderboard {
+  /* styles for the leaderboard */
+}
