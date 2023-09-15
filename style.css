@@ -1,0 +1,87 @@
+/* Add your CSS styles here */
+
+/* Final code */
+
+/* Game container */
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+/* Game board */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  gap: 1px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Game cell */
+.game-cell {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+}
+
+/* Tetromino shapes */
+.shape-I {
+  background-color: #00bcd4;
+}
+
+.shape-J {
+  background-color: #3f51b5;
+}
+
+.shape-L {
+  background-color: #ff9800;
+}
+
+.shape-O {
+  background-color: #f44336;
+}
+
+.shape-S {
+  background-color: #4caf50;
+}
+
+.shape-T {
+  background-color: #9c27b0;
+}
+
+.shape-Z {
+  background-color: #ffeb3b;
+}
+
+/* Game controls */
+#game-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#start-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#pause-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#score {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
