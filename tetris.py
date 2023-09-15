@@ -55,11 +55,13 @@ class Tetromino:
     def update_position(self):
         self.position[1] += 1
 
+
 def generate_random_shape():
     shape_index = random.randint(0, len(SHAPES) - 1)
     shape = SHAPES[shape_index]
     color = SHAPES_COLORS[shape_index]
     return shape, color
+
 
 def check_movement_validity(tetromino, playfield):
     for y in range(len(tetromino.shape)):
@@ -71,6 +73,7 @@ def check_movement_validity(tetromino, playfield):
                     return False
     return True
 
+
 def check_line_clear(playfield):
     lines_to_clear = []
     for y in range(PLAYFIELD_HEIGHT):
@@ -78,10 +81,12 @@ def check_line_clear(playfield):
             lines_to_clear.append(y)
     return lines_to_clear
 
+
 def clear_lines(playfield, lines_to_clear):
     for line in lines_to_clear:
         del playfield[line]
         playfield.insert(0, [0] * PLAYFIELD_WIDTH)
+
 
 def calculate_score(lines_cleared, level):
     if lines_cleared == 1:
@@ -95,10 +100,12 @@ def calculate_score(lines_cleared, level):
     else:
         return 0
 
+
 def check_game_over(playfield):
     return any(playfield[0])
 
-def display_interface(screen, playfield, tetromino, score, level):
+
+def display_interface(screen, playfield, tetromino, score, level, fall_delay):
     screen.fill(BACKGROUND_COLOR)
     for y in range(PLAYFIELD_HEIGHT):
         for x in range(PLAYFIELD_WIDTH):
@@ -114,9 +121,12 @@ def display_interface(screen, playfield, tetromino, score, level):
     font = pygame.font.Font(None, FONT_SIZE)
     score_text = font.render(f"Score: {score}", True, FONT_COLOR)
     level_text = font.render(f"Level: {level}", True, FONT_COLOR)
+    fall_delay_text = font.render(f"Fall Delay: {fall_delay}", True, FONT_COLOR)
     screen.blit(score_text, (10, 10))
     screen.blit(level_text, (SCREEN_WIDTH - level_text.get_width() - 10, 10))
+    screen.blit(fall_delay_text, (10, SCREEN_HEIGHT - fall_delay_text.get_height() - 10))
     pygame.display.flip()
+
 
 def handle_user_input(tetromino):
     for event in pygame.event.get():
@@ -135,6 +145,7 @@ def handle_user_input(tetromino):
                 tetromino.rotate_counterclockwise()
     return None
 
+
 def start_game():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -147,6 +158,8 @@ def start_game():
     score = 0
     level = 1
     lines_cleared = 0
+    fall_delay = 60
+    fall_counter = 0
 
     game_over = False
     while not game_over:
@@ -157,24 +170,30 @@ def start_game():
         if handle_user_input(tetromino) == "QUIT":
             game_over = True
 
-        tetromino.update_position()
-        if not check_movement_validity(tetromino, playfield):
-            tetromino.position[1] -= 1
-            for y in range(len(tetromino.shape)):
-                for x in range(len(tetromino.shape[y])):
-                    if tetromino.shape[y][x] != 0:
-                        playfield[tetromino.position[1] + y][tetromino.position[0] + x] = SHAPES.index(tetromino.shape) + 1
-            lines_to_clear = check_line_clear(playfield)
-            if lines_to_clear:
-                clear_lines(playfield, lines_to_clear)
-                lines_cleared += len(lines_to_clear)
-                score += calculate_score(len(lines_to_clear), level)
-                if lines_cleared >= level * 10:
-                    level += 1
-            shape, color = generate_random_shape()
-            tetromino = Tetromino(shape, [PLAYFIELD_WIDTH // 2 - len(shape[0]) // 2, 0], 0, color)
+        fall_counter += 1
+        if fall_counter >= fall_delay:
+            tetromino.update_position()
+            if not check_movement_validity(tetromino, playfield):
+                tetromino.position[1] -= 1
+                for y in range(len(tetromino.shape)):
+                    for x in range(len(tetromino.shape[y])):
+                        if tetromino.shape[y][x] != 0:
+                            playfield[tetromino.position[1] + y][tetromino.position[0] + x] = SHAPES.index(tetromino.shape) + 1
+                lines_to_clear = check_line_clear(playfield)
+                if lines_to_clear:
+                    clear_lines(playfield, lines_to_clear)
+                    lines_cleared += len(lines_to_clear)
+                    score += calculate_score(len(lines_to_clear), level)
+                    if lines_cleared >= level * 10:
+                        level += 1
+                shape, color = generate_random_shape()
+                tetromino = Tetromino(shape, [PLAYFIELD_WIDTH // 2 - len(shape[0]) // 2, 0], 0, color)
+                fall_delay -= 1
+                if fall_delay < 1:
+                    fall_delay = 1
+                fall_counter = 0
 
-        display_interface(screen, playfield, tetromino, score, level)
+        display_interface(screen, playfield, tetromino, score, level, fall_delay)
         clock.tick(FPS)
 
         if check_game_over(playfield):
@@ -182,8 +201,10 @@ def start_game():
 
     pygame.quit()
 
+
 def main():
     start_game()
+
 
 if __name__ == "__main__":
     main()
