@@ -33,6 +33,10 @@ function generateRandomBlock() {
     // Create a new block with the selected shape
     const block = blocks[randomIndex];
 
+    // Set initial position of the block
+    block.x = Math.floor(gameArea[0].length / 2) - Math.floor(block[0].length / 2);
+    block.y = 0;
+
     return block;
 }
 
@@ -134,7 +138,7 @@ function rotateBlock(block) {
 function checkAndRemoveFilledRow() {
     gameArea = gameArea.filter(row => !row.every(cell => cell !== 0));
 
-    const emptyRow = Array(gameArea[0].length).fill(0);
+    const emptyRow = Array.from({ length: gameArea[0].length }).fill(0);
     while (gameArea.length < 20) {
         gameArea.unshift(emptyRow);
     }
