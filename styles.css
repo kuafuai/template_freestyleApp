@@ -1,0 +1,16 @@
+/* Game interface styles */
+#gameArea {
+  /* Styles for the game area */
+  background-color: #F0F0F0;
+  width: 500px;
+  height: 300px;
+  border: 1px solid #000;
+}
+
+#scoreDisplay {
+  /* Styles for the score display */
+  font-size: 20px;
+  color: #FF0000;
+  text-align: center;
+  margin-top: 10px;
+}

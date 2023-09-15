@@ -1,19 +1,45 @@
-<!-- Game interface HTML file -->
 <!DOCTYPE html>
 <html>
 <head>
   <title>Game</title>
+  <style>
+    #gameArea {
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+    }
+    #scoreDisplay {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <button id="startButton">Start</button>
   <div id="gameArea"></div>
+  <div id="scoreDisplay"></div>
   <button id="restartButton">Restart</button>
   <button id="exitButton">Exit</button>
-  <div id="score"></div>
-  <div id="highestScore"></div>
-  <div id="gameTime"></div>
-  <audio id="backgroundMusic"></audio>
-  <audio id="soundEffect"></audio>
-  <script src="game.js"></script>
+
+  <script>
+    // Add event listeners to the buttons
+    document.getElementById("startButton").addEventListener("click", startGame);
+    document.getElementById("restartButton").addEventListener("click", restartGame);
+    document.getElementById("exitButton").addEventListener("click", exitGame);
+
+    function startGame() {
+      // Code to start the game
+      console.log("Game started");
+    }
+
+    function restartGame() {
+      // Code to restart the game
+      console.log("Game restarted");
+    }
+
+    function exitGame() {
+      // Code to exit the game
+      console.log("Game exited");
+    }
+  </script>
 </body>
 </html>
