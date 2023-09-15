@@ -167,9 +167,7 @@ def start_game():
 
         fall_counter += 1
         if fall_counter >= fall_delay:
-            tetromino.update_position()
             if not check_movement_validity(tetromino, playfield):
-                tetromino.position[1] -= 1
                 for y in range(len(tetromino.shape)):
                     for x in range(len(tetromino.shape[y])):
                         if tetromino.shape[y][x] != 0:
@@ -187,6 +185,8 @@ def start_game():
                 if fall_delay < 1:
                     fall_delay = 1
                 fall_counter = 0
+            else:
+                tetromino.update_position()
 
         display_interface(screen, playfield, tetromino, score, level, fall_delay)
         clock.tick(FPS)
