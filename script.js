@@ -7,6 +7,9 @@ let score;
 function startGame() {
     // Initialize game variables
     gameArea = document.getElementById("gameArea");
+    if (!gameArea) {
+        gameArea = [];
+    }
     currentBlock = generateRandomBlock();
     score = 0;
 
@@ -175,7 +178,7 @@ function canMoveBlock(dx, dy, block = currentBlock) {
                 const newY = currentBlock.y + y + dy;
 
                 // Check if the new position is within the game area
-                if (newX < 0 || newX >= gameArea[0].length || newY >= gameArea.length) {
+                if (newX < 0 || newX >= gameArea[0].length || newY >= gameArea.length || newY < 0) {
                     return false;
                 }
 
@@ -247,3 +250,15 @@ document.getElementById("startButton").addEventListener("click", startGame);
 
 // Event listener for exit button click
 document.getElementById("exitButton").addEventListener("click", exitGame);
+
+// Exit the game
+function exitGame() {
+    // Clear the game area
+    gameArea = [];
+    // Reset the score
+    score = 0;
+    // Update the score
+    updateScore();
+    // Update the game area
+    updateGameArea();
+}
