@@ -1,15 +1,12 @@
 // Game variables
-let gameArea;
+let gameArea = [];
 let currentBlock;
-let score;
+let score = 0;
 
 // Start the game
 function startGame() {
     // Initialize game variables
-    gameArea = document.getElementById("gameArea");
-    if (!gameArea) {
-        gameArea = [];
-    }
+    gameArea = [];
     currentBlock = generateRandomBlock();
     score = 0;
 
@@ -87,19 +84,7 @@ function moveBlockRight() {
 // Rotate the block clockwise
 function rotateBlockClockwise() {
     // Create a copy of the current block
-    const rotatedBlock = JSON.parse(JSON.stringify(currentBlock));
-
-    // Transpose the block matrix
-    for (let i = 0; i < rotatedBlock.length; i++) {
-        for (let j = 0; j < i; j++) {
-            [rotatedBlock[i][j], rotatedBlock[j][i]] = [rotatedBlock[j][i], rotatedBlock[i][j]];
-        }
-    }
-
-    // Reverse each row of the block matrix
-    for (let i = 0; i < rotatedBlock.length; i++) {
-        rotatedBlock[i].reverse();
-    }
+    const rotatedBlock = rotateBlock(currentBlock);
 
     // Check if the rotated block can fit in the game area
     if (canMoveBlock(0, 0, rotatedBlock)) {
@@ -114,19 +99,7 @@ function rotateBlockClockwise() {
 // Rotate the block counterclockwise
 function rotateBlockCounterclockwise() {
     // Create a copy of the current block
-    const rotatedBlock = JSON.parse(JSON.stringify(currentBlock));
-
-    // Reverse each row of the block matrix
-    for (let i = 0; i < rotatedBlock.length; i++) {
-        rotatedBlock[i].reverse();
-    }
-
-    // Transpose the block matrix
-    for (let i = 0; i < rotatedBlock.length; i++) {
-        for (let j = 0; j < i; j++) {
-            [rotatedBlock[i][j], rotatedBlock[j][i]] = [rotatedBlock[j][i], rotatedBlock[i][j]];
-        }
-    }
+    const rotatedBlock = rotateBlock(currentBlock);
 
     // Check if the rotated block can fit in the game area
     if (canMoveBlock(0, 0, rotatedBlock)) {
@@ -138,27 +111,36 @@ function rotateBlockCounterclockwise() {
     }
 }
 
-// Check if a row is completely filled and remove it
-function checkAndRemoveFilledRow() {
-    for (let y = gameArea.length - 1; y >= 0; y--) {
-        let rowFilled = true;
-        for (let x = 0; x < gameArea[y].length; x++) {
-            if (gameArea[y][x] === 0) {
-                rowFilled = false;
-                break;
-            }
-        }
-        if (rowFilled) {
-            // Remove the filled row
-            gameArea.splice(y, 1);
+// Helper function to rotate a block
+function rotateBlock(block) {
+    const rotatedBlock = JSON.parse(JSON.stringify(block));
 
-            // Add a new empty row at the top
-            gameArea.unshift(Array(gameArea[0].length).fill(0));
-
-            // Increment the score
-            score += 10;
+    // Transpose the block matrix
+    for (let i = 0; i < rotatedBlock.length; i++) {
+        for (let j = 0; j < i; j++) {
+            [rotatedBlock[i][j], rotatedBlock[j][i]] = [rotatedBlock[j][i], rotatedBlock[i][j]];
         }
     }
+
+    // Reverse each row of the block matrix
+    for (let i = 0; i < rotatedBlock.length; i++) {
+        rotatedBlock[i].reverse();
+    }
+
+    return rotatedBlock;
+}
+
+// Check if a row is completely filled and remove it
+function checkAndRemoveFilledRow() {
+    gameArea = gameArea.filter(row => !row.every(cell => cell !== 0));
+
+    const emptyRow = Array(gameArea[0].length).fill(0);
+    while (gameArea.length < 20) {
+        gameArea.unshift(emptyRow);
+    }
+
+    // Increment the score
+    score += 10;
 
     // Update the score
     updateScore();
@@ -171,11 +153,11 @@ function updateScore() {
 
 // Check if the block can move to the specified position
 function canMoveBlock(dx, dy, block = currentBlock) {
-    for (let y = 0; y < block.length; y++) {
-        for (let x = 0; x < block[y].length; x++) {
-            if (block[y][x] !== 0) {
-                const newX = currentBlock.x + x + dx;
-                const newY = currentBlock.y + y + dy;
+    return block.every((row, y) => {
+        return row.every((cell, x) => {
+            if (cell !== 0) {
+                const newX = block.x + x + dx;
+                const newY = block.y + y + dy;
 
                 // Check if the new position is within the game area
                 if (newX < 0 || newX >= gameArea[0].length || newY >= gameArea.length || newY < 0) {
@@ -187,62 +169,51 @@ function canMoveBlock(dx, dy, block = currentBlock) {
                     return false;
                 }
             }
-        }
-    }
-
-    return true;
+            return true;
+        });
+    });
 }
 
 // Lock the current block in place
 function lockBlock() {
-    for (let y = 0; y < currentBlock.length; y++) {
-        for (let x = 0; x < currentBlock[y].length; x++) {
-            if (currentBlock[y][x] !== 0) {
+    currentBlock.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            if (cell !== 0) {
                 const gameAreaX = currentBlock.x + x;
                 const gameAreaY = currentBlock.y + y;
 
                 // Lock the block in the game area
                 gameArea[gameAreaY][gameAreaX] = currentBlock[y][x];
             }
-        }
-    }
+        });
+    });
 }
 
 // Update the game area
 function updateGameArea() {
-    // Clear the game area
-    gameArea.innerHTML = "";
+    const blockSize = 30;
+    const colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan"];
 
-    // Draw the blocks in the game area
-    for (let y = 0; y < gameArea.length; y++) {
-        for (let x = 0; x < gameArea[y].length; x++) {
-            if (gameArea[y][x] !== 0) {
-                // Create a new block element
+    const gameAreaElement = document.getElementById("gameArea");
+    gameAreaElement.innerHTML = "";
+
+    gameArea.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            if (cell !== 0) {
                 const blockElement = document.createElement("div");
                 blockElement.className = "block";
-
-                // Set the block color based on the value in the game area
-                blockElement.style.backgroundColor = colors[gameArea[y][x]];
-
-                // Set the block position
+                blockElement.style.backgroundColor = colors[cell - 1];
                 blockElement.style.left = (x * blockSize) + "px";
                 blockElement.style.top = (y * blockSize) + "px";
-
-                // Append the block element to the game area
-                gameArea.appendChild(blockElement);
+                gameAreaElement.appendChild(blockElement);
             }
-        }
-    }
+        });
+    });
 }
 
 // Check if the game is over
 function checkGameOver() {
-    for (let x = 0; x < gameArea[0].length; x++) {
-        if (gameArea[0][x] !== 0) {
-            return true;
-        }
-    }
-    return false;
+    return gameArea[0].some(cell => cell !== 0);
 }
 
 // Event listener for start button click
@@ -253,12 +224,8 @@ document.getElementById("exitButton").addEventListener("click", exitGame);
 
 // Exit the game
 function exitGame() {
-    // Clear the game area
     gameArea = [];
-    // Reset the score
     score = 0;
-    // Update the score
     updateScore();
-    // Update the game area
     updateGameArea();
 }
