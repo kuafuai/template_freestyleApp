@@ -1,6 +1,4 @@
-# Main entry point of the application
-
-from free_demo.services import tetris_game
+from free_demo import start_game
 
 if __name__ == "__main__":
-    tetris_game.start_game()
+    start_game()
