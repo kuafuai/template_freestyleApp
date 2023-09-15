@@ -30,6 +30,7 @@ SHAPES_COLORS = [
     (255, 165, 0)
 ]
 
+
 class Tetromino:
     def __init__(self, shape, position, rotation, color):
         self.shape = shape
@@ -168,23 +169,26 @@ def start_game():
         fall_counter += 1
         if fall_counter >= fall_delay:
             if not check_movement_validity(tetromino, playfield):
-                for y in range(len(tetromino.shape)):
-                    for x in range(len(tetromino.shape[y])):
-                        if tetromino.shape[y][x] != 0:
-                            playfield[tetromino.position[1] + y][tetromino.position[0] + x] = SHAPES.index(tetromino.shape) + 1
-                lines_to_clear = check_line_clear(playfield)
-                if lines_to_clear:
-                    clear_lines(playfield, lines_to_clear)
-                    lines_cleared += len(lines_to_clear)
-                    score += calculate_score(len(lines_to_clear), level)
-                    if lines_cleared >= level * 10:
-                        level += 1
-                shape, color = generate_random_shape()
-                tetromino = Tetromino(shape, [PLAYFIELD_WIDTH // 2 - len(shape[0]) // 2, 0], 0, color)
-                fall_delay -= 1
-                if fall_delay < 1:
-                    fall_delay = 1
-                fall_counter = 0
+                if tetromino.position[1] == 0:
+                    game_over = True
+                else:
+                    for y in range(len(tetromino.shape)):
+                        for x in range(len(tetromino.shape[y])):
+                            if tetromino.shape[y][x] != 0:
+                                playfield[tetromino.position[1] + y][tetromino.position[0] + x] = SHAPES.index(tetromino.shape) + 1
+                    lines_to_clear = check_line_clear(playfield)
+                    if lines_to_clear:
+                        clear_lines(playfield, lines_to_clear)
+                        lines_cleared += len(lines_to_clear)
+                        score += calculate_score(len(lines_to_clear), level)
+                        if lines_cleared >= level * 10:
+                            level += 1
+                    shape, color = generate_random_shape()
+                    tetromino = Tetromino(shape, [PLAYFIELD_WIDTH // 2 - len(shape[0]) // 2, 0], 0, color)
+                    fall_delay -= 1
+                    if fall_delay < 1:
+                        fall_delay = 1
+                    fall_counter = 0
             else:
                 tetromino.update_position()
 
