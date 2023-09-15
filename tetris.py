@@ -129,21 +129,17 @@ def display_interface(screen, playfield, tetromino, score, level, fall_delay):
 
 
 def handle_user_input(tetromino):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            return "QUIT"
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                tetromino.move_left()
-            elif event.key == pygame.K_RIGHT:
-                tetromino.move_right()
-            elif event.key == pygame.K_DOWN:
-                tetromino.move_down()
-            elif event.key == pygame.K_UP:
-                tetromino.rotate_clockwise()
-            elif event.key == pygame.K_SPACE:
-                tetromino.rotate_counterclockwise()
-    return None
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        tetromino.move_left()
+    if keys[pygame.K_RIGHT]:
+        tetromino.move_right()
+    if keys[pygame.K_DOWN]:
+        tetromino.move_down()
+    if keys[pygame.K_UP]:
+        tetromino.rotate_clockwise()
+    if keys[pygame.K_SPACE]:
+        tetromino.rotate_counterclockwise()
 
 
 def start_game():
@@ -167,8 +163,7 @@ def start_game():
             if event.type == pygame.QUIT:
                 game_over = True
 
-        if handle_user_input(tetromino) == "QUIT":
-            game_over = True
+        handle_user_input(tetromino)
 
         fall_counter += 1
         if fall_counter >= fall_delay:
