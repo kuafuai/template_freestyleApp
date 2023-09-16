@@ -1,5 +1,5 @@
 // Define variables
-let gameArea = document.getElementById("game-area");
+let gameArea = [];
 let scoreDisplay = document.getElementById("score-display");
 let nextBlockPreview = document.getElementById("next-block-preview");
 
@@ -29,6 +29,7 @@ function generateBlock() {
   const blocks = ["I", "J", "L", "O", "S", "T", "Z"];
   const randomIndex = Math.floor(Math.random() * blocks.length);
   const randomBlock = blocks[randomIndex];
+  currentBlock = randomBlock;
   return randomBlock;
 }
 
@@ -60,6 +61,9 @@ function updateGameState() {
     clearRow(0);
     score += 100;
     scoreDisplay.innerText = score;
+  }
+  if (gameArea[0].some(cell => cell !== 0)) {
+    gameOver = true;
   }
 }
 
