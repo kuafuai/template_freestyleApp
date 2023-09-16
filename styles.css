@@ -1,4 +1,13 @@
-/* This file contains the styles for the game interface */
-canvas {
-  border: 1px solid black;
+/* This file contains the CSS styles for the game interface */
+
+#game-area {
+  /* Styles for the game area */
+}
+
+#score-display {
+  /* Styles for the score display */
+}
+
+#next-block-preview {
+  /* Styles for the next block preview */
 }
