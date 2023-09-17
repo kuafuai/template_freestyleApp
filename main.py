@@ -1,8 +1,13 @@
-from crawler import get_hot_news_titles
+# Main entry point for the game
+# Initialize the game and start the game loop
 
-def print_hot_news_titles():
-    hot_news_titles = get_hot_news_titles()
-    for title in hot_news_titles:
-        print(title)
+import pygame
+from game import Game
 
-print_hot_news_titles()
+def main():
+    pygame.init()
+    game = Game()
+    game.run()
+
+if __name__ == "__main__":
+    main()
