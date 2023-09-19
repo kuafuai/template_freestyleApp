@@ -1,4 +1,8 @@
-from tetris import start_game
+import snake_game
+
+def main():
+    # Start the game
+    snake_game.main()
 
 if __name__ == "__main__":
-    start_game()
+    main()
