@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Menu bar -->
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="product_management.html">Product Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="customer_management.html">Customer Management</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <!-- Content area -->
+            <div id="content"></div>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include custom JavaScript file for handling dashboard functionality -->
+    <script src="admin_dashboard.js"></script>
+</body>
+</html>
