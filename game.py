@@ -1,44 +1,60 @@
 import pygame
-from tetris import Tetris
+from bird import Bird
+from pipe import Pipe
 
 class Game:
     def __init__(self):
-        self.screen_width = 800
-        self.screen_height = 600
-        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        self.clock = pygame.time.Clock()
-        self.is_running = False
-        self.tetris = Tetris()
+        pygame.init()
+        self.screen = pygame.display.set_mode((800, 600))
+        pygame.display.set_caption("小鸟飞行游戏")
 
-    def run(self):
-        self.is_running = True
-        while self.is_running:
-            self.handle_events()
-            self.update()
-            self.render()
-            self.clock.tick(60)
+        self.bird = Bird()
+
+        self.pipes = pygame.sprite.Group()
+        self.create_pipes()
+
+        self.score = 0
+        self.game_over = False
+
+    def create_pipes(self):
+        # Create pipe objects and add them to the group
+        for i in range(3):
+            pipe = Pipe()
+            pipe.rect.x = 400 + i * 300
+            self.pipes.add(pipe)
 
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.is_running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    self.tetris.move_left()
-                elif event.key == pygame.K_RIGHT:
-                    self.tetris.move_right()
-                elif event.key == pygame.K_DOWN:
-                    self.tetris.move_down()
-                elif event.key == pygame.K_SPACE:
-                    self.tetris.drop()
+                self.game_over = True
 
     def update(self):
-        self.tetris.update()
+        self.bird.update()
+        self.pipes.update()
 
-    def render(self):
-        self.screen.fill((0, 0, 0))
-        self.tetris.render(self.screen)
+        if pygame.sprite.spritecollide(self.bird, self.pipes, False):
+            self.game_over = True
+
+    def draw(self):
+        self.screen.fill((255, 255, 255))
+
+        self.bird.draw(self.screen)
+        self.pipes.draw(self.screen)
+
+        font = pygame.font.Font(None, 36)
+        score_text = font.render(f"Score: {self.score}", True, (0, 0, 0))
+        self.screen.blit(score_text, (10, 10))
+
         pygame.display.flip()
 
-game = Game()
-game.run()
+    def run(self):
+        while not self.game_over:
+            self.handle_events()
+            self.update()
+            self.draw()
+
+        pygame.quit()
+
+if __name__ == "__main__":
+    game = Game()
+    game.run()
