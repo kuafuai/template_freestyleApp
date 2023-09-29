@@ -1,0 +1,9 @@
+#gameCanvas {
+  width: 800px;
+  height: 600px;
+}
+
+body {
+  background-color: #000000;
+  /* Other styles */
+}
