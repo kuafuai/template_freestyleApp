@@ -1,9 +1,30 @@
+/* Set game canvas style */
 #gameCanvas {
-  width: 800px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border: 1px solid #fff;
 }
 
-body {
-  background-color: #000000;
-  /* Other styles */
+/* Set game score style */
+#score {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* Set game over message style */
+#gameOver {
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
 }

@@ -1,90 +1,117 @@
-// Define game state variables
-let birdPositionX = 0;
-let birdPositionY = 0;
-let birdSpeed = 0;
-let score = 0;
-let gameOver = false;
-
-// Listen for user click event to control bird's movement
-document.addEventListener("click", function() {
-  birdSpeed = -2; // Move the bird upwards when the user clicks
-});
-
-// Define obstacle generation and movement logic
+// Define game variables
+let birdX, birdY, birdSpeed, score;
 let obstacles = [];
 
-function generateObstacle() {
-  const obstacleHeight = Math.floor(Math.random() * 200) + 50; // Random obstacle height between 50 and 250
-  const obstacleGap = 200; // Gap between obstacles
-  const obstacle = {
-    x: 800, // Initial x position of the obstacle
-    y: 0, // Initial y position of the obstacle
-    width: 50, // Width of the obstacle
-    height: obstacleHeight // Height of the obstacle
-  };
-  obstacles.push(obstacle); // Add the obstacle to the obstacles array
-  obstacles.push({
-    x: 800, // Initial x position of the bottom obstacle
-    y: obstacleHeight + obstacleGap, // Initial y position of the bottom obstacle
-    width: 50, // Width of the bottom obstacle
-    height: 400 - obstacleHeight - obstacleGap // Height of the bottom obstacle
-  });
+// Initialize game
+function initializeGame() {
+  // Set initial values for game variables
+  birdX = 50;
+  birdY = 200;
+  birdSpeed = 0;
+  score = 0;
+
+  // Draw initial game screen
+  drawBackground();
+  drawBird();
+  drawObstacles();
+
+  // Bind event listener for player input
+  document.addEventListener('click', handlePlayerInput);
 }
 
-function moveObstacle() {
+// Update game state and screen
+function updateGame() {
+  // Update bird position and speed based on player input
+  birdY += birdSpeed;
+  birdSpeed += 0.5;
+
+  // Update obstacle positions
   for (let i = 0; i < obstacles.length; i++) {
-    obstacles[i].x -= 2; // Move the obstacle to the left
+    obstacles[i].x -= 2;
   }
+
+  // Check for collision between bird and obstacles
+  if (checkCollision()) {
+    endGame();
+    return;
+  }
+
+  // Draw updated game screen
+  drawBackground();
+  drawBird();
+  drawObstacles();
+
+  // Update score based on successful obstacle passing
+  updateScore();
+
+  // Repeat updateGame function
+  requestAnimationFrame(updateGame);
 }
 
-// Detect collision between bird and obstacles
-function detectCollision() {
+// Handle player input
+function handlePlayerInput() {
+  birdSpeed = -8;
+}
+
+// Check for collision between bird and obstacles
+function checkCollision() {
   for (let i = 0; i < obstacles.length; i++) {
     if (
-      birdPositionX < obstacles[i].x + obstacles[i].width &&
-      birdPositionX + 50 > obstacles[i].x &&
-      birdPositionY < obstacles[i].y + obstacles[i].height &&
-      birdPositionY + 50 > obstacles[i].y
+      birdX + 40 > obstacles[i].x &&
+      birdX < obstacles[i].x + obstacles[i].width &&
+      (birdY < obstacles[i].topHeight || birdY + 40 > obstacles[i].bottomHeight)
     ) {
-      gameOver = true; // Set game over to true if there is a collision
+      return true;
     }
   }
+  return false;
 }
 
-// Update score and display game over message logic
+// End the game and display game over message
+function endGame() {
+  document.removeEventListener('click', handlePlayerInput);
+  document.getElementById('gameOver').style.display = 'block';
+}
+
+// Draw the game background
+function drawBackground() {
+  // Code to draw the background
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'skyblue';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Draw the bird
+function drawBird() {
+  // Code to draw the bird
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'yellow';
+  ctx.fillRect(birdX, birdY, 40, 40);
+}
+
+// Draw the obstacles
+function drawObstacles() {
+  // Code to draw the obstacles
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'green';
+  for (let i = 0; i < obstacles.length; i++) {
+    ctx.fillRect(obstacles[i].x, 0, obstacles[i].width, obstacles[i].topHeight);
+    ctx.fillRect(obstacles[i].x, obstacles[i].bottomHeight, obstacles[i].width, canvas.height - obstacles[i].bottomHeight);
+  }
+}
+
+// Update the game score
 function updateScore() {
-  if (!gameOver) {
-    score++; // Increment the score if the game is not over
-  }
+  // Code to update the score
+  score++;
+  document.getElementById('score').innerText = score;
 }
 
-function displayGameOver() {
-  if (gameOver) {
-    alert("Game Over! Your score is: " + score); // Display game over message with the final score
-  }
-}
+// Initialize the game
+initializeGame();
 
-// Load game background music and sound effects
-function loadAudio() {
-  // Code to load audio files
-}
-
-// Play background music and sound effects based on game actions
-function playAudio() {
-  // Code to play audio
-}
-
-// Call necessary functions to start the game
-function startGame() {
-  setInterval(function() {
-    birdPositionY += birdSpeed; // Update the bird's position based on its speed
-    birdSpeed += 0.1; // Increase the bird's speed over time
-    moveObstacle(); // Move the obstacles
-    detectCollision(); // Detect collision between bird and obstacles
-    updateScore(); // Update the score
-    displayGameOver(); // Display game over message if the game is over
-  }, 20); // Run the game loop every 20 milliseconds
-}
-
-// Call startGame function when the page finishes loading
-window.onload = startGame;
+// Start the game loop
+updateGame();
