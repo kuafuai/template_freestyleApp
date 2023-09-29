@@ -1,165 +1,111 @@
-// Define variables
-var startButton = document.getElementById("startButton");
-var pauseButton = document.getElementById("pauseButton");
-var restartButton = document.getElementById("restartButton");
-var shareButton = document.getElementById("shareButton");
-var scoreDisplay = document.getElementById("scoreDisplay");
-var score = 0;
-var highScore = 0;
+// Define variables for game elements
+let birdPositionX;
+let birdPositionY;
+let birdVelocity;
+let obstacles;
+let score;
 
-// Add event listeners
-startButton.addEventListener("click", startGame);
-pauseButton.addEventListener("click", pauseGame);
-restartButton.addEventListener("click", restartGame);
-shareButton.addEventListener("click", shareScore);
+// Define constants for game settings
+const gravity = 0.5;
+const jumpForce = -10;
+const obstacleGap = 200;
+const obstacleWidth = 80;
+const obstacleHeight = 400;
+const obstacleSpeed = 5;
 
-// Define game functions
-function startGame() {
-    // Start the game logic
-    birdFly();
-    generateObstacles();
-    moveObstacles();
-    checkCollision();
-    calculateScore();
-    updateHighScore();
+// Define game canvas and score display elements
+const canvas = document.getElementById("gameCanvas");
+const canvasContext = canvas.getContext("2d");
+const scoreDisplay = document.getElementById("scoreDisplay");
+
+// Define function to handle mouse click event
+function handleClick() {
+  birdVelocity = jumpForce;
 }
 
-function pauseGame() {
-    // Pause the game logic
-    clearInterval(obstacleInterval);
-    clearInterval(scoreInterval);
-}
+// Define function to update bird and obstacle positions
+function updatePositions() {
+  birdVelocity += gravity;
+  birdPositionY += birdVelocity;
 
-function restartGame() {
-    // Restart the game logic
-    clearInterval(obstacleInterval);
-    clearInterval(scoreInterval);
-    score = 0;
-    scoreDisplay.textContent = score;
-    birdFly();
-    generateObstacles();
-    moveObstacles();
-    checkCollision();
-    calculateScore();
-    updateHighScore();
-}
+  for (let i = 0; i < obstacles.length; i++) {
+    obstacles[i].x -= obstacleSpeed;
 
-function shareScore() {
-    // Share the score on social media
-    var shareUrl = "https://example.com/share?score=" + score;
-    window.open(shareUrl, "_blank");
-}
-
-// Define game logic functions
-function birdFly() {
-    // Logic for bird's flying behavior
-    var bird = document.getElementById("bird");
-    var birdTop = 200;
-    var gravity = 2;
-
-    function jump() {
-        birdTop -= 50;
-        bird.style.top = birdTop + "px";
+    if (obstacles[i].x + obstacleWidth < 0) {
+      obstacles.splice(i, 1);
+      i--;
     }
-
-    function applyGravity() {
-        birdTop += gravity;
-        bird.style.top = birdTop + "px";
-    }
-
-    document.addEventListener("keydown", function(event) {
-        if (event.code === "Space") {
-            jump();
-        }
-    });
-
-    var birdInterval = setInterval(applyGravity, 20);
+  }
 }
 
+// Define function to check for collisions and game over
+function checkCollisions() {
+  if (birdPositionY < 0 || birdPositionY + 30 > canvas.height) {
+    gameOver();
+  }
+
+  for (let i = 0; i < obstacles.length; i++) {
+    if (
+      birdPositionX + 30 > obstacles[i].x &&
+      birdPositionX < obstacles[i].x + obstacleWidth &&
+      (birdPositionY < obstacles[i].y ||
+        birdPositionY + 30 > obstacles[i].y + obstacleHeight)
+    ) {
+      gameOver();
+    }
+  }
+}
+
+// Define function to update score
+function updateScore() {
+  scoreDisplay.innerHTML = "Score: " + score;
+}
+
+// Define function to handle game over
+function gameOver() {
+  clearInterval(gameLoop);
+  canvasContext.fillStyle = "#ffffff";
+  canvasContext.font = "30px Arial";
+  canvasContext.fillText("Game Over", canvas.width / 2 - 80, canvas.height / 2);
+  canvasContext.fillText("Final Score: " + score, canvas.width / 2 - 100, canvas.height / 2 + 40);
+}
+
+// Define function to handle game start
+function gameStart() {
+  birdPositionX = 50;
+  birdPositionY = canvas.height / 2;
+  birdVelocity = 0;
+  obstacles = [];
+  score = 0;
+
+  gameLoop = setInterval(function () {
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+
+    updatePositions();
+    checkCollisions();
+    updateScore();
+    generateObstacles();
+
+    canvasContext.fillStyle = "#ffffff";
+    canvasContext.fillRect(birdPositionX, birdPositionY, 30, 30);
+
+    for (let i = 0; i < obstacles.length; i++) {
+      canvasContext.fillStyle = "#00ff00";
+      canvasContext.fillRect(obstacles[i].x, obstacles[i].y, obstacleWidth, obstacleHeight);
+    }
+  }, 30);
+}
+
+// Define function to generate obstacles
 function generateObstacles() {
-    // Logic for generating obstacles
-    var obstacleContainer = document.getElementById("obstacleContainer");
-
-    function createObstacle() {
-        var obstacle = document.createElement("div");
-        obstacle.classList.add("obstacle");
-        obstacle.style.left = "100%";
-
-        var obstacleHeight = Math.floor(Math.random() * 200) + 100;
-        obstacle.style.height = obstacleHeight + "px";
-
-        obstacleContainer.appendChild(obstacle);
-
-        var obstacleInterval = setInterval(moveObstacle, 20);
-
-        function moveObstacle() {
-            var obstacleLeft = parseInt(obstacle.style.left);
-            obstacleLeft -= 2;
-            obstacle.style.left = obstacleLeft + "%";
-
-            if (obstacleLeft < -10) {
-                clearInterval(obstacleInterval);
-                obstacleContainer.removeChild(obstacle);
-            }
-        }
-    }
-
-    var obstacleInterval = setInterval(createObstacle, 2000);
+  if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - obstacleGap) {
+    const obstacleY = Math.random() * (canvas.height - obstacleHeight);
+    obstacles.push({ x: canvas.width, y: obstacleY });
+  }
 }
 
-function moveObstacles() {
-    // Logic for moving obstacles
-    // This function is implemented within the generateObstacles() function
-}
+// Add event listener for mouse click event
+document.addEventListener("click", handleClick);
 
-function checkCollision() {
-    // Logic for collision detection
-    var bird = document.getElementById("bird");
-    var obstacles = document.getElementsByClassName("obstacle");
-
-    function detectCollision() {
-        var birdRect = bird.getBoundingClientRect();
-
-        for (var i = 0; i < obstacles.length; i++) {
-            var obstacleRect = obstacles[i].getBoundingClientRect();
-
-            if (
-                birdRect.top < obstacleRect.bottom &&
-                birdRect.bottom > obstacleRect.top &&
-                birdRect.right > obstacleRect.left &&
-                birdRect.left < obstacleRect.right
-            ) {
-                gameOver();
-            }
-        }
-    }
-
-    var collisionInterval = setInterval(detectCollision, 20);
-
-    function gameOver() {
-        clearInterval(obstacleInterval);
-        clearInterval(collisionInterval);
-        clearInterval(scoreInterval);
-        alert("Game Over!");
-        if (score > highScore) {
-            highScore = score;
-        }
-        restartGame();
-    }
-}
-
-function calculateScore() {
-    // Logic for calculating score
-    var scoreInterval = setInterval(incrementScore, 1000);
-
-    function incrementScore() {
-        score++;
-        scoreDisplay.textContent = score;
-    }
-}
-
-function updateHighScore() {
-    // Logic for updating high score
-    var highScoreDisplay = document.getElementById("highScoreDisplay");
-    highScoreDisplay.textContent = highScore;
-}
+// Call gameStart function to start the game
+gameStart();
