@@ -1,0 +1,61 @@
+/* Set basic styles for game interface */
+body {
+    background-color: #000;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#scoreDisplay {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* Set styles for bird and obstacles */
+.bird {
+    width: 50px;
+    height: 50px;
+    background-color: #f00;
+}
+
+.obstacle {
+    width: 100px;
+    height: 300px;
+    background-color: #0f0;
+}
+
+/* Set layout and positioning for game interface elements */
+#startButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#scoreDisplay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#pauseButton {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+#restartButton {
+    position: absolute;
+    top: 90px;
+    right: 10px;
+}
+
+#shareButton {
+    position: absolute;
+    top: 130px;
+    right: 10px;
+}
