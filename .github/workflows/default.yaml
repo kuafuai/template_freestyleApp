@@ -37,9 +37,9 @@ jobs:
           ls -alh
       - name: Run Docker Build Script
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_USERNAME: ${{ env.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKER_REPO: ${{ secrets.DOCKERHUB_REPO }}
+          DOCKER_REPO: ${{ env.DOCKERHUB_REPO }}
         run: |
           chmod +x docker-build.sh
           ./docker-build.sh
