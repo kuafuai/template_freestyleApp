@@ -1,0 +1,33 @@
+/* Set layout for the product introduction page */
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Set styles for the product name section */
+#product-name {
+    flex: 1;
+    background-color: lightblue;
+    padding: 10px;
+}
+
+/* Set styles for the product description section */
+#product-description {
+    flex: 1;
+    background-color: lightgreen;
+    padding: 10px;
+}
+
+/* Set styles for the product features section */
+#product-features {
+    flex: 1;
+    background-color: lightyellow;
+    padding: 10px;
+}
+
+/* Set styles for the product price section */
+#product-price {
+    flex: 1;
+    background-color: lightpink;
+    padding: 10px;
+}
