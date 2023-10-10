@@ -35,12 +35,12 @@ jobs:
           echo Add other actions to build,
           pwd
           ls -alh
-          echo "lalala  ${{ DOCKERHUB_REPO }}"
+          echo "lalala  ${{ vars.DOCKERHUB_REPO }}"
       - name: Run Docker Build Script
         env:
-          DOCKER_USERNAME: ${{ DOCKERHUB_USERNAME }}
+          DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKER_REPO: ${{ DOCKERHUB_REPO }}
+          DOCKER_REPO: ${{ vars.DOCKERHUB_REPO }}
         run: |
           chmod +x docker-build.sh
           ./docker-build.sh
