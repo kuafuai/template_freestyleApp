@@ -35,7 +35,7 @@ jobs:
           echo Add other actions to build,
           pwd
           ls -alh
-          echo ${{ env.kuafuai }}
+          env
       - name: Run Docker Build Script
         env:
           DOCKER_USERNAME: ${{ env.DOCKERHUB_USERNAME }}
