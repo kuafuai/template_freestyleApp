@@ -1,0 +1,47 @@
+/* Set game canvas size and background color */
+#gameCanvas {
+    width: 800px;
+    height: 600px;
+    background-color: #000000;
+}
+
+/* Set Mario's style */
+.mario {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    /* Add more specific properties */
+}
+
+/* Set obstacle's style */
+.obstacle {
+    width: 100px;
+    height: 20px;
+    background-color: gray;
+    /* Add more specific properties */
+}
+
+/* Set game result display style */
+.result {
+    font-size: 24px;
+    color: white;
+    /* Add more specific properties */
+}
+
+/* Set game animation effects */
+@keyframes marioMove {
+    0% { left: 0; }
+    50% { left: 400px; }
+    100% { left: 800px; }
+}
+
+@keyframes obstacleMove {
+    0% { top: 0; }
+    50% { top: 300px; }
+    100% { top: 600px; }
+}
+
+@keyframes resultDisplay {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

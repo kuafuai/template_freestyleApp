@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Super Mario Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Add CSS styles for the game interface */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        #gameCanvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        #startButton, #endButton {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #startButton:hover, #endButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Super Mario Game</h1>
+    <p>Welcome to the Super Mario Game! Help Mario collect coins and defeat enemies to save Princess Peach.</p>
+    <canvas id="gameCanvas"></canvas>
+    <button id="startButton">Start Game</button>
+    <button id="endButton">End Game</button>
+    <script src="script.js"></script>
+</body>
+</html>
