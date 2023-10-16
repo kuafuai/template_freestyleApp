@@ -1,0 +1,10 @@
+#gameCanvas {
+  width: 400px;
+  height: 400px;
+  background-color: #000;
+}
+
+#scoreDisplay {
+  font-size: 24px;
+  color: #fff;
+}
