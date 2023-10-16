@@ -1,0 +1,28 @@
+/* Game interface styles */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    border: 1px solid #000;
+    display: block;
+    margin: 20px auto;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+}
+
+#scoreDisplay {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#gameInfo {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
