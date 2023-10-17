@@ -1,0 +1,28 @@
+/* Design game interface style */
+#game-area {
+    /* Game area style */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#score-area {
+    /* Score display area style */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#difficulty-area {
+    /* Difficulty selection area style */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#result-area {
+    /* Result display area style */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
