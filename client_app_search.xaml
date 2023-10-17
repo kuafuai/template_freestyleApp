@@ -1,0 +1,7 @@
+<!-- This file defines the layout and UI elements for the search functionality in the client application -->
+<Window x:Class="ClientApp.SearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Search" Height="450" Width="800">
+    <!-- Define UI elements here -->
+</Window>
