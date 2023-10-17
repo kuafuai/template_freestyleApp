@@ -1,0 +1,27 @@
+/* style.css */
+
+.container {
+    display: flex;
+}
+
+.menu-section {
+    width: 30%;
+}
+
+.cache-management-section {
+    width: 40%;
+}
+
+.cache-details-section {
+    width: 30%;
+}
+
+/* Additional comments */
+
+/* The container class is responsible for displaying the sections of the page in a flex layout. */
+
+/* The menu-section class is responsible for styling the menu section of the cache management page. */
+
+/* The cache-management-section class is responsible for styling the cache management section of the page. */
+
+/* The cache-details-section class is responsible for styling the cache details section of the page. */
