@@ -1,0 +1,44 @@
+<!-- This file contains the layout and structure of the webpage -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driving School Appointment</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <h2>Student Information</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" placeholder="Enter your contact" required>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Enter your ID" required>
+        </div>
+        <div class="column">
+            <h2>Appointment Time</h2>
+            <label for="time">Time:</label>
+            <select id="time" required>
+                <option value="" disabled selected>Select a time</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+            </select>
+        </div>
+        <div class="column">
+            <h2>Appointment Instructor</h2>
+            <label for="instructor">Instructor:</label>
+            <select id="instructor" required>
+                <option value="" disabled selected>Select an instructor</option>
+                <option value="instructor1">Instructor 1</option>
+                <option value="instructor2">Instructor 2</option>
+                <option value="instructor3">Instructor 3</option>
+            </select>
+        </div>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
