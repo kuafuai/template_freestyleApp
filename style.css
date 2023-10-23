@@ -1,0 +1,43 @@
+/* Layout styles */
+header {
+    /* Styles for the navigation bar */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+main {
+    /* Styles for the product introduction content and image display area */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for other elements */
+
+/* Responsive design */
+/* Media queries and adaptation rules for different screen sizes */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 5px;
+    }
+    
+    main {
+        flex-direction: row;
+    }
+}
+
+/* Product image zoom functionality */
+/* Styles and interaction logic for zooming in on product images */
+.product-image {
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-image:hover {
+    transform: scale(1.2);
+}
+
+/* Performance optimization */
+/* CSS and JavaScript code optimization to improve page loading speed */
