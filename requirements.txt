@@ -1,0 +1,10 @@
+# Required dependencies
+from flask import Flask
+
+# Initialize Flask application
+app = Flask(__name__)
+
+# TODO: Add code for application functionality
+
+if __name__ == "__main__":
+    app.run()
