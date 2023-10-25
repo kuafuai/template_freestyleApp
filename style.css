@@ -1,0 +1,23 @@
+/* Style for the "Organize Meeting Records" button */
+#organize-meeting-records-btn {
+    /* Add necessary styles */
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for the "Export as PDF" button */
+#export-meeting-summary-btn {
+    /* Add necessary styles */
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add other necessary CSS styles */

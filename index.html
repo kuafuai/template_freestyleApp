@@ -1,0 +1,62 @@
+<!-- Add a button to trigger the function to organize meeting records -->
+<button id="organize-meeting-records-btn" onclick="organizeMeetingRecords()">Organize Meeting Records</button>
+
+<!-- Add a button to trigger the function to export meeting summary as PDF -->
+<button id="export-meeting-summary-btn" onclick="exportMeetingSummary()">Export as PDF</button>
+
+<!-- Include other necessary HTML elements and scripts -->
+
+<script>
+    // Function to handle the click event of the "Organize Meeting Records" button
+    function organizeMeetingRecords() {
+        // Display a confirmation dialog to confirm the action
+        if (confirm("Are you sure you want to organize meeting records?")) {
+            // If the user confirms, send a request to the backend to organize meeting records
+            fetch('/organize_meeting_records', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action: 'organize' })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle successful response from the backend
+                    console.log('Meeting records organized successfully');
+                } else {
+                    // Handle error response from the backend
+                    console.error('Failed to organize meeting records');
+                }
+            })
+            .catch(error => {
+                // Handle network error
+                console.error('Network error:', error);
+            });
+        }
+    }
+
+    // Function to handle the click event of the "Export as PDF" button
+    function exportMeetingSummary() {
+        // Send a request to the backend to export meeting summary as PDF
+        fetch('/export_meeting_summary', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ action: 'export' })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Handle successful response from the backend
+                console.log('Meeting summary exported successfully');
+            } else {
+                // Handle error response from the backend
+                console.error('Failed to export meeting summary');
+            }
+        })
+        .catch(error => {
+            // Handle network error
+            console.error('Network error:', error);
+        });
+    }
+</script>
