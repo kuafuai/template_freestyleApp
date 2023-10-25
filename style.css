@@ -1,0 +1,49 @@
+/* This file defines the styles of the website */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#reviews {
+    margin-top: 20px;
+}
+
+/* Add more styles as needed */
