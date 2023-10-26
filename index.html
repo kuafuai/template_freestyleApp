@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Note Taking App</title>
+</head>
+<body>
+    <h1>Note Taking App</h1>
+
+    <!-- Create Note Button -->
+    <button id="createNoteButton">Create Note</button>
+
+    <!-- Note List -->
+    <ul id="noteList"></ul>
+
+    <script src="index.js"></script>
+    <script>
+        // Get the create note button element
+        const createNoteButton = document.getElementById('createNoteButton');
+
+        // Get the note list element
+        const noteList = document.getElementById('noteList');
+
+        // Function to create a new note
+        function createNote() {
+            // Prompt the user to enter the note content
+            const noteContent = prompt('Enter the note content:');
+
+            // Create a new list item element
+            const listItem = document.createElement('li');
+
+            // Set the text content of the list item to the note content
+            listItem.textContent = noteContent;
+
+            // Append the list item to the note list
+            noteList.appendChild(listItem);
+        }
+
+        // Add event listener to the create note button
+        createNoteButton.addEventListener('click', createNote);
+    </script>
+</body>
+</html>

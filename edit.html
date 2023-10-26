@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Note</title>
+</head>
+<body>
+    <h1>Edit Note</h1>
+
+    <!-- Note Title Input -->
+    <label for="noteTitleInput">Note Title:</label>
+    <input type="text" id="noteTitleInput">
+
+    <!-- Note Content Input -->
+    <label for="noteContentInput">Note Content:</label>
+    <textarea id="noteContentInput"></textarea>
+
+    <!-- Save Button -->
+    <button id="saveButton">Save</button>
+
+    <script src="edit.js"></script>
+    <script>
+        // Event listener for save button click
+        document.getElementById("saveButton").addEventListener("click", function() {
+            // Get the note title and content values
+            var noteTitle = document.getElementById("noteTitleInput").value;
+            var noteContent = document.getElementById("noteContentInput").value;
+
+            // Validate the input fields
+            if (noteTitle.trim() === "" || noteContent.trim() === "") {
+                alert("Please enter a note title and content.");
+                return;
+            }
+
+            // Update the note title and content
+            updateNoteTitle(noteTitle);
+            updateNoteContent(noteContent);
+
+            // Display success message
+            alert("Note saved successfully.");
+        });
+
+        // Function to update the note title
+        function updateNoteTitle(title) {
+            // Implement the logic to update the note title
+            console.log("Updating note title: " + title);
+        }
+
+        // Function to update the note content
+        function updateNoteContent(content) {
+            // Implement the logic to update the note content
+            console.log("Updating note content: " + content);
+        }
+    </script>
+</body>
+</html>
