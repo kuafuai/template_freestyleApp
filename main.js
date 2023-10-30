@@ -15,14 +15,29 @@ let score = 0;
 document.addEventListener('keydown', handleKeyDown);
 
 function handleKeyDown(event) {
-    if (event.key === 'ArrowUp' && direction !== 'down') {
-        direction = 'up';
-    } else if (event.key === 'ArrowDown' && direction !== 'up') {
-        direction = 'down';
-    } else if (event.key === 'ArrowLeft' && direction !== 'right') {
-        direction = 'left';
-    } else if (event.key === 'ArrowRight' && direction !== 'left') {
-        direction = 'right';
+    switch (event.key) {
+        case 'ArrowUp':
+            if (direction !== 'down') {
+                direction = 'up';
+            }
+            break;
+        case 'ArrowDown':
+            if (direction !== 'up') {
+                direction = 'down';
+            }
+            break;
+        case 'ArrowLeft':
+            if (direction !== 'right') {
+                direction = 'left';
+            }
+            break;
+        case 'ArrowRight':
+            if (direction !== 'left') {
+                direction = 'right';
+            }
+            break;
+        default:
+            break;
     }
 }
 
