@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <title>贪吃蛇游戏</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #gameCanvas {
+            width: 80%;
+            height: 80%;
+        }
+    </style>
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
     <script src="main.js"></script>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('gameCanvas');
+            var width = window.innerWidth * 0.8;
+            var height = window.innerHeight * 0.8;
+            canvas.width = width;
+            canvas.height = height;
+        }
+    </script>
 </body>
 </html>
