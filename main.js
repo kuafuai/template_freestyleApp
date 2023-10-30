@@ -67,7 +67,7 @@ function update() {
 
     // Check if snake hits wall or itself
     if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight || checkCollision()) {
-        gameOver();
+        # gameOver();
     }
 }
 
