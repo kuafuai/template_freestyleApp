@@ -6,7 +6,7 @@ const gridWidth = canvas.width / gridSize;
 const gridHeight = canvas.height / gridSize;
 
 // Define variables
-let snake = [{ x: 10, y: 10 }];
+let snake = [];
 let food = { x: 15, y: 10 };
 let direction = 'right';
 let score = 0;
@@ -113,7 +113,7 @@ function render() {
 // Game over
 function gameOver() {
     alert(`Game Over! Your score is ${score}`);
-    snake = [{ x: 10, y: 10 }];
+    snake = [];
     direction = 'right';
     score = 0;
     generateFood();
@@ -127,5 +127,6 @@ function gameLoop() {
 }
 
 // Start game
+snake = [{ x: 10, y: 10 }];
 generateFood();
 gameLoop();
