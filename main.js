@@ -37,6 +37,7 @@ function handleKeyDown(event) {
             }
             break;
         default:
+            alert('Invalid key pressed!');
             break;
     }
 }
