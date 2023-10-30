@@ -1,4 +1,25 @@
-/* style.css */
-#gameCanvas {
-  background-color: #000;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake Game</title>
+    <style>
+        #gameCanvas {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            background-color: #000;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        // Snake Game implementation goes here
+    </script>
+</body>
+</html>
