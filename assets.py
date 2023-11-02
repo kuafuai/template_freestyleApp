@@ -1,65 +1,83 @@
 class Asset:
     def __init__(self, server_model, unit_price, total_amount, channel, advance_payment_ratio, purchase_date, purchase_channel):
-        self.server_model = server_model
-        self.unit_price = unit_price
-        self.total_amount = total_amount
-        self.channel = channel
-        self.advance_payment_ratio = advance_payment_ratio
-        self.advance_payment_amount = 0
-        self.remaining_payment_amount = 0
-        self.purchase_date = purchase_date
-        self.purchase_channel = purchase_channel
+        self._server_model = server_model
+        self._unit_price = unit_price
+        self._total_amount = total_amount
+        self._channel = channel
+        self._advance_payment_ratio = advance_payment_ratio
+        self._advance_payment_amount = 0
+        self._remaining_payment_amount = 0
+        self._purchase_date = purchase_date
+        self._purchase_channel = purchase_channel
 
-    def get_server_model(self):
-        return self.server_model
+    @property
+    def server_model(self):
+        return self._server_model
 
-    def set_server_model(self, server_model):
-        self.server_model = server_model
+    @server_model.setter
+    def server_model(self, server_model):
+        self._server_model = server_model
 
-    def get_unit_price(self):
-        return self.unit_price
+    @property
+    def unit_price(self):
+        return self._unit_price
 
-    def set_unit_price(self, unit_price):
-        self.unit_price = unit_price
+    @unit_price.setter
+    def unit_price(self, unit_price):
+        self._unit_price = unit_price
 
-    def get_total_amount(self):
-        return self.total_amount
+    @property
+    def total_amount(self):
+        return self._total_amount
 
-    def set_total_amount(self, total_amount):
-        self.total_amount = total_amount
+    @total_amount.setter
+    def total_amount(self, total_amount):
+        self._total_amount = total_amount
 
-    def get_channel(self):
-        return self.channel
+    @property
+    def channel(self):
+        return self._channel
 
-    def set_channel(self, channel):
-        self.channel = channel
+    @channel.setter
+    def channel(self, channel):
+        self._channel = channel
 
-    def get_advance_payment_ratio(self):
-        return self.advance_payment_ratio
+    @property
+    def advance_payment_ratio(self):
+        return self._advance_payment_ratio
 
-    def set_advance_payment_ratio(self, advance_payment_ratio):
-        self.advance_payment_ratio = advance_payment_ratio
+    @advance_payment_ratio.setter
+    def advance_payment_ratio(self, advance_payment_ratio):
+        self._advance_payment_ratio = advance_payment_ratio
 
-    def get_advance_payment_amount(self):
-        return self.advance_payment_amount
+    @property
+    def advance_payment_amount(self):
+        return self._advance_payment_amount
 
-    def set_advance_payment_amount(self, advance_payment_amount):
-        self.advance_payment_amount = advance_payment_amount
+    @advance_payment_amount.setter
+    def advance_payment_amount(self, advance_payment_amount):
+        self._advance_payment_amount = advance_payment_amount
 
-    def get_remaining_payment_amount(self):
-        return self.remaining_payment_amount
+    @property
+    def remaining_payment_amount(self):
+        return self._remaining_payment_amount
 
-    def set_remaining_payment_amount(self, remaining_payment_amount):
-        self.remaining_payment_amount = remaining_payment_amount
+    @remaining_payment_amount.setter
+    def remaining_payment_amount(self, remaining_payment_amount):
+        self._remaining_payment_amount = remaining_payment_amount
 
-    def get_purchase_date(self):
-        return self.purchase_date
+    @property
+    def purchase_date(self):
+        return self._purchase_date
 
-    def set_purchase_date(self, purchase_date):
-        self.purchase_date = purchase_date
+    @purchase_date.setter
+    def purchase_date(self, purchase_date):
+        self._purchase_date = purchase_date
 
-    def get_purchase_channel(self):
-        return self.purchase_channel
+    @property
+    def purchase_channel(self):
+        return self._purchase_channel
 
-    def set_purchase_channel(self, purchase_channel):
-        self.purchase_channel = purchase_channel
+    @purchase_channel.setter
+    def purchase_channel(self, purchase_channel):
+        self._purchase_channel = purchase_channel

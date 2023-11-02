@@ -5,13 +5,20 @@ class InvestmentReturn:
         self.asset = asset
 
     def display_investment_return_page(self):
-        print("Display investment return page")
+        return "Investment Return Forecast Page"
 
     def get_fund_requirement_order_income(self):
-        print("Get fund requirement and order income")
+        fund_requirement = self.asset.calculate_fund_requirement()
+        order_income = self.asset.calculate_order_income()
+        return fund_requirement, order_income
 
     def calculate_investment_return(self):
-        print("Calculate investment return")
+        investment_return = self.asset.calculate_investment_return()
+        return investment_return
 
-    def compare_investment_returns(self):
-        print("Compare investment returns")
+    def compare_investment_returns(self, assets):
+        comparison_result = []
+        for asset in assets:
+            investment_return = asset.calculate_investment_return()
+            comparison_result.append(investment_return)
+        return comparison_result
