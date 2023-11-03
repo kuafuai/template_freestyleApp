@@ -1,0 +1,42 @@
+/* Set game container styles */
+#game-container {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  position: relative;
+}
+
+/* Set snake styles */
+.snake {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  position: absolute;
+}
+
+/* Set food styles */
+.food {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+}
+
+/* Set score styles */
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* Set length styles */
+#length {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Set button styles */
+.button {
+  margin-top: 10px;
+}
