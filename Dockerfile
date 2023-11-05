@@ -1,13 +1,14 @@
-# Use the official Nginx base image
-FROM nginx:latest
+# The purpose of the Dockerfile is to build a Docker image for an Nginx server
+# and copy all files to the container. It also exposes port 80 and starts the Nginx
+# server.
 
-# Set a working directory inside the container
-WORKDIR /usr/share/nginx/html
+# Base image
+FROM nginx
 
-# Copy all files from the Dockerfile's directory to the container
-COPY . .
+# Copy files to container
+COPY . /usr/share/nginx/html
 
-# Expose the default Nginx port
+# Expose port 80
 EXPOSE 80
 
 # Start Nginx server

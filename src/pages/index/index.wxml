@@ -1,0 +1,5 @@
+<!-- The template file for the home page component, used to define the structure and layout of the page. -->
+<view class="container">
+  <text class="title">Welcome to the Application</text>
+  <button class="button" bindtap="startDevelopment">Start Development</button>
+</view>

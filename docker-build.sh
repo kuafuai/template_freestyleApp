@@ -1,16 +1,15 @@
 #!/bin/bash
+# The purpose of the file is to build a Docker image, login to Docker Hub,
+# push the image, and print the pushed image details.
 
-# Get the current commit SHA
-COMMIT_SHA=$(git rev-parse HEAD)
-
-# Build the Docker image
-docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
+# Build Docker image
+docker build -t myimage .
 
 # Login to Docker Hub
-echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+docker login -u username -p password
 
-# Push the Docker image
-docker push ${DOCKER_REPO}:${COMMIT_SHA}
-docker push ${DOCKER_REPO}:latest
+# Push the image
+docker push myimage
 
-echo "kuafuai_docker_image_pushed:${DOCKER_REPO}:${COMMIT_SHA}"
+# Print pushed image details
+docker image inspect myimage
