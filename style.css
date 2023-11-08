@@ -1,0 +1,126 @@
+/* Set page layout and styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add animation effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Apply animation effects to sections */
+section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+#products li {
+    animation: slideIn 1s ease-in-out;
+}
+
+#team li {
+    animation: scaleIn 1s ease-in-out;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+    section {
+        padding: 10px;
+    }
+}
+
+/* Add accessibility styles */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
