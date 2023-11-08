@@ -1,0 +1,33 @@
+<!-- register.html -->
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="register.js"></script>
+</head>
+<body>
+    <h1>Phone Number Verification</h1>
+    <form id="verificationForm">
+        <input type="text" id="phoneNumberInput" placeholder="Phone Number">
+        <input type="text" id="verificationCodeInput" placeholder="Verification Code">
+        <button id="verifyButton">Verify</button>
+    </form>
+    <script>
+        document.getElementById("verificationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            verifyPhoneNumber();
+        });
+
+        function verifyPhoneNumber() {
+            var phoneNumber = document.getElementById("phoneNumberInput").value;
+            var verificationCode = document.getElementById("verificationCodeInput").value;
+
+            // Perform verification process here
+
+            // Example code to display verification result
+            var result = document.createElement("p");
+            result.textContent = "Verification successful!";
+            document.body.appendChild(result);
+        }
+    </script>
+</body>
+</html>

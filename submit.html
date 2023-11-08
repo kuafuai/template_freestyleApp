@@ -1,0 +1,35 @@
+<!-- submit.html -->
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="submit.js"></script>
+</head>
+<body>
+    <h1>Submit Application</h1>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" placeholder="Name">
+    <label for="genderInput">Gender:</label>
+    <input type="text" id="genderInput" placeholder="Gender">
+    <label for="ageInput">Age:</label>
+    <input type="text" id="ageInput" placeholder="Age">
+    <label for="universityInput">University:</label>
+    <input type="text" id="universityInput" placeholder="University">
+    <button id="submitButton">Submit</button>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function() {
+            var name = document.getElementById("nameInput").value;
+            var gender = document.getElementById("genderInput").value;
+            var age = document.getElementById("ageInput").value;
+            var university = document.getElementById("universityInput").value;
+
+            // Perform necessary actions with the form data
+            // For example, send the data to a server or display a success message
+            console.log("Name: " + name);
+            console.log("Gender: " + gender);
+            console.log("Age: " + age);
+            console.log("University: " + university);
+        });
+    </script>
+</body>
+</html>
