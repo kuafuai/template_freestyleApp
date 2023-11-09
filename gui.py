@@ -76,7 +76,13 @@ class GUI:
         self.result_text.pack()
 
     def scan_files(self):
-        self.scanner.set_disk_or_folder_path(self.disk_or_folder_path.get())
+        disk_or_folder_path = self.disk_or_folder_path.get()
+        if not disk_or_folder_path:
+            self.result_text.delete(1.0, tk.END)
+            self.result_text.insert(tk.END, "Please provide a valid disk or folder path.")
+            return
+
+        self.scanner.set_disk_or_folder_path(disk_or_folder_path)
         self.scanner.set_file_formats([format.cget("text") for format in self.file_formats if format.get()])
         self.scanner.scan_files()
         file_list = self.scanner.get_file_list()
@@ -85,8 +91,16 @@ class GUI:
             self.file_listbox.insert(tk.END, file_path)
 
     def replace_text_in_files(self):
-        self.replacer.set_search_text(self.search_text.get())
-        self.replacer.set_replace_text(self.replace_text.get())
+        search_text = self.search_text.get()
+        replace_text = self.replace_text.get()
+
+        if not search_text or not replace_text:
+            self.result_text.delete(1.0, tk.END)
+            self.result_text.insert(tk.END, "Please provide both search text and replace text.")
+            return
+
+        self.replacer.set_search_text(search_text)
+        self.replacer.set_replace_text(replace_text)
         file_list = [self.file_listbox.get(i) for i in range(self.file_listbox.size())]
         self.replacer.replace_text_in_files(file_list)
 
