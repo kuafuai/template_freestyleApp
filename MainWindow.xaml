@@ -1,0 +1,13 @@
+<!-- This file contains the XAML code for the MainWindow.xaml file -->
+
+<!-- Define the MainWindow class -->
+<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Image Viewer" Width="800" Height="600">
+    <!-- Define the content of the window -->
+    <Grid>
+        <!-- Create an Image control -->
+        <Image x:Name="imageControl" Width="800" Height="600"/>
+    </Grid>
+</Window>

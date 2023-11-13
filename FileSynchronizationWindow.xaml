@@ -1,0 +1,19 @@
+<!-- This file contains the XAML code for the FileSynchronizationWindow.xaml file -->
+
+<!-- Define the FileSynchronizationWindow class -->
+<Window x:Class="FileSynchronizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Synchronization" Width="800" Height="600">
+    <!-- Define the content of the window -->
+    <Grid>
+        <!-- Create a TreeView control -->
+        <TreeView x:Name="treeView" Width="800" Height="600">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</Window>

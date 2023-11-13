@@ -1,0 +1,13 @@
+<!-- This file contains the XAML code for the ServerWindow.xaml file -->
+
+<!-- Define the ServerWindow class -->
+<Window x:Class="ServerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Server" Width="800" Height="600">
+    <!-- Define the content of the window -->
+    <Grid>
+        <!-- Create a ListBox control -->
+        <ListBox x:Name="listBox" Width="800" Height="600" Background="LightGray" FontSize="16" BorderThickness="1" BorderBrush="Black"/>
+    </Grid>
+</Window>
