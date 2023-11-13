@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Summary App</title>
+</head>
+<body>
+    <h1>Meeting Summary App</h1>
+    <form action="/submit" method="post">
+        <label for="meeting_records">Meeting Records:</label><br>
+        <textarea id="meeting_records" name="meeting_records" rows="10" cols="50" required></textarea><br><br>
+        <label for="meeting_info">Meeting Info:</label><br>
+        <input type="text" id="meeting_info" name="meeting_info" required><br><br>
+        <label for="wechat_group">WeChat Group:</label><br>
+        <select id="wechat_group" name="wechat_group" required>
+            <option value="group1">Group 1</option>
+            <option value="group2">Group 2</option>
+            <option value="group3">Group 3</option>
+        </select><br><br>
+        <input type="submit" value="Send Meeting Summary">
+    </form>
+</body>
+</html>
