@@ -1,0 +1,38 @@
+/* style.css */
+/* Set the background color */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Set the font color */
+h2, p {
+  color: #333333;
+}
+
+/* Set the layout of the grid */
+.ui.grid {
+  margin-top: 20px;
+}
+
+/* Set the width of the columns */
+.column {
+  width: 100%;
+}
+
+/* Set the height of the content display area */
+#process, #ingredients, #usage {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+/* Set the style of the navigation bar */
+.ui.vertical.menu .item {
+  color: #333333;
+  font-weight: bold;
+}
+
+/* Set the style of the related links */
+.ui.vertical.menu .item a {
+  color: #333333;
+  font-weight: bold;
+}
