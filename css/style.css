@@ -1,4 +1,5 @@
-/* COMMENT */
+/* This file contains the CSS styles for the NFT digital collectibles platform. It defines the appearance of various elements on the page. */
+
 /* Global styles */
 body {
     font-family: Arial, sans-serif;
@@ -13,15 +14,37 @@ header {
     padding: 10px;
 }
 
-/* Navigation styles */
-nav {
-    background-color: #f1f1f1;
-    padding: 10px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Main content styles */
 main {
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
+}
+
+section {
+    flex: 2;
+}
+
+aside {
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 10px;
 }
 
 /* Footer styles */
@@ -29,4 +52,5 @@ footer {
     background-color: #333;
     color: #fff;
     padding: 10px;
+    text-align: center;
 }
