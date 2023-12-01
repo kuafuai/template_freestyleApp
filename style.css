@@ -1,0 +1,19 @@
+body {
+    background-color: #f0f0f0;
+}
+
+#game-area {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #000;
+    margin: 20px auto;
+}
+
+#control-panel {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 5px;
+}
