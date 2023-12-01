@@ -1,0 +1,101 @@
+<!-- This file is responsible for creating the blog interface and handling user interactions. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Blog</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <!-- Display article categories and search functionality -->
+            <select id="categorySelect">
+                <option value="">All Categories</option>
+                <option value="technology">Technology</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="travel">Travel</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search">
+        </div>
+        <div class="main-content">
+            <!-- Display article list -->
+            <ul id="articleList"></ul>
+        </div>
+        <div class="sidebar">
+            <!-- Display personal information -->
+            <h2>Personal Information</h2>
+            <p>Name: John Doe</p>
+            <p>Avatar: <img src="avatar.jpg" alt="Avatar"></p>
+            <p>Introduction: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add event listeners
+        document.getElementById("categorySelect").addEventListener("change", function() {
+            filterArticlesByCategory(this.value);
+        });
+
+        document.getElementById("searchInput").addEventListener("keyup", function() {
+            searchArticles(this.value);
+        });
+
+        // Function to filter articles by category
+        function filterArticlesByCategory(category) {
+            // Get the article list element
+            var articleList = document.getElementById("articleList");
+
+            // Clear the article list
+            articleList.innerHTML = "";
+
+            // Filter articles based on the selected category
+            var filteredArticles = articles.filter(function(article) {
+                return category === "" || article.category === category;
+            });
+
+            // Display the filtered articles
+            filteredArticles.forEach(function(article) {
+                var li = document.createElement("li");
+                li.textContent = article.title;
+                articleList.appendChild(li);
+            });
+        }
+
+        // Function to search articles
+        function searchArticles(keyword) {
+            // Get the article list element
+            var articleList = document.getElementById("articleList");
+
+            // Clear the article list
+            articleList.innerHTML = "";
+
+            // Filter articles based on the search keyword
+            var filteredArticles = articles.filter(function(article) {
+                return article.title.toLowerCase().includes(keyword.toLowerCase());
+            });
+
+            // Display the filtered articles
+            filteredArticles.forEach(function(article) {
+                var li = document.createElement("li");
+                li.textContent = article.title;
+                articleList.appendChild(li);
+            });
+        }
+
+        // Sample articles data
+        var articles = [
+            { title: "Article 1", category: "technology" },
+            { title: "Article 2", category: "lifestyle" },
+            { title: "Article 3", category: "travel" },
+            { title: "Article 4", category: "technology" },
+            { title: "Article 5", category: "lifestyle" },
+            { title: "Article 6", category: "travel" }
+        ];
+
+        // Initial display of all articles
+        filterArticlesByCategory("");
+    </script>
+</body>
+</html>
