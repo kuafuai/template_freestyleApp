@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #game-area {
+            /* Add styles for the game area */
+            width: 500px;
+            height: 500px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        #control-panel {
+            /* Add styles for the control panel */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #score {
+            /* Add styles for the score display */
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #difficulty {
+            /* Add styles for the difficulty display */
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #restart-button {
+            /* Add styles for the restart button */
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #exit-button {
+            /* Add styles for the exit button */
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-area"></div>
+    <div id="control-panel">
+        <div id="score">Score: 0</div>
+        <div id="difficulty">Difficulty: Easy</div>
+    </div>
+    <button id="restart-button">Restart</button>
+    <button id="exit-button">Exit</button>
+</body>
+</html>
