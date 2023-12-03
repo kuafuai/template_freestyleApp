@@ -1,0 +1,28 @@
+<!-- style.css -->
+<style>
+    .container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-gap: 5px;
+    }
+
+    .grid input {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
