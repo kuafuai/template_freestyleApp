@@ -1,0 +1,79 @@
+/* COMMENT */
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Page-specific styles */
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.news-article {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.company-info {
+    margin-bottom: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        padding: 5px;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 5px;
+    }
+}
