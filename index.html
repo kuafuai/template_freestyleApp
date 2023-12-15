@@ -1,0 +1,134 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <h2>Registration</h2>
+            <form id="registrationForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <span id="usernameError" class="error"></span>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <span id="passwordError" class="error"></span>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <span id="emailError" class="error"></span>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required>
+                <span id="phoneError" class="error"></span>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="column">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" required>
+                <span id="loginUsernameError" class="error"></span>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" required>
+                <span id="loginPasswordError" class="error"></span>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="column">
+            <h2>System Information</h2>
+            <p>Welcome to the User Login System. Please register or login to continue.</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Registration form validation
+            $("#registrationForm").submit(function(event) {
+                event.preventDefault();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var isValid = true;
+
+                // Validate username
+                if (username.trim() === "") {
+                    $("#usernameError").text("Username is required");
+                    isValid = false;
+                } else {
+                    $("#usernameError").text("");
+                }
+
+                // Validate password
+                if (password.trim() === "") {
+                    $("#passwordError").text("Password is required");
+                    isValid = false;
+                } else {
+                    $("#passwordError").text("");
+                }
+
+                // Validate email
+                if (email.trim() === "") {
+                    $("#emailError").text("Email is required");
+                    isValid = false;
+                } else {
+                    $("#emailError").text("");
+                }
+
+                // Validate phone
+                if (phone.trim() === "") {
+                    $("#phoneError").text("Phone is required");
+                    isValid = false;
+                } else {
+                    $("#phoneError").text("");
+                }
+
+                if (isValid) {
+                    // Perform registration logic here
+                    alert("Registration successful");
+                    $("#registrationForm")[0].reset();
+                }
+            });
+
+            // Login form validation
+            $("#loginForm").submit(function(event) {
+                event.preventDefault();
+                var loginUsername = $("#loginUsername").val();
+                var loginPassword = $("#loginPassword").val();
+                var isValid = true;
+
+                // Validate login username
+                if (loginUsername.trim() === "") {
+                    $("#loginUsernameError").text("Username is required");
+                    isValid = false;
+                } else {
+                    $("#loginUsernameError").text("");
+                }
+
+                // Validate login password
+                if (loginPassword.trim() === "") {
+                    $("#loginPasswordError").text("Password is required");
+                    isValid = false;
+                } else {
+                    $("#loginPasswordError").text("");
+                }
+
+                if (isValid) {
+                    // Perform login logic here
+                    alert("Login successful");
+                    $("#loginForm")[0].reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
