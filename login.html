@@ -1,0 +1,42 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="jssemantic-ui.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="login-form">
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#loginForm').submit(function(event) {
+        event.preventDefault();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        
+        // Perform login validation and authentication here
+        if (username === 'admin' && password === 'password') {
+          // Redirect to the dashboard page
+          window.location.href = 'dashboard.html';
+        } else {
+          // Display error message
+          $('#login-form').append('<p class="error">Invalid username or password</p>');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
