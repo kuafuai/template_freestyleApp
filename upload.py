@@ -9,23 +9,20 @@ def handle_upload(request, db):
         # Get data from the request
         data = request.get_json()
 
-        # Check if data is missing or invalid
+        # Check if data is present in the request
         if not data:
-            return jsonify({'error': 'Invalid data'})
+            return jsonify({'error': 'No data provided'})
+
+        # Extract the required fields from the data
+        field1 = data.get('field1')
+        field2 = data.get('field2')
+
+        # Check if the required fields are present in the data
+        if not field1 or not field2:
+            return jsonify({'error': 'Missing required fields'})
 
         # Create a new data object
-        new_data = Data()
-
-        # Set necessary fields of the data object based on the received data
-        if 'field1' in data:
-            new_data.field1 = data['field1']
-        else:
-            return jsonify({'error': 'Missing field1'})
-
-        if 'field2' in data:
-            new_data.field2 = data['field2']
-        else:
-            return jsonify({'error': 'Missing field2'})
+        new_data = Data(field1=field1, field2=field2)
 
         # Add data to the database
         db.add_data(new_data)
