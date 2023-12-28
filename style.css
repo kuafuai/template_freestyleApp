@@ -1,0 +1,16 @@
+/* style.css */
+#gameCanvas {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
+
+.snake {
+    fill: green;
+    /* The snake class is used to style the snake element in the game. */
+}
+
+.food {
+    fill: red;
+    /* The food class is used to style the food element in the game. */
+}
