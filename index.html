@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <label for="captcha">Captcha:</label>
+            <input type="text" id="captcha" placeholder="Enter the captcha" required>
+            <img src="captcha.jpg" alt="Captcha Image">
+            <input type="checkbox" id="rememberPassword">
+            <label for="rememberPassword">Remember Password</label>
+            <button id="loginButton">Login</button>
+            <a href="forgot_password.html">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var captcha = document.getElementById("captcha").value;
+
+            // Perform form validation
+            if (username === "" || password === "" || captcha === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Perform login logic
+            // ...
+
+            // Reset form fields
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("captcha").value = "";
+        });
+    </script>
+</body>
+</html>
