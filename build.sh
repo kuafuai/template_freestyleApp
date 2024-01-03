@@ -1,3 +1,3 @@
+# build.sh
 #!/bin/bash
-
-echo 'Please complete the compilation script.'
+echo Please complete the compilation script.
