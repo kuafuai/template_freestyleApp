@@ -1,3 +1,41 @@
 /* This file contains the CSS styles for the jssemantic-ui framework */
 
 /* Add your custom styles here */
+
+/* Example custom styles */
+
+/* Change the background color of the body */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Add a border to all buttons */
+button {
+  border: 1px solid #ccc;
+}
+
+/* Increase the font size of headings */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 24px;
+}
+
+/* Add a margin to paragraphs */
+p {
+  margin-bottom: 10px;
+}
+
+/* Add a background color to the navigation bar */
+.navbar {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Add a hover effect to links */
+a:hover {
+  color: #ff0000;
+}
+
+/* Add a border to images */
+img {
+  border: 1px solid #ccc;
+}
