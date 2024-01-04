@@ -13,4 +13,7 @@ echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 docker push ${DOCKER_REPO}:${COMMIT_SHA}
 docker push ${DOCKER_REPO}:latest
 
+# Print pushed image details
+docker image inspect ${DOCKER_REPO}:${COMMIT_SHA}
+
 echo "kuafuai_docker_image_pushed:${DOCKER_REPO}:${COMMIT_SHA}"

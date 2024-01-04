@@ -7,16 +7,20 @@
 /* Change the background color of the body */
 body {
   background-color: #f2f2f2;
+  background-image: url("path/to/ai-image.jpg");
+  background-size: cover;
 }
 
 /* Add a border to all buttons */
 button {
   border: 1px solid #ccc;
+  margin-top: 10px;
 }
 
 /* Increase the font size of headings */
 h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
+  margin-top: 0;
 }
 
 /* Add a margin to paragraphs */
@@ -38,4 +42,32 @@ a:hover {
 /* Add a border to images */
 img {
   border: 1px solid #ccc;
+}
+
+/* Form styles */
+.ui.form {
+    margin-top: 20px;
+}
+
+/* Checkbox styles */
+.ui.checkbox {
+    margin-top: 10px;
+}
+
+/* Input styles */
+.ui.input {
+    width: 200px;
+}
+
+/* Footer styles */
+.ui.footer.segment {
+    margin-top: 50px;
+    padding: 50px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Link styles */
+.ui.link.list .item {
+    color: #fff;
 }
