@@ -1,5 +1,6 @@
 # Import necessary modules
 from flask_sqlalchemy import SQLAlchemy
+from typing import List, Union
 
 # Create database object
 db = SQLAlchemy()
@@ -11,7 +12,7 @@ class TestEquipment(db.Model):
     model = db.Column(db.String(100), nullable=False)
     manufacturer = db.Column(db.String(100), nullable=False)
 
-    def serialize(self):
+    def serialize(self) -> dict:
         return {
             'id': self.id,
             'name': self.name,
@@ -26,7 +27,7 @@ class TestProgram(db.Model):
     description = db.Column(db.String(100), nullable=False)
     version = db.Column(db.String(100), nullable=False)
 
-    def serialize(self):
+    def serialize(self) -> dict:
         return {
             'id': self.id,
             'name': self.name,
@@ -35,19 +36,37 @@ class TestProgram(db.Model):
         }
 
 # Define methods for adding, deleting, updating, and querying data
-def add_data(data):
-    db.session.add(data)
-    db.session.commit()
+def add_data(data: Union[TestEquipment, TestProgram]) -> None:
+    try:
+        db.session.add(data)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        raise e
 
-def delete_data(data):
-    db.session.delete(data)
-    db.session.commit()
+def delete_data(data: Union[TestEquipment, TestProgram]) -> None:
+    try:
+        db.session.delete(data)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        raise e
 
-def update_data():
-    db.session.commit()
+def update_data() -> None:
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        raise e
 
-def get_data(model, id):
-    return model.query.get(id)
+def get_data(model: Union[TestEquipment, TestProgram], id: int) -> Union[TestEquipment, TestProgram]:
+    try:
+        return model.query.get(id)
+    except Exception as e:
+        raise e
 
-def get_all_data(model):
-    return model.query.all()
+def get_all_data(model: Union[TestEquipment, TestProgram]) -> List[Union[TestEquipment, TestProgram]]:
+    try:
+        return model.query.all()
+    except Exception as e:
+        raise e
