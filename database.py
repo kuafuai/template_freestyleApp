@@ -1,21 +1,65 @@
-# This file contains the logic for interacting with the database
+from flask_sqlalchemy import SQLAlchemy
 
-# Import necessary modules
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+# Create database object
+db = SQLAlchemy()
 
-# Create database connection
-engine = create_engine('DATABASE_URL')
-Session = sessionmaker(bind=engine)
-Base = declarative_base()
+# Define TestEquipment model
+class TestEquipment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    model = db.Column(db.String(100), nullable=False)
+    manufacturer = db.Column(db.String(100), nullable=False)
 
-# Define data model
-class Data(Base):
-    __tablename__ = 'data'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    # Add necessary columns for data fields
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'model': self.model,
+            'manufacturer': self.manufacturer
+        }
+
+# Define TestProgram model
+class TestProgram(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(100), nullable=False)
+    version = db.Column(db.String(100), nullable=False)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'version': self.version
+        }
+
+# Define methods for adding, deleting, updating, and querying data
+def add_data(data):
+    db.session.add(data)
+    db.session.commit()
+
+def delete_data(data):
+    db.session.delete(data)
+    db.session.commit()
+
+# Update data in the database
+def update_data(data_id, new_data):
+    data = get_data(Data, data_id)
+    if data:
+        data.name = new_data['name']
+        db.session.commit()
+
+# Get data from the database
+def get_data(model, id):
+    return model.query.get(id)
+
+# Get all data from the database
+def get_all_data(model):
+    return model.query.all()
+
+# Search data in the database based on keyword
+def search_data(keyword):
+    return [{'id': data.id, 'name': data.name} for data in db.session.query(Data).filter(Data.name.like(f'%{keyword}%')).all()]
 
 # Initialize database
 Base.metadata.create_all(engine)
@@ -26,35 +70,16 @@ class Database:
         self.session = Session()
 
     def add_data(self, data):
-        # Add data to the database
-        self.session.add(data)
-        self.session.commit()
+        add_data(data)
 
     def delete_data(self, data_id):
-        # Delete data from the database
-        data = self.session.query(Data).filter_by(id=data_id).first()
-        if data:
-            self.session.delete(data)
-            self.session.commit()
+        delete_data(get_data(Data, data_id))
 
     def update_data(self, data_id, new_data):
-        # Update data in the database
-        data = self.session.query(Data).filter_by(id=data_id).first()
-        if data:
-            # Update necessary fields of the data
-            data.name = new_data['name']
-            self.session.commit()
+        update_data(data_id, new_data)
 
     def get_data(self, data_id):
-        # Get data from the database
-        data = self.session.query(Data).filter_by(id=data_id).first()
-        if data:
-            # Return data as a dictionary
-            return {'id': data.id, 'name': data.name}
-        else:
-            raise Exception("Data not found in the database")
+        return get_data(Data, data_id)
 
     def search_data(self, keyword):
-        # Search data in the database based on keyword
-        # Return a list of matching data as dictionaries
-        return [{'id': data.id, 'name': data.name} for data in self.session.query(Data).filter(Data.name.like(f'%{keyword}%')).all()]
+        return search_data(keyword)
