@@ -1,0 +1,32 @@
+<!-- This file is responsible for managing financial information. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Management</title>
+</head>
+<body>
+    <h1>Finance Management</h1>
+    <form>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount"><br><br>
+        <label for="payment_status">Payment Status:</label>
+        <select id="payment_status" name="payment_status">
+            <option value="paid">Paid</option>
+            <option value="unpaid">Unpaid</option>
+        </select><br><br>
+        <button type="submit">Track Bills and Payment Records</button>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>Payment Status</th>
+        </tr>
+        <tr>
+            <td>$100</td>
+            <td>Paid</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* This file contains the styles for the system. */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: blue;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="text"], input[type="number"], select, textarea {
+    width: 200px;
+    padding: 5px;
+}
