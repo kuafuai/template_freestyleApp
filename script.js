@@ -1,27 +1,16 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function() {
-  // Initialize the image carousel
-  var carouselIndex = 0;
-  var carouselImages = document.getElementsByClassName("carousel-image");
-  carouselImages[carouselIndex].style.display = "block";
+<!-- index.html -->
+<div class="carousel">
+  <img class="carousel-image" src="image1.jpg" alt="Image 1">
+  <img class="carousel-image" src="image2.jpg" alt="Image 2">
+  <img class="carousel-image" src="image3.jpg" alt="Image 3">
+</div>
 
-  // Start the automatic image carousel
-  setInterval(function() {
-    carouselImages[carouselIndex].style.display = "none";
-    carouselIndex = (carouselIndex + 1) % carouselImages.length;
-    carouselImages[carouselIndex].style.display = "block";
-  }, 3000);
+<button class="expand-button">Expand</button>
+<div class="content hidden">
+  Content 1
+</div>
 
-  // Add click event listeners to the expand/collapse buttons
-  var expandButtons = document.getElementsByClassName("expand-button");
-  for (var i = 0; i < expandButtons.length; i++) {
-    expandButtons[i].addEventListener("click", function() {
-      var content = this.nextElementSibling;
-      if (content.style.display === "none") {
-        content.style.display = "block";
-      } else {
-        content.style.display = "none";
-      }
-    });
-  }
-});
+<button class="expand-button">Expand</button>
+<div class="content hidden">
+  Content 2
+</div>
