@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member</title>
+</head>
+<body>
+    <h1>Welcome to the Member page</h1>
+    <button id="rechargeButton">Recharge Membership</button>
+
+    <script>
+        // Add event listener to recharge button
+        document.getElementById('rechargeButton').addEventListener('click', function() {
+            // Implement recharge membership functionality
+            // Assuming the recharge functionality is an AJAX request to a server endpoint
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/recharge-membership', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Recharge successful
+                    alert('Membership recharged successfully!');
+                } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                    // Recharge failed
+                    alert('Failed to recharge membership. Please try again later.');
+                }
+            };
+            xhr.send(JSON.stringify({}));
+        });
+    </script>
+</body>
+</html>

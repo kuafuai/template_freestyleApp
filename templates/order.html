@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .receipt {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 20px auto;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Order page</h1>
+    <button id="printButton">Print Receipt</button>
+
+    <div id="error" class="error-message"></div>
+
+    <div id="receipt" class="receipt" style="display: none;">
+        <h2>Receipt</h2>
+        <p id="orderDetails"></p>
+    </div>
+
+    <script>
+        // Add event listener to print button
+        document.getElementById('printButton').addEventListener('click', function() {
+            // Get order details
+            var orderDetails = getOrderDetails();
+
+            // Check if order details are available
+            if (orderDetails) {
+                // Display receipt
+                displayReceipt(orderDetails);
+            } else {
+                // Show error message
+                showError("No order details available.");
+            }
+        });
+
+        // Function to get order details
+        function getOrderDetails() {
+            // TODO: Implement logic to retrieve order details
+            // For demonstration purposes, returning a sample order details
+            return "Order ID: 12345\nProduct: ABC\nQuantity: 2\nTotal: $50";
+        }
+
+        // Function to display receipt
+        function displayReceipt(orderDetails) {
+            // Hide print button
+            document.getElementById('printButton').style.display = 'none';
+
+            // Display receipt
+            document.getElementById('receipt').style.display = 'block';
+            document.getElementById('orderDetails').innerText = orderDetails;
+        }
+
+        // Function to show error message
+        function showError(errorMessage) {
+            document.getElementById('error').innerText = errorMessage;
+        }
+    </script>
+</body>
+</html>

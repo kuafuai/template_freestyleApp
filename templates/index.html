@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to the Index page</h1>
+    <button id="scanButton">Scan QR Code</button>
+
+    <script>
+        // Add event listener to scan button
+        document.getElementById('scanButton').addEventListener('click', function() {
+            // Implement scan QR code functionality
+            // Get the video stream from the user's camera
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function(stream) {
+                    // Create a new video element to display the camera stream
+                    var video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.autoplay = true;
+                    document.body.appendChild(video);
+
+                    // Create a canvas element to capture the video frame
+                    var canvas = document.createElement('canvas');
+                    var context = canvas.getContext('2d');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    document.body.appendChild(canvas);
+
+                    // Start scanning for QR codes
+                    function scanQRCode() {
+                        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                        var code = jsQR(imageData.data, imageData.width, imageData.height);
+                        if (code) {
+                            // QR code detected, do something with the code
+                            console.log('QR code detected:', code.data);
+                        } else {
+                            // No QR code detected, continue scanning
+                            requestAnimationFrame(scanQRCode);
+                        }
+                    }
+
+                    // Start scanning for QR codes
+                    scanQRCode();
+                })
+                .catch(function(error) {
+                    console.error('Error accessing camera:', error);
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+</head>
+<body>
+    <h1>Welcome to the Settings page</h1>
+    <label for="activity">Activity:</label>
+    <input type="text" id="activity" name="activity">
+    <button id="setButton">Set Activity</button>
+
+    <script>
+        // Add event listener to set button
+        document.getElementById('setButton').addEventListener('click', function() {
+            // Get the activity value from the input field
+            var activity = document.getElementById('activity').value;
+            
+            // TODO: Implement set activity functionality
+            // For now, we will just display an alert with the activity value
+            alert("Activity set to: " + activity);
+        });
+    </script>
+</body>
+</html>

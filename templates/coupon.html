@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coupon</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Coupon page</h1>
+    <button id="verifyButton">Verify Coupon</button>
+    <div id="errorContainer"></div>
+
+    <script>
+        // Add event listener to verify button
+        document.getElementById('verifyButton').addEventListener('click', function() {
+            // Implement verify coupon functionality
+            var couponCode = prompt("Enter coupon code:");
+            var errorContainer = document.getElementById('errorContainer');
+            errorContainer.innerHTML = '';
+
+            if (couponCode === 'VALID_COUPON') {
+                alert('Coupon verified successfully!');
+            } else {
+                var errorMessage = document.createElement('p');
+                errorMessage.classList.add('error');
+                errorMessage.textContent = 'Invalid coupon code. Please try again.';
+                errorContainer.appendChild(errorMessage);
+            }
+        });
+    </script>
+</body>
+</html>
