@@ -1,124 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Snake Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <title>贪吃蛇游戏</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-    <div id="game-area"></div>
-    <div id="scoreboard"></div>
-    <button id="start-button">Start Game</button>
-    <script src="script.js"></script>
-    <script>
-        // Get the game area and scoreboard elements
-        const gameArea = document.getElementById("game-area");
-        const scoreboard = document.getElementById("scoreboard");
-
-        // Set the initial game state
-        let gameRunning = false;
-        let score = 0;
-
-        // Function to start the game
-        function startGame() {
-            // Clear the game area and scoreboard
-            gameArea.innerHTML = "";
-            scoreboard.innerHTML = "";
-
-            // Set the game running state to true
-            gameRunning = true;
-
-            // Create the snake
-            const snake = [{ x: 10, y: 10 }];
-
-            // Create the food
-            let food = { x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) };
-
-            // Set the initial direction
-            let dx = 0;
-            let dy = 0;
-
-            // Function to handle keydown events
-            function handleKeyDown(event) {
-                if (event.key === "ArrowUp" && dy !== 1) {
-                    dx = 0;
-                    dy = -1;
-                } else if (event.key === "ArrowDown" && dy !== -1) {
-                    dx = 0;
-                    dy = 1;
-                } else if (event.key === "ArrowLeft" && dx !== 1) {
-                    dx = -1;
-                    dy = 0;
-                } else if (event.key === "ArrowRight" && dx !== -1) {
-                    dx = 1;
-                    dy = 0;
-                }
-            }
-
-            // Add event listener for keydown events
-            document.addEventListener("keydown", handleKeyDown);
-
-            // Function to update the game state
-            function updateGame() {
-                // Check if the game is running
-                if (!gameRunning) {
-                    return;
-                }
-
-                // Update the snake position
-                const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-                snake.unshift(head);
-
-                // Check if the snake has collided with the food
-                if (head.x === food.x && head.y === food.y) {
-                    // Increase the score
-                    score++;
-                    
-                    // Generate new food position
-                    food = { x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) };
-                } else {
-                    // Remove the tail segment
-                    snake.pop();
-                }
-
-                // Check if the snake has collided with the walls or itself
-                if (head.x < 0 || head.x >= 20 || head.y < 0 || head.y >= 20 || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
-                    // Stop the game
-                    gameRunning = false;
-
-                    // Display the final score
-                    scoreboard.innerHTML = "Game Over! Score: " + score;
-                }
-
-                // Clear the game area
-                gameArea.innerHTML = "";
-
-                // Draw the snake
-                snake.forEach(segment => {
-                    const segmentElement = document.createElement("div");
-                    segmentElement.style.gridColumnStart = segment.x + 1;
-                    segmentElement.style.gridRowStart = segment.y + 1;
-                    segmentElement.classList.add("snake-segment");
-                    gameArea.appendChild(segmentElement);
-                });
-
-                // Draw the food
-                const foodElement = document.createElement("div");
-                foodElement.style.gridColumnStart = food.x + 1;
-                foodElement.style.gridRowStart = food.y + 1;
-                foodElement.classList.add("food");
-                gameArea.appendChild(foodElement);
-
-                // Call the updateGame function again after a delay
-                setTimeout(updateGame, 200);
-            }
-
-            // Call the updateGame function to start the game
-            updateGame();
-        }
-
-        // Add event listener for start button click
-        const startButton = document.getElementById("start-button");
-        startButton.addEventListener("click", startGame);
-    </script>
+  <div class="game-area">
+    <!-- Game area content -->
+  </div>
+  
+  <div class="scoreboard">
+    <!-- Scoreboard content -->
+  </div>
+  
+  <button class="restart-button">重新开始</button>
 </body>
 </html>

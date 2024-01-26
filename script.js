@@ -1,155 +1,140 @@
-// Define global variables
-var gameArea = document.getElementById("game-area");
-var scoreboard = document.getElementById("scoreboard");
-var startButton = document.getElementById("start-button");
-var snake = [];
-var food = {};
-var direction = "";
-var score = 0;
-var gameInterval;
+// Constants
+const GAME_AREA_WIDTH = 20;
+const GAME_AREA_HEIGHT = 20;
+const SNAKE_INITIAL_LENGTH = 1;
+const SNAKE_INITIAL_POSITION = { x: 10, y: 10 };
+const FOOD_SCORE = 10;
 
-// Define game constants
-var GAME_WIDTH = 400;
-var GAME_HEIGHT = 400;
-var SNAKE_SIZE = 20;
-var FOOD_SIZE = 20;
-var GAME_SPEED = 200;
+// Variables
+let gameArea;
+let scoreboard;
+let restartButton;
+let snake;
+let food;
+let score;
+let highScore;
 
-// Initialize the game
-function initGame() {
-    createSnake();
-    createFood();
-    direction = "right";
-    score = 0;
-    scoreboard.innerHTML = "Score: " + score;
-    gameInterval = setInterval(updateGame, GAME_SPEED);
+// Event listeners
+startButton.addEventListener('click', initializeGame);
+
+// Initialization function
+function initializeGame() {
+  gameArea = document.getElementById('game-area');
+  scoreboard = document.getElementById('scoreboard');
+  restartButton = document.getElementById('restart-button');
+  score = 0;
+  highScore = localStorage.getItem('highScore') || 0;
+  createGameArea();
+  createSnake();
+  createFood();
+  updateScoreboard();
+  gameInterval = setInterval(gameLoop, GAME_SPEED);
 }
 
-// Create the initial snake
-function createSnake() {
-    var snakeHead = { x: 0, y: 0 };
-    snake.push(snakeHead);
+// Game loop function
+function gameLoop() {
+  moveSnake();
+  if (isSnakeCollidingWithFood()) {
+    eatFood();
+  }
+  if (isSnakeCollidingWithSelf() || isSnakeCollidingWithWall()) {
+    endGame();
+  }
+  drawGame();
 }
 
-// Create food at a random position
-function createFood() {
-    var foodX = Math.floor(Math.random() * (GAME_WIDTH / FOOD_SIZE)) * FOOD_SIZE;
-    var foodY = Math.floor(Math.random() * (GAME_HEIGHT / FOOD_SIZE)) * FOOD_SIZE;
-    food = { x: foodX, y: foodY };
-}
-
-// Update the game state
-function updateGame() {
-    moveSnake();
-    if (checkCollision()) {
-        endGame();
-    } else {
-        if (checkFoodCollision()) {
-            eatFood();
-        }
-        drawGame();
-    }
-}
-
-// Move the snake
+// Snake movement function
 function moveSnake() {
-    var snakeHead = { x: snake[0].x, y: snake[0].y };
-    if (direction === "up") {
-        snakeHead.y -= SNAKE_SIZE;
-    } else if (direction === "down") {
-        snakeHead.y += SNAKE_SIZE;
-    } else if (direction === "left") {
-        snakeHead.x -= SNAKE_SIZE;
-    } else if (direction === "right") {
-        snakeHead.x += SNAKE_SIZE;
-    }
-    snake.unshift(snakeHead);
-    snake.pop();
+  var snakeHead = { x: snake[0].x, y: snake[0].y };
+  if (direction === 'up') {
+    snakeHead.y -= SNAKE_SIZE;
+  } else if (direction === 'down') {
+    snakeHead.y += SNAKE_SIZE;
+  } else if (direction === 'left') {
+    snakeHead.x -= SNAKE_SIZE;
+  } else if (direction === 'right') {
+    snakeHead.x += SNAKE_SIZE;
+  }
+  snake.unshift(snakeHead);
+  snake.pop();
 }
 
-// Check for collision with the snake's body or game boundaries
-function checkCollision() {
-    var snakeHead = snake[0];
-    if (snakeHead.x < 0 || snakeHead.x >= GAME_WIDTH || snakeHead.y < 0 || snakeHead.y >= GAME_HEIGHT) {
-        return true;
-    }
-    for (var i = 1; i < snake.length; i++) {
-        if (snake[i].x === snakeHead.x && snake[i].y === snakeHead.y) {
-            return true;
-        }
-    }
-    return false;
+// Food creation function
+function createFood() {
+  var foodX = Math.floor(Math.random() * (GAME_AREA_WIDTH / FOOD_SIZE)) * FOOD_SIZE;
+  var foodY = Math.floor(Math.random() * (GAME_AREA_HEIGHT / FOOD_SIZE)) * FOOD_SIZE;
+  food = { x: foodX, y: foodY };
 }
 
-// Check for collision with food
-function checkFoodCollision() {
-    var snakeHead = snake[0];
-    if (snakeHead.x === food.x && snakeHead.y === food.y) {
-        return true;
-    }
-    return false;
+// Food collision detection function
+function isSnakeCollidingWithFood() {
+  var snakeHead = snake[0];
+  if (snakeHead.x === food.x && snakeHead.y === food.y) {
+    return true;
+  }
+  return false;
 }
 
-// Eat the food and update the score
+// Food consumption function
 function eatFood() {
-    score++;
-    scoreboard.innerHTML = "Score: " + score;
-    createFood();
+  score += FOOD_SCORE;
+  updateScoreboard();
+  createFood();
 }
 
-// Draw the game on the game area
-function drawGame() {
-    gameArea.innerHTML = "";
-    drawSnake();
-    drawFood();
-}
-
-// Draw the snake on the game area
-function drawSnake() {
-    for (var i = 0; i < snake.length; i++) {
-        var snakeSegment = document.createElement("div");
-        snakeSegment.style.width = SNAKE_SIZE + "px";
-        snakeSegment.style.height = SNAKE_SIZE + "px";
-        snakeSegment.style.backgroundColor = "green";
-        snakeSegment.style.position = "absolute";
-        snakeSegment.style.left = snake[i].x + "px";
-        snakeSegment.style.top = snake[i].y + "px";
-        gameArea.appendChild(snakeSegment);
+// Self collision detection function
+function isSnakeCollidingWithSelf() {
+  var snakeHead = snake[0];
+  for (var i = 1; i < snake.length; i++) {
+    if (snake[i].x === snakeHead.x && snake[i].y === snakeHead.y) {
+      return true;
     }
+  }
+  return false;
 }
 
-// Draw the food on the game area
-function drawFood() {
-    var foodElement = document.createElement("div");
-    foodElement.style.width = FOOD_SIZE + "px";
-    foodElement.style.height = FOOD_SIZE + "px";
-    foodElement.style.backgroundColor = "red";
-    foodElement.style.position = "absolute";
-    foodElement.style.left = food.x + "px";
-    foodElement.style.top = food.y + "px";
-    gameArea.appendChild(foodElement);
+// Wall collision detection function
+function isSnakeCollidingWithWall() {
+  var snakeHead = snake[0];
+  if (snakeHead.x < 0 || snakeHead.x >= GAME_AREA_WIDTH || snakeHead.y < 0 || snakeHead.y >= GAME_AREA_HEIGHT) {
+    return true;
+  }
+  return false;
 }
 
-// End the game and display the final score
+// Scoreboard update function
+function updateScoreboard() {
+  scoreboard.innerHTML = 'Score: ' + score;
+}
+
+// Game end function
 function endGame() {
-    clearInterval(gameInterval);
-    alert("Game Over! Your score is " + score);
+  clearInterval(gameInterval);
+  alert('Game Over! Your score is ' + score);
 }
 
-// Event listener for keydown events to change the snake's direction
-document.addEventListener("keydown", function(event) {
-    if (event.key === "ArrowUp" && direction !== "down") {
-        direction = "up";
-    } else if (event.key === "ArrowDown" && direction !== "up") {
-        direction = "down";
-    } else if (event.key === "ArrowLeft" && direction !== "right") {
-        direction = "left";
-    } else if (event.key === "ArrowRight" && direction !== "left") {
-        direction = "right";
-    }
-});
+// Keydown event handler
+function handleKeyDown(event) {
+  if (event.key === 'ArrowUp' && direction !== 'down') {
+    direction = 'up';
+  } else if (event.key === 'ArrowDown' && direction !== 'up') {
+    direction = 'down';
+  } else if (event.key === 'ArrowLeft' && direction !== 'right') {
+    direction = 'left';
+  } else if (event.key === 'ArrowRight' && direction !== 'left') {
+    direction = 'right';
+  }
+}
 
-// Event listener for start button click event to start the game
-startButton.addEventListener("click", function() {
-    initGame();
-});
+// Restart game function
+function restartGame() {
+  clearInterval(gameInterval);
+  snake = [];
+  food = {};
+  direction = '';
+  score = 0;
+  initializeGame();
+}
+
+// Start the game
+initializeGame();
