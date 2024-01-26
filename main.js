@@ -7,12 +7,12 @@ const ctx = canvas.getContext('2d');
 // Define game variables
 let playerX = canvas.width / 2;
 let playerY = canvas.height - 50;
-let playerSpeed = 5;
+let playerSpeed = 10;
 let playerWidth = 50;
 let playerHeight = 50;
 
 let enemies = [];
-let enemySpeed = 2;
+let enemySpeed = 5;
 let enemyWidth = 50;
 let enemyHeight = 50;
 
@@ -169,6 +169,27 @@ function handleKeyHold(event) {
 }
 
 // Add event listeners
+const startButton = document.getElementById('startButton');
+const replayButton = document.getElementById('replayButton');
+
+startButton.addEventListener('click', function() {
+    score = 0;
+    lives = 3;
+    gameover = false;
+    playerX = canvas.width / 2;
+    playerY = canvas.height - 50;
+    enemies = [];
+    bullets = [];
+    update();
+});
+
+replayButton.addEventListener('click', function() {
+    score = 0;
+    lives = 3;
+    gameover = false;
+    update();
+});
+
 document.addEventListener('keydown', handleKeyPress);
 document.addEventListener('keyup', handleKeyHold);
 
