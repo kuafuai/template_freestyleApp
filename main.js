@@ -37,6 +37,10 @@ function movePlayer(direction) {
         playerX -= playerSpeed;
     } else if (direction === 'right' && playerX < canvas.width - playerWidth) {
         playerX += playerSpeed;
+    } else if (direction === 'up' && playerY > 0) {
+        playerY -= playerSpeed;
+    } else if (direction === 'down' && playerY < canvas.height - playerHeight) {
+        playerY += playerSpeed;
     }
 }
 
@@ -55,6 +59,11 @@ function moveEnemies() {
         if (enemies[i].y > canvas.height) {
             enemies.splice(i, 1);
         }
+    }
+    if (enemies.length === 0) {
+        let randomX = Math.random() * (canvas.width - enemyWidth);
+        let randomY = Math.random() * -canvas.height;
+        enemies.push({ x: randomX, y: randomY });
     }
 }
 
@@ -143,13 +152,33 @@ function handleKeyPress(event) {
         movePlayer('left');
     } else if (event.key === 'ArrowRight') {
         movePlayer('right');
+    } else if (event.key === 'ArrowUp') {
+        movePlayer('up');
+    } else if (event.key === 'ArrowDown') {
+        movePlayer('down');
     } else if (event.key === ' ') {
+        bullets.push({ x: playerX + playerWidth / 2 - bulletWidth / 2, y: playerY });
+    }
+}
+
+// Function to handle continuous shooting
+function handleKeyHold(event) {
+    if (event.key === ' ') {
         bullets.push({ x: playerX + playerWidth / 2 - bulletWidth / 2, y: playerY });
     }
 }
 
 // Add event listeners
 document.addEventListener('keydown', handleKeyPress);
+document.addEventListener('keyup', handleKeyHold);
+
+// Function to generate new enemies at regular intervals
+function generateEnemies() {
+    let randomX = Math.random() * (canvas.width - enemyWidth);
+    let randomY = Math.random() * -canvas.height;
+    enemies.push({ x: randomX, y: randomY });
+}
 
 // Start the game
 update();
+setInterval(generateEnemies, 2000);
