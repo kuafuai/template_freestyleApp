@@ -1,0 +1,17 @@
+/* The CSS file for defining the style of the Snake game interface. */
+
+.snake-game-area {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
+
+.snake-scoreboard {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.snake-start-button {
+    margin-top: 10px;
+    font-size: 20px;
+}
