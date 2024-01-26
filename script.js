@@ -107,14 +107,14 @@ function drawGame() {
 // Draw the snake on the game area
 function drawSnake() {
     for (var i = 0; i < snake.length; i++) {
-        var snakePart = document.createElement("div");
-        snakePart.style.width = SNAKE_SIZE + "px";
-        snakePart.style.height = SNAKE_SIZE + "px";
-        snakePart.style.backgroundColor = "green";
-        snakePart.style.position = "absolute";
-        snakePart.style.left = snake[i].x + "px";
-        snakePart.style.top = snake[i].y + "px";
-        gameArea.appendChild(snakePart);
+        var snakeSegment = document.createElement("div");
+        snakeSegment.style.width = SNAKE_SIZE + "px";
+        snakeSegment.style.height = SNAKE_SIZE + "px";
+        snakeSegment.style.backgroundColor = "green";
+        snakeSegment.style.position = "absolute";
+        snakeSegment.style.left = snake[i].x + "px";
+        snakeSegment.style.top = snake[i].y + "px";
+        gameArea.appendChild(snakeSegment);
     }
 }
 
