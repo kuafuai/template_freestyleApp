@@ -1,0 +1,37 @@
+/* game.css */
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#map {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
+
+.snake {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+}
+
+.food {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+}
+
+.game-start,
+.game-pause,
+.game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 24px;
+    font-weight: bold;
+}
