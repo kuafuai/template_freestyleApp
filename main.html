@@ -1,0 +1,118 @@
+<!-- This file contains the HTML structure of the main page -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meeting Summary</title>
+  <link rel="stylesheet" type="text/css" href="semantic.min.css">
+  <script src="main.js"></script>
+  <style>
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+  <script>
+    function generateSummary() {
+      var meetingRecord = document.getElementById("meetingRecord").value;
+      var meetingDate = document.getElementById("meetingDate").value;
+      var summaryTextarea = document.getElementById("summary");
+      var errorDiv = document.getElementById("errorDiv");
+      
+      if (meetingRecord === "") {
+        errorDiv.innerHTML = "Please enter the meeting record";
+        return;
+      }
+      
+      if (meetingDate === "") {
+        errorDiv.innerHTML = "Please select the meeting date";
+        return;
+      }
+      
+      // Generate the summary logic here
+      
+      summaryTextarea.value = "Generated summary";
+      errorDiv.innerHTML = "";
+    }
+    
+    function sendSummary() {
+      var wechatGroupId = document.getElementById("wechatGroupId").value;
+      var summaryTextarea = document.getElementById("summary");
+      var errorDiv = document.getElementById("errorDiv");
+      
+      if (wechatGroupId === "") {
+        errorDiv.innerHTML = "Please enter the WeChat group ID";
+        return;
+      }
+      
+      // Send the summary logic here
+      
+      errorDiv.innerHTML = "";
+      summaryTextarea.value = "";
+      showMessage("Summary sent successfully", "success");
+    }
+    
+    function saveSummary() {
+      var summaryTextarea = document.getElementById("summary");
+      var errorDiv = document.getElementById("errorDiv");
+      
+      if (summaryTextarea.value === "") {
+        errorDiv.innerHTML = "No summary to save";
+        return;
+      }
+      
+      // Save the summary logic here
+      
+      errorDiv.innerHTML = "";
+      showMessage("Summary saved successfully", "success");
+    }
+    
+    function showMessage(message, className) {
+      var messageDiv = document.getElementById("messageDiv");
+      messageDiv.innerHTML = message;
+      messageDiv.className = className;
+      setTimeout(function() {
+        messageDiv.innerHTML = "";
+        messageDiv.className = "";
+      }, 3000);
+    }
+  </script>
+</head>
+<body>
+  <div class="ui container">
+    <h1>Meeting Summary</h1>
+    <div class="ui segment">
+      <div class="ui form">
+        <div class="field">
+          <label>Meeting Record</label>
+          <textarea id="meetingRecord"></textarea>
+        </div>
+        <div class="field">
+          <label>Meeting Date</label>
+          <input type="date" id="meetingDate">
+        </div>
+        <button class="ui primary button" onclick="generateSummary()">Generate Summary</button>
+      </div>
+    </div>
+    <div class="ui segment">
+      <div class="ui form">
+        <div class="field">
+          <label>WeChat Group ID</label>
+          <input type="text" id="wechatGroupId">
+        </div>
+        <button class="ui primary button" onclick="sendSummary()">Send Summary</button>
+      </div>
+    </div>
+    <div class="ui segment">
+      <div class="field">
+        <label>Summary</label>
+        <textarea id="summary" readonly></textarea>
+      </div>
+      <button class="ui primary button" onclick="saveSummary()">Save Summary</button>
+    </div>
+    <div id="errorDiv" class="error"></div>
+    <div id="messageDiv" class="success"></div>
+  </div>
+</body>
+</html>
