@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Images</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <h1>Processed Images</h1>
+    <div id="image-container">
+        {% for image_path in image_paths %}
+            <div class="image-wrapper">
+                <img src="{{ image_path }}" alt="Processed Image">
+                <button class="delete-button" onclick="deleteImage('{{ image_path }}')">Delete</button>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="image-count">
+        <p>Image Count: <span id="count">{{ image_count }}</span></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Add your CSS styles here */
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-wrapper {
+    margin: 10px;
+}
+
+.delete-button {
+    margin-top: 5px;
+}
