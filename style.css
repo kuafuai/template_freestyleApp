@@ -1,0 +1,23 @@
+/* style.css */
+/* Set the size and background color of the game area */
+#game-area {
+  width: 400px;
+  height: 400px;
+  background-color: #f0f0f0;
+}
+
+/* Set the style of the snake */
+.snake {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  position: absolute;
+}
+
+/* Set the style of the food */
+.food {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+}
