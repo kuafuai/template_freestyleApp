@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Logo">
+    <form id="loginForm" action="login.php" method="post">
+      <div class="error-message" id="errorMessage"></div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <label for="rememberMe">Remember Me:</label>
+      <input type="checkbox" id="rememberMe" name="rememberMe">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
