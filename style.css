@@ -1,0 +1,22 @@
+/* style.css */
+#game-container {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#game-map {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    margin: 20px auto;
+}
+
+#score, #lives, #high-score {
+    margin-bottom: 10px;
+}
+
+#pause-button, #sound-button {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-map"></div>
+        <div id="score">得分: <span id="score-value">0</span></div>
+        <div id="lives">生命: <span id="lives-value">3</span></div>
+        <div id="high-score">最高分数: <span id="high-score-value">0</span></div>
+        <button id="pause-button">暂停</button>
+        <button id="sound-button">音效开关</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // script.js
+        // Game functionality implementation
+
+        // Define variables
+        var gameMap = document.getElementById("game-map");
+        var scoreValue = document.getElementById("score-value");
+        var livesValue = document.getElementById("lives-value");
+        var highScoreValue = document.getElementById("high-score-value");
+        var pauseButton = document.getElementById("pause-button");
+        var soundButton = document.getElementById("sound-button");
+
+        // Initialize game state
+        var score = 0;
+        var lives = 3;
+        var highScore = 0;
+        var isPaused = false;
+        var isSoundOn = true;
+
+        // Update score
+        function updateScore() {
+            scoreValue.textContent = score;
+        }
+
+        // Update lives
+        function updateLives() {
+            livesValue.textContent = lives;
+        }
+
+        // Update high score
+        function updateHighScore() {
+            highScoreValue.textContent = highScore;
+        }
+
+        // Pause game
+        function pauseGame() {
+            isPaused = !isPaused;
+            pauseButton.textContent = isPaused ? "继续" : "暂停";
+        }
+
+        // Toggle sound
+        function toggleSound() {
+            isSoundOn = !isSoundOn;
+            soundButton.textContent = isSoundOn ? "音效开关" : "音效开";
+        }
+
+        // Add event listeners
+        pauseButton.addEventListener("click", pauseGame);
+        soundButton.addEventListener("click", toggleSound);
+
+        // Game logic goes here...
+
+    </script>
+</body>
+</html>
