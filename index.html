@@ -1,0 +1,95 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>太空飞船</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="spaceship"></div>
+        <div id="enemies"></div>
+        <div id="power-ups"></div>
+        <div id="score"></div>
+        <div id="lives"></div>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        // Game logic implementation
+        const spaceship = document.getElementById('spaceship');
+        const enemies = document.getElementById('enemies');
+        const powerUps = document.getElementById('power-ups');
+        const score = document.getElementById('score');
+        const lives = document.getElementById('lives');
+
+        let spaceshipPosition = 0;
+        let scoreValue = 0;
+        let livesValue = 3;
+
+        // Move spaceship
+        function moveSpaceship(direction) {
+            if (direction === 'left') {
+                spaceshipPosition -= 10;
+            } else if (direction === 'right') {
+                spaceshipPosition += 10;
+            }
+            spaceship.style.left = spaceshipPosition + 'px';
+        }
+
+        // Update score
+        function updateScore() {
+            score.innerHTML = 'Score: ' + scoreValue;
+        }
+
+        // Update lives
+        function updateLives() {
+            lives.innerHTML = 'Lives: ' + livesValue;
+        }
+
+        // Event listeners for controlling spaceship
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                moveSpaceship('left');
+            } else if (event.key === 'ArrowRight') {
+                moveSpaceship('right');
+            }
+        });
+
+        // Collision detection
+        function checkCollision() {
+            const spaceshipRect = spaceship.getBoundingClientRect();
+            const enemiesRect = enemies.getBoundingClientRect();
+            const powerUpsRect = powerUps.getBoundingClientRect();
+
+            if (spaceshipRect.left < enemiesRect.right && spaceshipRect.right > enemiesRect.left &&
+                spaceshipRect.top < enemiesRect.bottom && spaceshipRect.bottom > enemiesRect.top) {
+                // Spaceship collided with enemies
+                livesValue--;
+                updateLives();
+            }
+
+            if (spaceshipRect.left < powerUpsRect.right && spaceshipRect.right > powerUpsRect.left &&
+                spaceshipRect.top < powerUpsRect.bottom && spaceshipRect.bottom > powerUpsRect.top) {
+                // Spaceship collided with power-ups
+                scoreValue++;
+                updateScore();
+            }
+        }
+
+        // Game loop
+        function gameLoop() {
+            checkCollision();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game
+        function startGame() {
+            updateScore();
+            updateLives();
+            gameLoop();
+        }
+
+        startGame();
+    </script>
+</body>
+</html>

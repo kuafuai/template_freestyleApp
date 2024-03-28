@@ -1,0 +1,48 @@
+/* style.css */
+#game-container {
+    width: 800px;
+    height: 600px;
+    background-color: black;
+    position: relative;
+}
+
+#spaceship {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 375px;
+}
+
+.enemy {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.power-up {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#score {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#lives {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
