@@ -1,0 +1,70 @@
+<!-- news.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Management System - News</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <script src="api.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Display club logo and name -->
+        <h1>Club Management System</h1>
+    </header>
+    <nav>
+        <!-- Display navigation links to other pages -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my.html">My</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="message_board.html">Message Board</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Display news articles -->
+        <h2>Club News</h2>
+        <ul id="newsList">
+            <!-- News articles will be dynamically added here -->
+        </ul>
+    </main>
+    <footer>
+        <!-- Display footer content -->
+        <p>Club Management System &copy; 2022</p>
+    </footer>
+    <script>
+        // Fetch news articles from backend API and populate the list
+        fetchNewsArticles();
+
+        // Function to fetch news articles from backend API
+        function fetchNewsArticles() {
+            // Make a GET request to the backend API to fetch news articles
+            fetch('https://api.example.com/news')
+                .then(response => response.json())
+                .then(data => {
+                    // Check if the response contains any news articles
+                    if (data.length > 0) {
+                        // Iterate over the news articles and create list items to display them
+                        data.forEach(article => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = article.title;
+                            document.getElementById('newsList').appendChild(listItem);
+                        });
+                    } else {
+                        // Display a message if no news articles are available
+                        const listItem = document.createElement('li');
+                        listItem.textContent = 'No news articles available';
+                        document.getElementById('newsList').appendChild(listItem);
+                    }
+                })
+                .catch(error => {
+                    // Display an error message if there is an issue with fetching the news articles
+                    const listItem = document.createElement('li');
+                    listItem.textContent = 'Error fetching news articles';
+                    document.getElementById('newsList').appendChild(listItem);
+                });
+        }
+    </script>
+</body>
+</html>

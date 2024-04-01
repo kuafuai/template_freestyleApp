@@ -1,0 +1,54 @@
+<!-- message_board.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Management System - Message Board</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <script src="api.js"></script>
+    <script src="message.js"></script> <!-- Separate JavaScript code into a separate file -->
+</head>
+<body>
+    <header>
+        <!-- Display club logo and name -->
+        <h1>Club Management System</h1>
+    </header>
+    <nav>
+        <!-- Display navigation links to other pages -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my.html">My</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="message_board.html">Message Board</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Display message board -->
+        <h2>Message Board</h2>
+        <div id="messageBoard">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <form id="messageForm">
+            <!-- Form to post a new message -->
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea><br><br>
+            <input type="submit" value="Post Message">
+        </form>
+    </main>
+    <footer>
+        <!-- Display footer content -->
+        <p>Club Management System &copy; 2022</p>
+    </footer>
+    <script>
+        // Fetch messages from backend API and populate the message board
+        fetchMessages();
+
+        // Submit message form
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            postMessage();
+        });
+    </script>
+</body>
+</html>

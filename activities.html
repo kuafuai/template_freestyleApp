@@ -1,0 +1,45 @@
+<!-- activities.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Management System - Activities</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <script src="api.js"></script>
+    <script src="activities.js"></script> <!-- Separate JavaScript code into a separate file -->
+</head>
+<body>
+    <header>
+        <!-- Display club logo and name -->
+        <h1>Club Management System</h1>
+    </header>
+    <nav>
+        <!-- Display navigation links to other pages -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my.html">My</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="message_board.html">Message Board</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Display club activities -->
+        <h2>Club Activities</h2>
+        <ul id="activitiesList">
+            <!-- Activities will be dynamically added here -->
+        </ul>
+    </main>
+    <footer>
+        <!-- Display footer content -->
+        <p>Club Management System &copy; 2022</p>
+    </footer>
+    <script>
+        // Fetch activities from backend API and populate the list
+        fetchActivities()
+            .catch(error => {
+                console.error('Error fetching activities:', error);
+            });
+    </script>
+</body>
+</html>

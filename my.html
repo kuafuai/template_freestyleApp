@@ -1,0 +1,130 @@
+<!-- my.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Management System - My</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <style>
+        /* CSS styling for the "My Information" section */
+        .my-information {
+            margin-bottom: 20px;
+        }
+        
+        .my-information h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .my-information p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        /* CSS styling for the "Account Settings" section */
+        .account-settings {
+            margin-bottom: 20px;
+        }
+        
+        .account-settings label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .account-settings input[type="password"],
+        .account-settings input[type="text"],
+        .account-settings input[type="email"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .account-settings input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .account-settings input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Display club logo and name -->
+        <h1>Club Management System</h1>
+    </header>
+    <nav>
+        <!-- Display navigation links to other pages -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my.html">My</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="message_board.html">Message Board</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Display user information and account settings -->
+        <div class="my-information">
+            <h2>My Information</h2>
+            <p>User details</p>
+        </div>
+        <div class="account-settings">
+            <h2>Account Settings</h2>
+            <form id="account-settings-form">
+                <!-- Display form fields for password change and personal information update -->
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <input type="submit" value="Save Changes">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <!-- Display footer content -->
+        <p>Club Management System &copy; 2022</p>
+    </footer>
+    <script>
+        // JavaScript code to handle form submission and perform validation
+        document.getElementById("account-settings-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get form inputs
+            var password = document.getElementById("password").value;
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            
+            // Perform validation
+            if (password === "") {
+                alert("Please enter a password.");
+                return;
+            }
+            
+            if (name === "") {
+                alert("Please enter your name.");
+                return;
+            }
+            
+            if (email === "") {
+                alert("Please enter your email.");
+                return;
+            }
+            
+            // Save changes
+            // TODO: Implement code to save changes
+            
+            alert("Changes saved successfully!");
+        });
+    </script>
+</body>
+</html>
