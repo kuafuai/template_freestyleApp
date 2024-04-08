@@ -12,5 +12,12 @@ function navigate(event) {
     event.preventDefault();
     var target = event.target.getAttribute("href");
     var section = document.querySelector(target);
-    section.scrollIntoView({ behavior: "smooth" });
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+// Smooth scroll polyfill for browsers that do not support scrollIntoView with behavior: "smooth"
+if (!("scrollBehavior" in document.documentElement.style) && "smoothScrollPolyfill" in window) {
+    window.smoothScrollPolyfill.polyfill();
 }
