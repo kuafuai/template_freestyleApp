@@ -1,0 +1,1 @@
+Define User class

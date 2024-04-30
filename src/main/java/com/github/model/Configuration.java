@@ -1,0 +1,1 @@
+Define Configuration class
