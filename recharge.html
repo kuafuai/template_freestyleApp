@@ -1,0 +1,44 @@
+<!-- The recharge page of the website -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>抢红包游戏 - Recharge</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="recharge.js"></script>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="group.html">Group</a></li>
+            <li><a href="recharge.html">Recharge</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content area -->
+    <div id="content">
+        <h1>Recharge Page</h1>
+        <h2>Upload Payment Code</h2>
+        <form id="uploadForm" onsubmit="return validateForm(event)">
+            <input type="file" id="paymentCode" name="paymentCode" accept="image/*" required><br><br>
+            <input type="submit" value="Recharge">
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            var paymentCode = document.getElementById("paymentCode").value;
+            if (paymentCode === "") {
+                document.getElementById("errorMessage").textContent = "Please select a payment code file.";
+                return false;
+            }
+            // Add code to handle form submission and process the uploaded payment code
+            // ...
+            return true;
+        }
+    </script>
+</body>
+</html>

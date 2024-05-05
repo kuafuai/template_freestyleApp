@@ -1,0 +1,128 @@
+<!-- The group page of the website -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>抢红包游戏 - Group</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="group.js"></script>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #content {
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+        }
+
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="group.html">Group</a></li>
+            <li><a href="recharge.html">Recharge</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content area -->
+    <div id="content">
+        <h1>Group Page</h1>
+        <h2>Red Packet Configuration</h2>
+        <form id="configForm">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required><br><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required><br><br>
+            <label for="mineNumber">Mine Number:</label>
+            <input type="number" id="mineNumber" name="mineNumber" required><br><br>
+            <input type="submit" value="Save Configuration">
+        </form>
+        <button id="grabButton">Grab Red Packet</button>
+    </div>
+
+    <script>
+        // Add JavaScript functionality
+        document.getElementById("configForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var amount = document.getElementById("amount").value;
+            var quantity = document.getElementById("quantity").value;
+            var mineNumber = document.getElementById("mineNumber").value;
+
+            // Validate input values
+            if (amount <= 0 || quantity <= 0 || mineNumber <= 0 || mineNumber > quantity) {
+                alert("Invalid input values. Please enter valid values.");
+                return;
+            }
+
+            // Save configuration
+            // TODO: Implement the logic to save the configuration
+
+            alert("Configuration saved successfully!");
+        });
+
+        document.getElementById("grabButton").addEventListener("click", function() {
+            // Grab red packet
+            // TODO: Implement the logic to grab the red packet
+            alert("Red packet grabbed successfully!");
+        });
+    </script>
+</body>
+</html>

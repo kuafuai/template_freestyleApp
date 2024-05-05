@@ -1,0 +1,27 @@
+/* Stylesheet for the website */
+
+/* Add styles for the body element */
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Add styles for the header element */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Add styles for the main content */
+.main-content {
+    margin: 20px;
+}
+
+/* Add styles for links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Add more specific styles as needed */
