@@ -1,0 +1,1 @@
+Create SnakeGame class in game.py
