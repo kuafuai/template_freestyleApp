@@ -1,0 +1,54 @@
+/* Overall style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+/* Resume style */
+.resume {
+    margin: 50px auto;
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+/* Projects style */
+.projects {
+    margin: 50px auto;
+    width: 80%;
+}
+
+.projects h2 {
+    margin-top: 50px;
+}
+
+.projects p {
+    margin-bottom: 20px;
+}
+
+.projects a {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Contact style */
+.contact {
+    margin: 50px auto;
+    width: 80%;
+    text-align: center;
+}
+
+.contact a {
+    display: block;
+    margin-top: 10px;
+}
