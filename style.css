@@ -1,0 +1,21 @@
+/* CSS class for input and button elements */
+.input-button {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-button[type="file"],
+.input-button[type="text"],
+.input-button[type="button"] {
+    /* Apply the input-button class to specific input elements */
+    @extend .input-button;
+}
+
+#output {
+    text-align: center;
+    margin-top: 20px;
+}

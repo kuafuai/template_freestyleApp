@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("uploadButton").addEventListener("click", uploadFile);
+            document.getElementById("renameButton").addEventListener("click", renameFile);
+            document.getElementById("getFilenameButton").addEventListener("click", getFilename);
+            document.getElementById("getFilesizeButton").addEventListener("click", getFilesize);
+        });
+
+        function uploadFile() {
+            var fileInput = document.getElementById("fileInput");
+            var file = fileInput.files[0];
+            if (file) {
+                var output = document.getElementById("output");
+                output.innerHTML = "Uploading file: " + file.name;
+                // Perform file upload logic here
+                // Add code to upload the file to the server
+                var formData = new FormData();
+                formData.append("file", file);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/upload", true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        output.innerHTML = "File uploaded successfully.";
+                    } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                        output.innerHTML = "Error uploading file.";
+                    }
+                };
+                xhr.send(formData);
+            } else {
+                alert("Please select a file to upload.");
+            }
+        }
+
+        function renameFile() {
+            var newFilenameInput = document.getElementById("newFilenameInput");
+            var newFilename = newFilenameInput.value.trim();
+            if (newFilename) {
+                var output = document.getElementById("output");
+                output.innerHTML = "Renaming file to: " + newFilename;
+                // Perform file renaming logic here
+                // Add code to rename the file on the server
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/rename", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        output.innerHTML = "File renamed successfully.";
+                    } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                        output.innerHTML = "Error renaming file.";
+                    }
+                };
+                xhr.send(JSON.stringify({ filename: newFilename }));
+            } else {
+                alert("Please enter a new filename.");
+            }
+        }
+
+        function getFilename() {
+            var fileInput = document.getElementById("fileInput");
+            var file = fileInput.files[0];
+            if (file) {
+                var output = document.getElementById("output");
+                output.innerHTML = "Filename: " + file.name;
+            } else {
+                alert("Please select a file.");
+            }
+        }
+
+        function getFilesize() {
+            var fileInput = document.getElementById("fileInput");
+            var file = fileInput.files[0];
+            if (file) {
+                var output = document.getElementById("output");
+                output.innerHTML = "Filesize: " + file.size + " bytes";
+            } else {
+                alert("Please select a file.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>File Upload</h1>
+    <input type="file" id="fileInput">
+    <button id="uploadButton">Upload</button>
+    <br><br>
+    <input type="text" id="newFilenameInput" placeholder="New Filename">
+    <button id="renameButton">Rename</button>
+    <br><br>
+    <button id="getFilenameButton">Get Filename</button>
+    <button id="getFilesizeButton">Get Filesize</button>
+    <br><br>
+    <div id="output"></div>
+</body>
+</html>
