@@ -1,53 +1,42 @@
 # This file handles the messaging functionality
 
-# Import necessary modules
-import main
-
 # Function to display messages
 def display_messages():
     """
-    Display messages by calling other functions.
+    Displays messages.
     """
-    # Display message list
     display_message_list()
-
-    # View and reply to messages
     view_and_reply_messages()
-
-    # Send a message
     send_message()
 
 # Function to display message list
 def display_message_list():
     """
-    Display the list of messages.
+    Displays the list of messages.
     """
     # CODE: Implement the logic to display the message list
-    # Example implementation:
-    messages = main.get_messages()
+    messages = main.get_messages()  # Assuming there is a function in the main module to get the list of messages
     for message in messages:
-        print(message)
+        print(message)  # Assuming the message is a string that can be printed
 
 # Function to view and reply to messages
 def view_and_reply_messages():
     """
-    View and reply to messages.
+    Views and replies to messages.
     """
     # CODE: Implement the logic to view and reply to messages
-    # Example implementation:
-    messages = main.get_messages()
+    messages = main.get_messages()  # Assuming there is a function in the main module to get the list of messages
     for message in messages:
-        print(message)
+        print(message)  # Assuming the message is a string that can be printed
         reply = input("Enter your reply: ")
-        main.send_reply(message, reply)
+        main.send_reply(message, reply)  # Assuming there is a function in the main module to send a reply to a message
 
 # Function to send a message
 def send_message():
     """
-    Send a message.
+    Sends a message.
     """
     # CODE: Implement the logic to send a message
-    # Example implementation:
-    recipient = input("Enter recipient: ")
-    message = input("Enter message: ")
-    main.send_message(recipient, message)
+    recipient = input("Enter the recipient: ")
+    message = input("Enter the message: ")
+    main.send_message(recipient, message)  # Assuming there is a function in the main module to send a message

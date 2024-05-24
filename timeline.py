@@ -13,23 +13,23 @@ def display_activities():
     # Implement the logic to display user and friend activities
     user_activities = main.get_user_activities()
     friend_activities = main.get_friend_activities()
-    display(user_activities)
-    display(friend_activities)
-
-# Function to display activities
-def display(activities):
-    for activity in activities:
+    
+    print("User Activities:")
+    for activity in user_activities:
+        print(activity)
+    
+    print("Friend Activities:")
+    for activity in friend_activities:
         print(activity)
 
 # Function to get user activities
 def get_user_activities():
     # Implement the logic to get user activities
-    return ["User activity 1", "User activity 2", "User activity 3"]
+    user_activities = ["User Activity 1", "User Activity 2", "User Activity 3"]
+    return user_activities
 
 # Function to get friend activities
 def get_friend_activities():
     # Implement the logic to get friend activities
-    return ["Friend activity 1", "Friend activity 2", "Friend activity 3"]
-
-# Call the display_timeline function
-display_timeline()
+    friend_activities = ["Friend Activity 1", "Friend Activity 2", "Friend Activity 3"]
+    return friend_activities

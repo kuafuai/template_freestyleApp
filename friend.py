@@ -12,7 +12,7 @@ def add_friend():
     display_search_results()
 
     # Add a friend
-    send_friend_request()
+    add_friend_logic()
 
 # Function to search for a friend
 def search_friend():
@@ -25,6 +25,6 @@ def display_search_results():
     pass
 
 # Function to add a friend
-def send_friend_request():
+def add_friend_logic():
     # CODE: Implement the logic to add a friend
     pass
