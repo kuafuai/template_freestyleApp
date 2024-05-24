@@ -1,88 +1,104 @@
-# Import necessary libraries
-from flask import Flask, request, jsonify
-import os
-import magic
-from werkzeug.utils import secure_filename
+from flask import Flask, jsonify, request
+from user import User
+from friend import Friend
+from message import Message
+from news import News
+from timeline import Timeline
+from notification import Notification
 
-# Create Flask application
 app = Flask(__name__)
 
-# Set maximum file size limit
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
+# Create instances of necessary classes
+user = User()
+friend = Friend()
+message = Message()
+news = News()
+timeline = Timeline()
+notification = Notification()
 
-# Route for file upload
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    try:
-        file = request.files['file']
-        if file:
-            # Validate file type
-            file_type = magic.from_buffer(file.read(), mime=True)
-            if file_type not in ['image/jpeg', 'image/png', 'application/pdf']:
-                return jsonify({'error': 'Invalid file type. Only JPEG, PNG, and PDF files are allowed.'}), 400
-            
-            # Validate file size
-            file_size = len(file.read())
-            if file_size > app.config['MAX_CONTENT_LENGTH']:
-                return jsonify({'error': 'File size exceeds the limit.'}), 400
-            
-            # Save file with secure filename
-            filename = secure_filename(file.filename)
-            file.save(os.path.join('uploads', filename))
-            
-            return jsonify({'message': 'File uploaded successfully'})
-        else:
-            return jsonify({'error': 'No file provided.'}), 400
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+# Route for creating user profile
+@app.route('/create_profile', methods=['POST'])
+def create_profile():
+    # Get user data from request
+    user_data = request.json
+    
+    # Create user profile
+    user.create_profile(user_data)
+    
+    # Return success message
+    return jsonify({'message': 'User profile created successfully'})
 
-# Route for renaming file
-@app.route('/rename', methods=['POST'])
-def rename_file():
-    try:
-        new_filename = request.form['new_filename']
-        old_filename = request.form['old_filename']
-        if not new_filename or not old_filename:
-            return jsonify({'error': 'Both new_filename and old_filename are required.'}), 400
-        if not os.path.exists(os.path.join('uploads', old_filename)):
-            return jsonify({'error': 'File not found.'}), 404
-        
-        # Rename file with secure filename
-        new_filename = secure_filename(new_filename)
-        os.rename(os.path.join('uploads', old_filename), os.path.join('uploads', new_filename))
-        
-        return jsonify({'message': 'File renamed successfully'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+# Route for adding a friend
+@app.route('/add_friend', methods=['POST'])
+def add_friend():
+    # Get friend data from request
+    friend_data = request.json
+    
+    # Add friend
+    friend.add_friend(friend_data)
+    
+    # Return success message
+    return jsonify({'message': 'Friend added successfully'})
 
-# Route for retrieving file name
-@app.route('/get_filename', methods=['GET'])
-def get_filename():
-    try:
-        filename = request.args.get('filename')
-        if not filename:
-            return jsonify({'error': 'filename parameter is required.'}), 400
-        if not os.path.exists(os.path.join('uploads', filename)):
-            return jsonify({'error': 'File not found.'}), 404
-        return jsonify({'filename': filename})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+# Route for sending a message
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    # Get message data from request
+    message_data = request.json
+    
+    # Send message
+    message.send_message(message_data)
+    
+    # Return success message
+    return jsonify({'message': 'Message sent successfully'})
 
-# Route for retrieving file size
-@app.route('/get_filesize', methods=['GET'])
-def get_filesize():
-    try:
-        filename = request.args.get('filename')
-        if not filename:
-            return jsonify({'error': 'filename parameter is required.'}), 400
-        file_path = os.path.join('uploads', filename)
-        if not os.path.exists(file_path):
-            return jsonify({'error': 'File not found.'}), 404
-        file_size = os.path.getsize(file_path)
-        return jsonify({'filesize': file_size})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+# Route for receiving messages
+@app.route('/receive_message', methods=['GET'])
+def receive_message():
+    # Get user ID from request
+    user_id = request.args.get('user_id')
+    
+    # Receive messages
+    messages = message.receive_message(user_id)
+    
+    # Return messages
+    return jsonify({'messages': messages})
 
-# Run the application
+# Route for browsing news
+@app.route('/browse_news', methods=['GET'])
+def browse_news():
+    # Get user ID from request
+    user_id = request.args.get('user_id')
+    
+    # Browse news
+    news_list = news.browse_news(user_id)
+    
+    # Return news list
+    return jsonify({'news': news_list})
+
+# Route for viewing timeline
+@app.route('/view_timeline', methods=['GET'])
+def view_timeline():
+    # Get user ID from request
+    user_id = request.args.get('user_id')
+    
+    # View timeline
+    timeline_data = timeline.view_timeline(user_id)
+    
+    # Return timeline data
+    return jsonify({'timeline': timeline_data})
+
+# Route for receiving notifications
+@app.route('/receive_notification', methods=['GET'])
+def receive_notification():
+    # Get user ID from request
+    user_id = request.args.get('user_id')
+    
+    # Receive notifications
+    notifications = notification.receive_notification(user_id)
+    
+    # Return notifications
+    return jsonify({'notifications': notifications})
+
 if __name__ == '__main__':
     app.run()
