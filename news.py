@@ -1,16 +1,21 @@
-# This file handles the news functionality
+# Import necessary modules
+import database
 
-# Function to display news
-def display_news():
-    # Display news content
-    display_news_content()
+# Get latest news articles
+def get_latest_news():
+    # Get latest news articles from database
+    latest_news = database.get_latest_news()
 
-# Function to display news content
-def display_news_content():
-    """
-    This function displays the news content.
-    """
-    # CODE: Implement the logic to display news content
-    print("News content goes here")
+    return latest_news
 
-display_news()
+# Get news article content
+def get_news_content(news_id):
+    # Get news article content from database
+    news_content = database.get_news_content(news_id)
+
+    return news_content
+
+# Save comment for news article
+def save_comment(news_id, comment):
+    # Save comment for news article in database
+    database.save_comment(news_id, comment)

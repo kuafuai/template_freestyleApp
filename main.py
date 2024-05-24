@@ -1,57 +1,40 @@
-# This file handles the main functionality of the social media platform
-
 # Import necessary modules
-import profile
-import friend
-import message
+from flask import Flask, render_template, request
 import news
-import timeline
-import notification
 
-# Handle the click event of the "Create Profile" button
-def create_profile_button_click():
-    try:
-        # Call the create_profile function from the profile module
-        profile.create_profile()
-    except Exception as e:
-        print(f"Error creating profile: {str(e)}")
+# Create Flask application
+app = Flask(__name__)
 
-# Handle the click event of the "Add Friend" button
-def add_friend_button_click():
-    try:
-        # Call the add_friend function from the friend module
-        friend.add_friend()
-    except Exception as e:
-        print(f"Error adding friend: {str(e)}")
+# Route for news article list
+@app.route('/news')
+def news_list():
+    # Get latest news articles
+    latest_news = news.get_latest_news()
 
-# Handle the click event of the "Message" button
-def message_button_click():
-    try:
-        # Call the display_messages function from the message module
-        message.display_messages()
-    except Exception as e:
-        print(f"Error displaying messages: {str(e)}")
+    # Render news list template with latest news articles
+    return render_template('news_list.html', news=latest_news)
 
-# Handle the click event of the "News" button
-def news_button_click():
-    try:
-        # Call the display_news function from the news module
-        news.display_news()
-    except Exception as e:
-        print(f"Error displaying news: {str(e)}")
+# Route for news article detail
+@app.route('/news/<news_id>')
+def news_detail(news_id):
+    # Get news article content
+    news_content = news.get_news_content(news_id)
 
-# Handle the click event of the "Timeline" button
-def timeline_button_click():
-    try:
-        # Call the display_timeline function from the timeline module
-        timeline.display_timeline()
-    except Exception as e:
-        print(f"Error displaying timeline: {str(e)}")
+    # Render news detail template with news article content
+    return render_template('news_detail.html', news=news_content)
 
-# Handle the click event of the "Notification" button
-def notification_button_click():
-    try:
-        # Call the display_notifications function from the notification module
-        notification.display_notifications()
-    except Exception as e:
-        print(f"Error displaying notifications: {str(e)}")
+# Route for submitting comment
+@app.route('/news/<news_id>/comment', methods=['POST'])
+def submit_comment(news_id):
+    # Get comment from request form
+    comment = request.form.get('comment')
+
+    # Save comment for news article
+    news.save_comment(news_id, comment)
+
+    # Redirect to news article detail page
+    return redirect('/news/' + news_id)
+
+# Run Flask application
+if __name__ == '__main__':
+    app.run()

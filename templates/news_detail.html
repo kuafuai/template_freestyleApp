@@ -1,0 +1,25 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- News article detail -->
+<div class="container">
+  <h1>{{ news.title }}</h1>
+  <p>{{ news.content }}</p>
+
+  <!-- Comment form -->
+  <form action="/news/{{ news.id }}/comment" method="POST">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Comments -->
+  <h2>Comments</h2>
+  <ul class="list-group">
+    {% for comment in news.comments %}
+    <li class="list-group-item">{{ comment }}</li>
+    {% endfor %}
+  </ul>
+</div>

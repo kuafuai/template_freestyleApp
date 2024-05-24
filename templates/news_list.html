@@ -1,0 +1,15 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- News article list -->
+<div class="container">
+  <h1>Latest News</h1>
+  <ul class="list-group">
+    {% for article in news %}
+    <li class="list-group-item">
+      <h3><a href="/news/{{ article.id }}">{{ article.title }}</a></h3>
+      <p>{{ article.summary }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
