@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>大鱼吃小鱼</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="pool"></div>
+        <div id="fish"></div>
+        <div id="score">Score: 0</div>
+        <div id="time">Time: 60</div>
+        <div id="game-over"></div>
+    </div>
+
+    <script>
+        // JavaScript code for game mechanics
+        var fish = document.getElementById("fish");
+        var pool = document.getElementById("pool");
+        var score = document.getElementById("score");
+        var time = document.getElementById("time");
+        var gameOver = document.getElementById("game-over");
+
+        var scoreValue = 0;
+        var timeValue = 60;
+        var timer;
+
+        // Move the fish
+        document.addEventListener("keydown", function(event) {
+            if (event.keyCode === 37) {
+                fish.style.left = parseInt(fish.style.left) - 10 + "px";
+            } else if (event.keyCode === 39) {
+                fish.style.left = parseInt(fish.style.left) + 10 + "px";
+            }
+        });
+
+        // Detect collisions
+        function detectCollisions() {
+            var fishRect = fish.getBoundingClientRect();
+            var poolRect = pool.getBoundingClientRect();
+
+            if (fishRect.left < poolRect.left || fishRect.right > poolRect.right) {
+                gameOver.textContent = "Game Over";
+                clearInterval(timer);
+            }
+        }
+
+        // Update score
+        function updateScore() {
+            scoreValue++;
+            score.textContent = "Score: " + scoreValue;
+        }
+
+        // Update time
+        function updateTime() {
+            timeValue--;
+            time.textContent = "Time: " + timeValue;
+
+            if (timeValue === 0) {
+                gameOver.textContent = "Game Over";
+                clearInterval(timer);
+            }
+        }
+
+        // Start the game
+        function startGame() {
+            timer = setInterval(function() {
+                detectCollisions();
+                updateTime();
+            }, 1000);
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
