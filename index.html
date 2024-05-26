@@ -1,0 +1,107 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>山海经传说故事</title>
+  <link rel="stylesheet" type="text/css" href="jssemantic-ui.css">
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // JavaScript code to handle the search functionality, populate the story list, display the story detail, and handle the back button functionality
+
+    // Function to handle the search functionality
+    function searchStories() {
+      var searchInput = document.getElementById("searchInput").value;
+      var storyList = document.getElementById("storyList");
+      storyList.innerHTML = ""; // Clear the story list
+
+      // Perform the search and populate the story list
+      // Replace this code with the actual implementation of the search functionality
+      var stories = getStories(); // Assuming getStories() is a function that returns an array of stories
+      for (var i = 0; i < stories.length; i++) {
+        var story = stories[i];
+        if (story.title.includes(searchInput)) {
+          var listItem = document.createElement("div");
+          listItem.className = "item";
+          listItem.innerHTML = story.title;
+          storyList.appendChild(listItem);
+        }
+      }
+    }
+
+    // Function to display the story detail
+    function showStoryDetail(storyTitle) {
+      var storyDetail = document.getElementById("storyDetail");
+      storyDetail.innerHTML = ""; // Clear the story detail
+
+      // Display the story detail
+      // Replace this code with the actual implementation of displaying the story detail
+      var story = getStoryByTitle(storyTitle); // Assuming getStoryByTitle() is a function that returns the story object based on the title
+      var storyContent = document.createElement("div");
+      storyContent.innerHTML = story.content;
+      storyDetail.appendChild(storyContent);
+    }
+
+    // Function to handle the back button functionality
+    function goBack() {
+      var storyDetail = document.getElementById("storyDetail");
+      storyDetail.innerHTML = ""; // Clear the story detail
+    }
+
+    // Event listener for the search input
+    document.getElementById("searchInput").addEventListener("input", searchStories);
+
+    // Event listener for the story list
+    document.getElementById("storyList").addEventListener("click", function(event) {
+      var target = event.target;
+      if (target && target.nodeName === "DIV" && target.className === "item") {
+        showStoryDetail(target.innerHTML);
+      }
+    });
+
+    // Event listener for the back button
+    document.getElementById("backButton").addEventListener("click", goBack);
+
+    // Function to get the stories
+    function getStories() {
+      // Replace this code with the actual implementation of getting the stories
+      return [
+        { title: "Story 1", content: "Content of Story 1" },
+        { title: "Story 2", content: "Content of Story 2" },
+        { title: "Story 3", content: "Content of Story 3" }
+      ];
+    }
+
+    // Function to get the story object based on the title
+    function getStoryByTitle(title) {
+      // Replace this code with the actual implementation of getting the story object based on the title
+      var stories = getStories();
+      for (var i = 0; i < stories.length; i++) {
+        if (stories[i].title === title) {
+          return stories[i];
+        }
+      }
+      return null;
+    }
+  </script>
+</head>
+<body>
+  <div class="ui three column grid">
+    <div class="column">
+      <div class="ui segment">
+        <div class="ui fluid icon input">
+          <input type="text" id="searchInput" placeholder="输入关键词...">
+          <i class="search icon"></i>
+        </div>
+        <div id="storyList" class="ui divided list"></div>
+      </div>
+    </div>
+    <div class="column">
+      <div id="storyDetail" class="ui segment"></div>
+    </div>
+    <div class="column">
+      <button id="backButton" class="ui button">返回</button>
+    </div>
+  </div>
+</body>
+</html>
