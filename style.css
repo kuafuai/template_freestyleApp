@@ -1,36 +1,12 @@
-body {
-  background-color: #f0f0f0;
+#card-area {
+  margin-top: 20px;
+}
+
+#scoreboard {
+  margin-top: 20px;
   padding: 20px;
 }
 
-.ui.container {
+#restart-button {
   margin-top: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
-#game-board {
-  margin-top: 20px;
-}
-
-.card {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#score {
-  margin-top: 20px;
-  text-align: center;
-}
-
-#reset-button {
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }

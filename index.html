@@ -7,12 +7,14 @@
 </head>
 <body>
   <div class="ui container">
-    <h1>Color Matching Game</h1>
-    <div id="game-board" class="ui grid"></div>
-    <div id="score" class="ui segment"></div>
-    <button id="reset-button" class="ui button">Reset</button>
+    <h1 class="ui header">Color Matching Game</h1>
+    <div id="card-area" class="ui grid"></div>
+    <div id="scoreboard" class="ui segment">
+      <h2 class="ui header">Score: <span id="score">0</span></h2>
+      <h2 class="ui header">Time Remaining: <span id="time">5:00</span></h2>
+    </div>
+    <button id="restart-button" class="ui button">Restart Game</button>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="script.js"></script>
 </body>

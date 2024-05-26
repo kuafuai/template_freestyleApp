@@ -1,124 +1,117 @@
 $(document).ready(function() {
-  // Define the colors for the game
-  const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
+  // Constants
+  const COLORS = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
+  const MAX_CARDS = 12;
+  const MATCH_TIME = 300;
 
-  // Define the number of cards for each color
-  const cardsPerColor = 2;
-
-  // Initialize variables
-  let selectedCards = [];
-  let matchedCards = 0;
+  // Variables
   let score = 0;
-  let timer;
+  let time = MATCH_TIME;
+  let cards = [];
 
-  // Generate the game board
-  function generateGameBoard() {
-    const gameBoard = $('#game-board');
-    gameBoard.empty();
-
-    // Shuffle the colors
-    const shuffledColors = shuffleArray(colors);
-
-    // Create card elements
-    for (let i = 0; i < colors.length * cardsPerColor; i++) {
-      const card = $('<div>').addClass('card');
-      const color = shuffledColors[Math.floor(i / cardsPerColor)];
-      card.css('background-color', color);
-      card.click(function() {
-        handleCardClick($(this), color);
-      });
-      gameBoard.append(card);
-    }
-  }
-
-  // Handle card click event
-  function handleCardClick(card, color) {
-    if (card.hasClass('selected')) {
-      card.removeClass('selected');
-      selectedCards = selectedCards.filter(function(selectedCard) {
-        return selectedCard !== card;
-      });
-    } else {
-      card.addClass('selected');
-      selectedCards.push(card);
-      if (selectedCards.length === 2) {
-        checkMatch();
+  // Generate random color cards
+  function generateCards() {
+    let colorCounts = {};
+    for (let i = 0; i < MAX_CARDS; i++) {
+      let color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      if (colorCounts[color] === undefined) {
+        colorCounts[color] = 0;
+      }
+      if (colorCounts[color] < 2) {
+        cards.push(color);
+        colorCounts[color]++;
+      } else {
+        i--;
       }
     }
   }
 
-  // Check if the selected cards match
-  function checkMatch() {
-    const card1 = selectedCards[0];
-    const card2 = selectedCards[1];
-    if (card1.css('background-color') === card2.css('background-color')) {
-      card1.addClass('matched');
-      card2.addClass('matched');
-      matchedCards += 2;
-      score += 2;
-      if (matchedCards === colors.length * cardsPerColor) {
-        endGame();
+  // Handle card click events
+  function handleCardClick() {
+    let selectedCards = $('.card.selected');
+    if (selectedCards.length === 2) {
+      let color1 = selectedCards.eq(0).data('color');
+      let color2 = selectedCards.eq(1).data('color');
+      if (color1 === color2) {
+        score++;
+        selectedCards.removeClass('selected');
+      } else {
+        score--;
+        selectedCards.removeClass('selected');
       }
-    } else {
-      setTimeout(function() {
-        card1.removeClass('selected');
-        card2.removeClass('selected');
-      }, 1000);
-      score -= 1;
     }
-    selectedCards = [];
-    updateScore();
   }
 
-  // Update the score display
+  // Update score
   function updateScore() {
-    $('#score').text('Score: ' + score);
+    $('#score').text(score);
   }
 
-  // End the game
-  function endGame() {
+  // Update time
+  function updateTime() {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    $('#time').text(minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'));
+  }
+
+  // Game over
+  function gameOver() {
     clearInterval(timer);
-    alert('Game Over! Your score is ' + score);
-  }
-
-  // Shuffle an array using Fisher-Yates algorithm
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    if (score >= 0) {
+      alert('Congratulations! You won!');
+    } else {
+      alert('Game over! You lost!');
     }
-    return array;
   }
 
-  // Start the game
-  function startGame() {
-    generateGameBoard();
-    updateScore();
-    timer = setInterval(function() {
-      score -= 1;
-      updateScore();
-    }, 1000);
-  }
-
-  // Reset the game
-  function resetGame() {
-    clearInterval(timer);
-    selectedCards = [];
-    matchedCards = 0;
+  // Restart game
+  function restartGame() {
     score = 0;
-    generateGameBoard();
+    time = MATCH_TIME;
+    cards = [];
+    generateCards();
     updateScore();
+    updateTime();
+    $('.card').remove();
+    clearInterval(timer);
     timer = setInterval(function() {
-      score -= 1;
-      updateScore();
+      time--;
+      updateTime();
+      if (time === 0) {
+        gameOver();
+      }
     }, 1000);
   }
 
-  // Event listener for reset button click
-  $('#reset-button').click(function() {
-    resetGame();
+  // Generate initial cards
+  generateCards();
+
+  // Render cards
+  for (let i = 0; i < cards.length; i++) {
+    let card = $('<div>').addClass('card').data('color', cards[i]);
+    $('#card-area').append(card);
+  }
+
+  // Handle card click events
+  $('.card').click(function() {
+    if (!$(this).hasClass('selected')) {
+      $(this).addClass('selected');
+      handleCardClick();
+      updateScore();
+    }
   });
 
-  // Start the game
-  startGame();
+  // Game timer
+  let timer = setInterval(function() {
+    time--;
+    updateTime();
+    if (time === 0) {
+      gameOver();
+    }
+  }, 1000);
+
+  // Restart game button click event
+  $('#restart-button').click(function() {
+    restartGame();
+  });
 });
