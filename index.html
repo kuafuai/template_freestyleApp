@@ -1,56 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Color Matching Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-        #card-area {
-            width: 400px;
-            height: 400px;
-            border: 1px solid black;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            background-color: gray;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #score-area {
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+  <title>Color Matching Game</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="card-area">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-    </div>
-    <div id="score-area">Score: 0</div>
+  <div class="ui container">
+    <h1>Color Matching Game</h1>
+    <div id="game-board" class="ui grid"></div>
+    <div id="score" class="ui segment"></div>
+    <button id="reset-button" class="ui button">Reset</button>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

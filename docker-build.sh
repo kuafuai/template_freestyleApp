@@ -1,16 +1,14 @@
 #!/bin/bash
-
-# Get the current commit SHA
-COMMIT_SHA=$(git rev-parse HEAD)
+# The purpose of this file is to build a Docker image, login to Docker Hub, push the image, and print the pushed image details.
 
 # Build the Docker image
-docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
+docker build -t color-matching-game .
 
 # Login to Docker Hub
-echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+docker login
 
-# Push the Docker image
-docker push ${DOCKER_REPO}:${COMMIT_SHA}
-docker push ${DOCKER_REPO}:latest
+# Push the image to Docker Hub
+docker push color-matching-game
 
-echo "kuafuai_docker_image_pushed:${DOCKER_REPO}:${COMMIT_SHA}"
+# Print the pushed image details
+docker image inspect color-matching-game

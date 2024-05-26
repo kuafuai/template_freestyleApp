@@ -1,102 +1,124 @@
-// Define the colors for the cards
-const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+$(document).ready(function() {
+  // Define the colors for the game
+  const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
 
-// Initialize variables
-let score = 0;
-let highScore = 0;
-let selectedCards = [];
+  // Define the number of cards for each color
+  const cardsPerColor = 2;
 
-// Get the card area element
-const cardContainer = document.getElementById("card-area");
+  // Initialize variables
+  let selectedCards = [];
+  let matchedCards = 0;
+  let score = 0;
+  let timer;
 
-// Generate random cards and display them in the card area
-function generateCards() {
-    cardContainer.innerHTML = "";
-    selectedCards = [];
+  // Generate the game board
+  function generateGameBoard() {
+    const gameBoard = $('#game-board');
+    gameBoard.empty();
 
-    for (let i = 0; i < 12; i++) {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.style.backgroundColor = getRandomColor();
-        card.addEventListener("click", selectCard);
-        cardContainer.appendChild(card);
+    // Shuffle the colors
+    const shuffledColors = shuffleArray(colors);
+
+    // Create card elements
+    for (let i = 0; i < colors.length * cardsPerColor; i++) {
+      const card = $('<div>').addClass('card');
+      const color = shuffledColors[Math.floor(i / cardsPerColor)];
+      card.css('background-color', color);
+      card.click(function() {
+        handleCardClick($(this), color);
+      });
+      gameBoard.append(card);
     }
-}
+  }
 
-// Get a random color from the colors array
-function getRandomColor() {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-}
-
-// Handle card selection
-function selectCard(event) {
-    const selectedCard = event.target;
-
-    if (selectedCards.includes(selectedCard)) {
-        return;
-    }
-
-    selectedCard.classList.add("selected");
-    selectedCards.push(selectedCard);
-
-    if (selectedCards.length === 2) {
-        checkMatch();
-    }
-}
-
-// Check if the selected cards match
-function checkMatch() {
-    const firstCard = selectedCards[0];
-    const secondCard = selectedCards[1];
-
-    if (firstCard.style.backgroundColor === secondCard.style.backgroundColor) {
-        removeCards();
-        increaseScore();
+  // Handle card click event
+  function handleCardClick(card, color) {
+    if (card.hasClass('selected')) {
+      card.removeClass('selected');
+      selectedCards = selectedCards.filter(function(selectedCard) {
+        return selectedCard !== card;
+      });
     } else {
-        deselectCards();
+      card.addClass('selected');
+      selectedCards.push(card);
+      if (selectedCards.length === 2) {
+        checkMatch();
+      }
     }
-}
+  }
 
-// Remove the matched cards from the card area
-function removeCards() {
-    selectedCards.forEach(card => {
-        card.remove();
-    });
-
-    selectedCards = [];
-}
-
-// Deselect the selected cards
-function deselectCards() {
-    selectedCards.forEach(card => {
-        card.classList.remove("selected");
-    });
-
-    selectedCards = [];
-}
-
-// Increase the score and update the high score if necessary
-function increaseScore() {
-    score += 10;
-    if (score > highScore) {
-        highScore = score;
+  // Check if the selected cards match
+  function checkMatch() {
+    const card1 = selectedCards[0];
+    const card2 = selectedCards[1];
+    if (card1.css('background-color') === card2.css('background-color')) {
+      card1.addClass('matched');
+      card2.addClass('matched');
+      matchedCards += 2;
+      score += 2;
+      if (matchedCards === colors.length * cardsPerColor) {
+        endGame();
+      }
+    } else {
+      setTimeout(function() {
+        card1.removeClass('selected');
+        card2.removeClass('selected');
+      }, 1000);
+      score -= 1;
     }
-
+    selectedCards = [];
     updateScore();
-}
+  }
 
-// Update the score display
-function updateScore() {
-    const scoreArea = document.getElementById("score-area");
-    scoreArea.textContent = "Score: " + score + " | High Score: " + highScore;
-}
+  // Update the score display
+  function updateScore() {
+    $('#score').text('Score: ' + score);
+  }
 
-// Initialize the game
-function initGame() {
-    generateCards();
+  // End the game
+  function endGame() {
+    clearInterval(timer);
+    alert('Game Over! Your score is ' + score);
+  }
+
+  // Shuffle an array using Fisher-Yates algorithm
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  // Start the game
+  function startGame() {
+    generateGameBoard();
     updateScore();
-}
+    timer = setInterval(function() {
+      score -= 1;
+      updateScore();
+    }, 1000);
+  }
 
-// Start the game
-initGame();
+  // Reset the game
+  function resetGame() {
+    clearInterval(timer);
+    selectedCards = [];
+    matchedCards = 0;
+    score = 0;
+    generateGameBoard();
+    updateScore();
+    timer = setInterval(function() {
+      score -= 1;
+      updateScore();
+    }, 1000);
+  }
+
+  // Event listener for reset button click
+  $('#reset-button').click(function() {
+    resetGame();
+  });
+
+  // Start the game
+  startGame();
+});

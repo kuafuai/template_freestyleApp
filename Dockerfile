@@ -1,14 +1,16 @@
-# Use the official Nginx base image
+# Set the base image
 FROM nginx:latest
 
-# Set a working directory inside the container
+# Set the working directory
 WORKDIR /usr/share/nginx/html
 
-# Copy all files from the Dockerfile's directory to the container
-COPY . .
+# Copy the game files to the working directory
+COPY index.html .
+COPY script.js .
+COPY style.css .
 
-# Expose the default Nginx port
+# Expose port 80
 EXPOSE 80
 
-# Start Nginx server
+# Start the Nginx server
 CMD ["nginx", "-g", "daemon off;"]
