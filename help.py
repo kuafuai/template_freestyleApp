@@ -1,7 +1,5 @@
-# Import required modules
 import tkinter as tk
 
-# Show game rules
 def show_game_rules():
     # Create help window
     help_window = tk.Toplevel()

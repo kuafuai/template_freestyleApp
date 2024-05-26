@@ -1,13 +1,8 @@
-# Import required modules
 import game_interface
 import game_logic
 import settings
 import help
 
-# Create game interface
-game_interface.create_game_interface()
-
-# Handle user's click events
 def handle_click_event(event):
     if event == "start":
         game_logic.start_game()
@@ -29,9 +24,9 @@ def handle_click_event(event):
         settings.open_settings()
     elif event == "help":
         help.show_game_rules()
+    else:
+        print("Invalid click event")
 
-# Bind click event to handle_click_event function
+game_interface.create_game_interface()
 game_interface.bind_click_event(handle_click_event)
-
-# Run the game interface
 game_interface.run_game_interface()

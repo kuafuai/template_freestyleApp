@@ -5,10 +5,11 @@ import random
 board = [[0] * 15 for _ in range(15)]
 current_player = 1
 game_over = False
+game_history = []
 
 # Start the game
 def start_game():
-    global game_over
+    global game_over, current_player
     game_over = False
     # Reset the board
     reset_board()
@@ -27,10 +28,11 @@ def reset_board():
 
 # Make a move
 def make_move(row, col):
-    global board, current_player
+    global board, current_player, game_over, game_history
     if not game_over and board[row][col] == 0:
         board[row][col] = current_player
         print(f"Player {current_player} makes a move at ({row}, {col}).")
+        game_history.append((current_player, row, col))
         check_winner()
         switch_player()
 
@@ -77,29 +79,65 @@ def switch_player():
 
 # Save the game
 def save_game():
-    global board, current_player
-    # Save the board and current player to a file
+    global board, current_player, game_history
+    with open("game_save.txt", "w") as file:
+        file.write(f"{current_player}\n")
+        for move in game_history:
+            file.write(f"{move[0]},{move[1]},{move[2]}\n")
+    print("Game saved.")
 
 # Load the game
 def load_game():
-    global board, current_player
-    # Load the board and current player from a file
+    global board, current_player, game_history
+    with open("game_save.txt", "r") as file:
+        lines = file.readlines()
+        current_player = int(lines[0])
+        game_history = []
+        for line in lines[1:]:
+            move = line.strip().split(",")
+            player = int(move[0])
+            row = int(move[1])
+            col = int(move[2])
+            game_history.append((player, row, col))
+            board[row][col] = player
+    print("Game loaded.")
 
 # Show game history
 def show_game_history():
-    # Show the game history
+    global game_history
+    print("Game History:")
+    for move in game_history:
+        player = move[0]
+        row = move[1]
+        col = move[2]
+        print(f"Player {player} made a move at ({row}, {col}).")
 
 # Undo a move
 def undo_move():
-    global board, current_player
-    # Undo the last move
+    global board, current_player, game_history
+    if len(game_history) > 0:
+        last_move = game_history.pop()
+        player = last_move[0]
+        row = last_move[1]
+        col = last_move[2]
+        board[row][col] = 0
+        current_player = player
+        print(f"Undo move: Player {player}'s move at ({row}, {col}) has been undone.")
+    else:
+        print("No moves to undo.")
 
 # Restart the game
 def restart_game():
-    global game_over
+    global game_over, current_player, game_history
     game_over = False
     # Reset the board
     reset_board()
+    current_player = random.choice([1, 2])
+    game_history = []
+    if current_player == 1:
+        print("Player 1 starts the game.")
+    else:
+        print("Player 2 starts the game.")
     print("Game restarted.")
 
 # Quit the game

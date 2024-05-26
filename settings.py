@@ -1,10 +1,16 @@
-# Import required modules
 import tkinter as tk
+
+# Initialize variables
+first_player_var = tk.StringVar()
+chess_color_var = tk.StringVar()
+
+# Create the root window
+root = tk.Tk()
 
 # Open settings
 def open_settings():
     # Create settings window
-    settings_window = tk.Toplevel()
+    settings_window = tk.Toplevel(root)
     settings_window.title("Settings")
 
     # Create labels and menus
@@ -19,13 +25,10 @@ def open_settings():
     chess_color_label.pack()
     chess_color_menu.pack()
 
-    # Run the settings window
-    settings_window.mainloop()
-
 # Select difficulty
 def select_difficulty():
     # Create difficulty selection window
-    difficulty_window = tk.Toplevel()
+    difficulty_window = tk.Toplevel(root)
     difficulty_window.title("Select Difficulty")
 
     # Create buttons
@@ -38,13 +41,12 @@ def select_difficulty():
     medium_button.pack()
     hard_button.pack()
 
-    # Run the difficulty selection window
-    difficulty_window.mainloop()
-
 # Set difficulty
 def set_difficulty(difficulty):
     print(f"Difficulty set to {difficulty}.")
 
-# Initialize variables
-first_player_var = tk.StringVar()
-chess_color_var = tk.StringVar()
+# Call the open_settings function
+open_settings()
+
+# Start the main event loop
+root.mainloop()

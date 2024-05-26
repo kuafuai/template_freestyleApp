@@ -35,20 +35,49 @@ def create_game_interface():
     window.mainloop()
 
 # Bind click event to handle_click_event function
-def bind_click_event(callback):
+def bind_click_event(callback, buttons):
     # Bind click event to callback function
-    start_button.bind("<Button-1>", lambda event: callback("start"))
-    difficulty_button.bind("<Button-1>", lambda event: callback("difficulty"))
-    save_button.bind("<Button-1>", lambda event: callback("save"))
-    load_button.bind("<Button-1>", lambda event: callback("load"))
-    history_button.bind("<Button-1>", lambda event: callback("history"))
-    undo_button.bind("<Button-1>", lambda event: callback("undo"))
-    restart_button.bind("<Button-1>", lambda event: callback("restart"))
-    quit_button.bind("<Button-1>", lambda event: callback("quit"))
-    settings_button.bind("<Button-1>", lambda event: callback("settings"))
-    help_button.bind("<Button-1>", lambda event: callback("help"))
+    buttons["start"].bind("<Button-1>", lambda event: callback("start"))
+    buttons["difficulty"].bind("<Button-1>", lambda event: callback("difficulty"))
+    buttons["save"].bind("<Button-1>", lambda event: callback("save"))
+    buttons["load"].bind("<Button-1>", lambda event: callback("load"))
+    buttons["history"].bind("<Button-1>", lambda event: callback("history"))
+    buttons["undo"].bind("<Button-1>", lambda event: callback("undo"))
+    buttons["restart"].bind("<Button-1>", lambda event: callback("restart"))
+    buttons["quit"].bind("<Button-1>", lambda event: callback("quit"))
+    buttons["settings"].bind("<Button-1>", lambda event: callback("settings"))
+    buttons["help"].bind("<Button-1>", lambda event: callback("help"))
 
 # Run the game interface
-def run_game_interface():
+def run_game_interface(window):
     # Run the main loop
     window.mainloop()
+
+# Create game interface and run the game
+def main():
+    # Create game interface
+    window = create_game_interface()
+
+    # Create buttons dictionary
+    buttons = {
+        "start": start_button,
+        "difficulty": difficulty_button,
+        "save": save_button,
+        "load": load_button,
+        "history": history_button,
+        "undo": undo_button,
+        "restart": restart_button,
+        "quit": quit_button,
+        "settings": settings_button,
+        "help": help_button
+    }
+
+    # Bind click event to handle_click_event function
+    bind_click_event(handle_click_event, buttons)
+
+    # Run the game interface
+    run_game_interface(window)
+
+# Run the main function
+if __name__ == "__main__":
+    main()
