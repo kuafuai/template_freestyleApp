@@ -1,0 +1,38 @@
+/* style.css */
+/* Set the layout and style of the page */
+
+/* Set the font family and background color for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Set the font size, weight, and margin for the word display */
+#word-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Set the display, flex-wrap, and justify-content for the answer options */
+#answer-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Set the margin, padding, background color, border, and cursor for the answer options */
+.answer-option {
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Set the font size, weight, and margin for the score display */
+#score-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
