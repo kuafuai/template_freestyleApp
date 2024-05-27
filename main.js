@@ -1,55 +1,26 @@
 // main.js
-$(document).ready(function() {
-  // Load the map
-  loadMap();
 
-  // Load the monster list
-  loadMonsterList();
-
-  // Search button click event
-  $("#searchButton").click(function() {
-    var keyword = $("#searchInput").val();
-    showMonsterDetails(keyword);
-  });
-
-  // Monster title click event
-  $(document).on("click", ".monsterTitle", function() {
-    var monsterId = $(this).data("id");
-    showMonsterDetails(monsterId);
-  });
-
-  // Back button click event
-  $("#backButton").click(function() {
-    showMonsterList();
-  });
-});
-
-// Load the map
-function loadMap() {
-  // TODO: Implement the logic to load the map
+// 加载所有故事和传说的列表
+function loadStories() {
+    // TODO: Implement loading stories from the server
 }
 
-// Load the monster list
-function loadMonsterList() {
-  // TODO: Implement the logic to load the monster list
+// 实现搜索功能，根据关键字搜索故事和传说
+function searchStories(keyword) {
+    // TODO: Implement searching stories based on the keyword
 }
 
-// Show monster details
-function showMonsterDetails(monsterId) {
-  // TODO: Implement the logic to show the details of the selected monster
+// 显示故事和传说的详细内容
+function showStoryDetail(storyId) {
+    // TODO: Implement showing the detailed content of a story
 }
 
-// Show monster list
-function showMonsterList() {
-  // TODO: Implement the logic to show the list of monsters
+// 处理用户评论的功能逻辑
+function handleComment(storyId, comment) {
+    // TODO: Implement handling user comments for a story
 }
 
-// Initialize the page
-function initializePage() {
-  loadMap();
-  loadMonsterList();
-  addEventListeners();
+// 处理用户收藏的功能逻辑
+function handleFavorite(storyId) {
+    // TODO: Implement handling user favorites for a story
 }
-
-// Call the initializePage function when the page is loaded
-window.addEventListener('load', initializePage);

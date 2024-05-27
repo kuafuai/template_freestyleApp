@@ -1,110 +1,43 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>山海经传说故事</title>
-  <link rel="stylesheet" type="text/css" href="jssemantic-ui.css">
-  <link rel="stylesheet" type="text/css" href="semantic.min.css">
-  <script src="jquery.js"></script>
-  <script src="main.js"></script>
-  <script>
-    // JavaScript code to handle the search functionality, populate the story list, display the story detail, and handle the back button functionality
-
-    // Function to handle the search functionality
-    function searchMonsters() {
-      var searchInput = document.getElementById("searchInput").value;
-      var monsterList = document.getElementById("monsterList");
-      monsterList.innerHTML = ""; // Clear the monster list
-
-      // Perform the search and populate the monster list
-      // Replace this code with the actual implementation of the search functionality
-      var monsters = getMonsters(); // Assuming getMonsters() is a function that returns an array of monsters
-      for (var i = 0; i < monsters.length; i++) {
-        var monster = monsters[i];
-        if (monster.name.includes(searchInput)) {
-          var listItem = document.createElement("div");
-          listItem.className = "item";
-          listItem.innerHTML = monster.name;
-          monsterList.appendChild(listItem);
-        }
-      }
-    }
-
-    // Function to display the monster detail
-    function showMonsterDetail(monsterName) {
-      var monsterDetail = document.getElementById("monsterDetail");
-      monsterDetail.innerHTML = ""; // Clear the monster detail
-
-      // Display the monster detail
-      // Replace this code with the actual implementation of displaying the monster detail
-      var monster = getMonsterByName(monsterName); // Assuming getMonsterByName() is a function that returns the monster object based on the name
-      var monsterContent = document.createElement("div");
-      monsterContent.innerHTML = monster.description;
-      monsterDetail.appendChild(monsterContent);
-    }
-
-    // Function to handle the back button functionality
-    function goBack() {
-      var monsterDetail = document.getElementById("monsterDetail");
-      monsterDetail.innerHTML = ""; // Clear the monster detail
-    }
-
-    // Event listener for the search input
-    document.getElementById("searchInput").addEventListener("input", searchMonsters);
-
-    // Event listener for the monster list
-    document.getElementById("monsterList").addEventListener("click", function(event) {
-      var target = event.target;
-      if (target && target.nodeName === "DIV" && target.className === "item") {
-        showMonsterDetail(target.innerHTML);
-      }
-    });
-
-    // Event listener for the back button
-    document.getElementById("backButton").addEventListener("click", goBack);
-
-    // Function to get the monsters
-    function getMonsters() {
-      // Replace this code with the actual implementation of getting the monsters
-      return [
-        { name: "Monster 1", description: "Description of Monster 1" },
-        { name: "Monster 2", description: "Description of Monster 2" },
-        { name: "Monster 3", description: "Description of Monster 3" }
-      ];
-    }
-
-    // Function to get the monster object based on the name
-    function getMonsterByName(name) {
-      // Replace this code with the actual implementation of getting the monster object based on the name
-      var monsters = getMonsters();
-      for (var i = 0; i < monsters.length; i++) {
-        if (monsters[i].name === name) {
-          return monsters[i];
-        }
-      }
-      return null;
-    }
-  </script>
+    <title>山海经故事和传说</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
-  <div class="ui three column grid">
-    <div class="column">
-      <!-- Map section -->
-      <div id="map"></div>
-    </div>
-    <div class="column">
-      <!-- Monster list section -->
-      <div class="ui segment">
-        <h2 class="ui header">妖怪列表</h2>
-        <div id="monsterList" class="ui divided list"></div>
-      </div>
-    </div>
-    <div class="column">
-      <!-- Monster details section -->
-      <div class="ui segment">
-        <h2 class="ui header">妖怪详细信息</h2>
-        <div id="monsterDetail"></div>
-      </div>
-    </div>
-  </div>
+    <header>
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">故事</a></li>
+                <li><a href="#">传说</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- 内容展示区域 -->
+        <section id="content">
+            <h1>山海经故事和传说</h1>
+            <ul id="story-list">
+                <!-- 故事和传说列表 -->
+            </ul>
+        </section>
+        <!-- 相关链接 -->
+        <aside>
+            <h2>相关链接</h2>
+            <ul>
+                <li><a href="#">山海经百度百科</a></li>
+                <li><a href="#">山海经维基百科</a></li>
+                <li><a href="#">山海经豆瓣</a></li>
+            </ul>
+        </aside>
+    </main>
+    <footer>
+        <p>版权所有 &copy; 2022 山海经故事和传说</p>
+    </footer>
 </body>
 </html>
