@@ -1,6 +1,6 @@
 /* style.css */
 
-/* 布局样式 */
+/* Layout styles */
 header {
     background-color: #333;
     color: #fff;
@@ -29,11 +29,11 @@ main {
     margin: 20px;
 }
 
-#content {
+#main-content {
     flex: 2;
 }
 
-aside {
+#sidebar {
     flex: 1;
 }
 
@@ -44,7 +44,7 @@ footer {
     text-align: center;
 }
 
-/* 其他样式 */
+/* Other styles */
 h1 {
     font-size: 24px;
 }
