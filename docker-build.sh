@@ -1,17 +1,22 @@
 #!/bin/bash
-
-# Get the current commit SHA
-COMMIT_SHA=$(git rev-parse HEAD)
-
 # Build the Docker image
-docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
+docker build -t nginx-server .
 
-# Login to Docker Hub
-docker login -u <username> -p <password>
+# Login to Docker Hub using environment variables
+docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-# Push the Docker image
-docker push ${DOCKER_REPO}:${COMMIT_SHA}
-docker push ${DOCKER_REPO}:latest
+# Check if the login was successful
+if [ $? -eq 0 ]; then
+  # Push the image to Docker Hub
+  docker push $DOCKER_USERNAME/nginx-server
 
-# Print the pushed image details
-docker image inspect ${DOCKER_REPO}:${COMMIT_SHA}
+  # Check if the push was successful
+  if [ $? -eq 0 ]; then
+    # Print the pushed image details
+    docker image inspect $DOCKER_USERNAME/nginx-server
+  else
+    echo "Failed to push the image to Docker Hub."
+  fi
+else
+  echo "Failed to login to Docker Hub."
+fi
