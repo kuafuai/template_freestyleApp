@@ -3,24 +3,24 @@ $(document).ready(function() {
   // Load the map
   loadMap();
 
-  // Load the story list
-  loadStories();
+  // Load the monster list
+  loadMonsterList();
 
   // Search button click event
   $("#searchButton").click(function() {
     var keyword = $("#searchInput").val();
-    searchStories(keyword);
+    showMonsterDetails(keyword);
   });
 
-  // Story title click event
-  $(document).on("click", ".storyTitle", function() {
-    var storyId = $(this).data("id");
-    showStoryDetail(storyId);
+  // Monster title click event
+  $(document).on("click", ".monsterTitle", function() {
+    var monsterId = $(this).data("id");
+    showMonsterDetails(monsterId);
   });
 
   // Back button click event
   $("#backButton").click(function() {
-    showStoryList();
+    showMonsterList();
   });
 });
 
@@ -29,35 +29,25 @@ function loadMap() {
   // TODO: Implement the logic to load the map
 }
 
-// Load the story list
-function loadStories() {
-  // TODO: Implement loading stories from the server
+// Load the monster list
+function loadMonsterList() {
+  // TODO: Implement the logic to load the monster list
 }
 
-// Show story details
-function showStoryDetail(storyId) {
-  // TODO: Implement showing the detailed content of a story
+// Show monster details
+function showMonsterDetails(monsterId) {
+  // TODO: Implement the logic to show the details of the selected monster
 }
 
-// Search stories
-function searchStories(keyword) {
-  // TODO: Implement searching stories based on the keyword
-}
-
-// Handle user comments
-function handleComment(storyId, comment) {
-  // TODO: Implement handling user comments for a story
-}
-
-// Handle user favorites
-function handleFavorite(storyId) {
-  // TODO: Implement handling user favorites for a story
+// Show monster list
+function showMonsterList() {
+  // TODO: Implement the logic to show the list of monsters
 }
 
 // Initialize the page
 function initializePage() {
   loadMap();
-  loadStories();
+  loadMonsterList();
   addEventListeners();
 }
 
