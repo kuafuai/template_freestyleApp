@@ -7,10 +7,11 @@ COMMIT_SHA=$(git rev-parse HEAD)
 docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
 
 # Login to Docker Hub
-echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+docker login -u <username> -p <password>
 
 # Push the Docker image
 docker push ${DOCKER_REPO}:${COMMIT_SHA}
 docker push ${DOCKER_REPO}:latest
 
-echo "kuafuai_docker_image_pushed:${DOCKER_REPO}:${COMMIT_SHA}"
+# Print the pushed image details
+docker image inspect ${DOCKER_REPO}:${COMMIT_SHA}
