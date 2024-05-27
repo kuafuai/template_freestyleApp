@@ -1,43 +1,121 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>山海经故事和传说</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="main.js"></script>
+  <title>山海经传说故事</title>
+  <link rel="stylesheet" type="text/css" href="jssemantic-ui.css">
+  <link rel="stylesheet" type="text/css" href="semantic.min.css">
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // JavaScript code to handle the search functionality, populate the story list, display the story detail, and handle the back button functionality
+
+    // Function to handle the search functionality
+    function getStories() {
+      var searchInput = document.getElementById("searchInput").value;
+      var storyList = document.getElementById("story-list");
+      storyList.innerHTML = ""; // Clear the story list
+
+      // Perform the search and populate the story list
+      // Replace this code with the actual implementation of the search functionality
+      var stories = getStories(); // Assuming getStories() is a function that returns an array of stories
+      for (var i = 0; i < stories.length; i++) {
+        var story = stories[i];
+        if (story.name.includes(searchInput)) {
+          var listItem = document.createElement("li");
+          listItem.innerHTML = story.name;
+          storyList.appendChild(listItem);
+        }
+      }
+    }
+
+    // Function to display the story detail
+    function showStoryDetail(storyName) {
+      var storyDetail = document.getElementById("storyDetail");
+      storyDetail.innerHTML = ""; // Clear the story detail
+
+      // Display the story detail
+      // Replace this code with the actual implementation of displaying the story detail
+      var story = getStoryByName(storyName); // Assuming getStoryByName() is a function that returns the story object based on the name
+      var storyContent = document.createElement("div");
+      storyContent.innerHTML = story.description;
+      storyDetail.appendChild(storyContent);
+    }
+
+    // Function to handle the back button functionality
+    function goBack() {
+      var storyDetail = document.getElementById("storyDetail");
+      storyDetail.innerHTML = ""; // Clear the story detail
+    }
+
+    // Event listener for the search input
+    document.getElementById("searchInput").addEventListener("input", getStories);
+
+    // Event listener for the story list
+    document.getElementById("story-list").addEventListener("click", function(event) {
+      var target = event.target;
+      if (target && target.nodeName === "LI") {
+        showStoryDetail(target.innerHTML);
+      }
+    });
+
+    // Event listener for the back button
+    document.getElementById("backButton").addEventListener("click", goBack);
+
+    // Function to get the stories
+    function getStories() {
+      // Replace this code with the actual implementation of getting the stories
+      return [
+        { name: "Story 1", description: "Description of Story 1" },
+        { name: "Story 2", description: "Description of Story 2" },
+        { name: "Story 3", description: "Description of Story 3" }
+      ];
+    }
+
+    // Function to get the story object based on the name
+    function getStoryByName(name) {
+      // Replace this code with the actual implementation of getting the story object based on the name
+      var stories = getStories();
+      for (var i = 0; i < stories.length; i++) {
+        if (stories[i].name === name) {
+          return stories[i];
+        }
+      }
+      return null;
+    }
+  </script>
 </head>
 <body>
-    <header>
-        <!-- 导航栏 -->
-        <nav>
-            <ul>
-                <li><a href="#">首页</a></li>
-                <li><a href="#">故事</a></li>
-                <li><a href="#">传说</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <!-- 内容展示区域 -->
-        <section id="content">
-            <h1>山海经故事和传说</h1>
-            <ul id="story-list">
-                <!-- 故事和传说列表 -->
-            </ul>
-        </section>
-        <!-- 相关链接 -->
-        <aside>
-            <h2>相关链接</h2>
-            <ul>
-                <li><a href="#">山海经百度百科</a></li>
-                <li><a href="#">山海经维基百科</a></li>
-                <li><a href="#">山海经豆瓣</a></li>
-            </ul>
-        </aside>
-    </main>
-    <footer>
-        <p>版权所有 &copy; 2022 山海经故事和传说</p>
-    </footer>
+  <header>
+    <!-- 导航栏 -->
+    <nav>
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">故事</a></li>
+        <li><a href="#">传说</a></li>
+        <li><a href="#">关于</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- 内容展示区域 -->
+    <section id="content">
+      <h1>山海经故事和传说</h1>
+      <ul id="story-list">
+        <!-- 故事和传说列表 -->
+      </ul>
+    </section>
+    <!-- 相关链接 -->
+    <aside>
+      <h2>相关链接</h2>
+      <ul>
+        <li><a href="#">山海经百度百科</a></li>
+        <li><a href="#">山海经维基百科</a></li>
+        <li><a href="#">山海经豆瓣</a></li>
+      </ul>
+    </aside>
+  </main>
+  <footer>
+    <p>版权所有 &copy; 2022 山海经故事和传说</p>
+  </footer>
 </body>
 </html>
