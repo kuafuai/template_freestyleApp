@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/customize/customize",
+    "pages/guide/guide"
+  ],
+  "window": {
+    "navigationBarTitleText": "磐安旅游",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
+  }
+}

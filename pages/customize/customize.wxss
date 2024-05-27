@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spot-list {
+  margin-bottom: 20px;
+}
+
+.spot {
+  margin-bottom: 10px;
+}
+
+.spot-name {
+  font-weight: bold;
+}
+
+.time-picker {
+  margin-bottom: 20px;
+}
+
+.location-picker {
+  margin-bottom: 20px;
+}
+
+.picker {
+  display: flex;
+  align-items: center;
+}
+
+.picker-label {
+  margin-right: 10px;
+}
+
+.picker-value {
+  color: #999999;
+}

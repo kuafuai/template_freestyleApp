@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="videos">
+    <block wx:for="{{videos}}">
+      <view class="video">
+        <video src="{{item.url}}" controls></video>
+      </view>
+    </block>
+  </view>
+  <view class="images">
+    <block wx:for="{{images}}">
+      <view class="image">
+        <image src="{{item.url}}"></image>
+      </view>
+    </block>
+  </view>
+  <view class="buttons">
+    <button class="customize-button" bindtap="onCustomizeClick">旅游线路定制</button>
+    <button class="guide-button" bindtap="onGuideClick">智慧导览</button>
+  </view>
+</view>

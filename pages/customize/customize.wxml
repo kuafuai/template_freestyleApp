@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="spot-list">
+    <block wx:for="{{spots}}">
+      <view class="spot" bindtap="onSpotSelect" data-spot="{{item}}">
+        <text class="spot-name">{{item.name}}</text>
+        <text class="spot-description">{{item.description}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="time-picker">
+    <picker mode="time" bindchange="onTimeSelect">
+      <view class="picker">
+        <text class="picker-label">选择时间：</text>
+        <text class="picker-value">{{selectedTime}}</text>
+      </view>
+    </picker>
+  </view>
+  <view class="location-picker">
+    <picker mode="selector" range="{{locations}}" bindchange="onLocationSelect">
+      <view class="picker">
+        <text class="picker-label">选择地点：</text>
+        <text class="picker-value">{{selectedLocation}}</text>
+      </view>
+    </picker>
+  </view>
+</view>
