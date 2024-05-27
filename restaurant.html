@@ -1,0 +1,47 @@
+<!-- This file displays the recommended restaurants for Beijing Roast Duck -->
+
+<!-- Import the CSS file -->
+<link rel="stylesheet" href="./style.css">
+
+<!-- Import the JavaScript file -->
+<script src="./script.js"></script>
+
+<!-- Display the recommended restaurants -->
+<h1>Recommended Restaurants</h1>
+<ul id="restaurant-list">
+</ul>
+
+<script>
+  // Fetch the recommended restaurants data
+  const recommendedRestaurants = [
+    {
+      name: "Restaurant 1",
+      address: "123 Main Street",
+      phone: "123-456-7890"
+    },
+    {
+      name: "Restaurant 2",
+      address: "456 Elm Street",
+      phone: "987-654-3210"
+    }
+  ];
+
+  // Generate HTML elements to display the restaurants
+  const restaurantList = document.getElementById("restaurant-list");
+  recommendedRestaurants.forEach(restaurant => {
+    const li = document.createElement("li");
+    const h2 = document.createElement("h2");
+    const address = document.createElement("p");
+    const phone = document.createElement("p");
+
+    h2.textContent = restaurant.name;
+    address.textContent = "Address: " + restaurant.address;
+    phone.textContent = "Phone: " + restaurant.phone;
+
+    li.appendChild(h2);
+    li.appendChild(address);
+    li.appendChild(phone);
+
+    restaurantList.appendChild(li);
+  });
+</script>

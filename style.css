@@ -1,0 +1,77 @@
+/* This file defines the styles for the website */
+
+/* Set the font family and size */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Set the background color */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Set the width and center the content */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Set the padding for the content */
+.container {
+  padding: 20px;
+}
+
+/* Set the styles for the headings */
+h1, h2 {
+  color: #333;
+}
+
+/* Set the styles for the navigation menu */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Set the styles for the contact form */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Set the styles for the social media links */
+ul li a {
+  text-decoration: none;
+  color: #333;
+}
