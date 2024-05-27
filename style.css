@@ -1,0 +1,83 @@
+/* style.css */
+/* This file is responsible for setting the styles of the clothing store webpage. */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.ui.grid {
+    margin-top: 20px;
+}
+
+.column {
+    text-align: center;
+}
+
+.ui.input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ui.modal {
+    width: 400px;
+}
+
+/* Additional styles */
+
+.ui.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.ui.button:hover {
+    background-color: #45a049;
+}
+
+.ui.button:active {
+    background-color: #3e8e41;
+}
+
+.ui.button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.ui.button.disabled:hover {
+    background-color: #cccccc;
+}
+
+.ui.button.disabled:active {
+    background-color: #cccccc;
+}
+
+.ui.error.message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.ui.success.message {
+    color: green;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.ui.warning.message {
+    color: orange;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.ui.info.message {
+    color: blue;
+    font-size: 14px;
+    margin-top: 5px;
+}

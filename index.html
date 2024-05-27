@@ -1,0 +1,60 @@
+<!-- index.html -->
+<!-- This file is responsible for displaying the main webpage of the clothing store. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clothing Store</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="ui three column grid">
+        <!-- Column 1 -->
+        <div class="column">
+            <img src="clothing1.jpg" alt="Clothing 1">
+            <p>Clothing 1 Description</p>
+        </div>
+        <!-- Column 2 -->
+        <div class="column">
+            <img src="clothing2.jpg" alt="Clothing 2">
+            <p>Clothing 2 Description</p>
+        </div>
+        <!-- Column 3 -->
+        <div class="column">
+            <img src="clothing3.jpg" alt="Clothing 3">
+            <p>Clothing 3 Description</p>
+        </div>
+    </div>
+
+    <div class="ui input">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="searchClothing()">Search</button>
+    </div>
+
+    <div id="clothingDetailsModal" class="ui modal">
+        <div class="header">Clothing Details</div>
+        <div class="content">
+            <p id="clothingDetails"></p>
+        </div>
+        <div class="actions">
+            <button class="ui button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function searchClothing() {
+            // Implementation of search functionality
+            var searchInput = document.getElementById("searchInput").value;
+            // Perform search operation based on the searchInput value
+            // Display the search results on the webpage
+        }
+
+        function closeModal() {
+            // Implementation of closing the modal
+            var modal = document.getElementById("clothingDetailsModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

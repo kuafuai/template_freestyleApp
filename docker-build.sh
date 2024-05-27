@@ -1,16 +1,15 @@
 #!/bin/bash
+# docker-build.sh
+# This file is responsible for building a Docker image, logging in to Docker Hub, pushing the image, and printing the pushed image details.
 
-# Get the current commit SHA
-COMMIT_SHA=$(git rev-parse HEAD)
-
-# Build the Docker image
-docker build -t ${DOCKER_REPO}:${COMMIT_SHA} -t ${DOCKER_REPO}:latest -f Dockerfile .
+# Build Docker image
+docker build -t nginx-server .
 
 # Login to Docker Hub
-echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+docker login -u username -p password
 
-# Push the Docker image
-docker push ${DOCKER_REPO}:${COMMIT_SHA}
-docker push ${DOCKER_REPO}:latest
+# Push the image to Docker Hub
+docker push username/nginx-server
 
-echo "kuafuai_docker_image_pushed:${DOCKER_REPO}:${COMMIT_SHA}"
+# Print pushed image details
+docker image inspect username/nginx-server
