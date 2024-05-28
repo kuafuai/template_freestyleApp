@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Travel Information</title>
+    <title>欢迎来磐安旅游</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/script.js"></script>
-    <style>
-        .container {
-            display: flex;
-            justify-content: center;
-        }
-        .column {
-            flex: 1;
-        }
-        .video-container {
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
 </head>
 <body>
     <div class="container">
         <div class="column">
             <div class="video-container">
                 <video src="video/travel_video.mp4" controls></video>
-                <div>磐安文旅</div>
+                <div class="video-title">磐安文旅</div>
             </div>
         </div>
         <div class="column">
@@ -34,32 +22,34 @@
         </div>
     </div>
     <div class="buttons">
-        <button id="customizationButton" onclick="goToCustomization()">Travel Route Customization</button>
-        <button id="guideButton" onclick="goToGuide()">Smart Guide</button>
+        <button id="customizationButton">旅游路线定制</button>
+        <button id="guideButton">智能导览</button>
     </div>
 
     <script>
+        // Function to navigate to the customization page
         function goToCustomization() {
             try {
-                // Add code to navigate to the customization page
                 window.location.href = "customization.html";
             } catch (error) {
                 console.error("Error navigating to customization page:", error);
-                // Display an error message to the user
                 alert("An error occurred while navigating to the customization page. Please try again later.");
             }
         }
 
+        // Function to navigate to the guide page
         function goToGuide() {
             try {
-                // Add code to navigate to the guide page
                 window.location.href = "guide.html";
             } catch (error) {
                 console.error("Error navigating to guide page:", error);
-                // Display an error message to the user
                 alert("An error occurred while navigating to the guide page. Please try again later.");
             }
         }
+
+        // Add event listeners to the buttons
+        document.getElementById("customizationButton").addEventListener("click", goToCustomization);
+        document.getElementById("guideButton").addEventListener("click", goToGuide);
     </script>
 </body>
 </html>
