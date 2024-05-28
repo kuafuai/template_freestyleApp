@@ -8,3 +8,41 @@
 .guide-content {
   margin-bottom: 20px;
 }
+
+/* Additional styles for other elements in the guide page */
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subheader {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Comments to explain the purpose of the styles */
+
+/* The container class is used to center and align the elements in the page */
+/* The guide-content class adds a margin at the bottom of the element */
+
+/* The header class defines the styles for the header element */
+/* The subheader class defines the styles for the subheader element */
+/* The paragraph class defines the styles for the paragraph element */
+/* The button class defines the styles for the button element */

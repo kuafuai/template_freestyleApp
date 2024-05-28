@@ -5,6 +5,7 @@ Page({
     selectedLocation: ''
   },
 
+  // Function to handle spot selection
   onSpotSelect(event) {
     const selectedSpot = event.currentTarget.dataset.spot;
     const selectedSpots = this.data.selectedSpots;
@@ -21,6 +22,7 @@ Page({
     });
   },
 
+  // Function to handle time selection
   onTimeSelect(event) {
     const selectedTime = event.detail.value;
 
@@ -29,6 +31,7 @@ Page({
     });
   },
 
+  // Function to handle location selection
   onLocationSelect(event) {
     const selectedLocation = event.detail.value;
 

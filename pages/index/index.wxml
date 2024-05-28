@@ -1,20 +1,16 @@
-<view class="container">
-  <view class="videos">
-    <block wx:for="{{videos}}">
-      <view class="video">
-        <video src="{{item.url}}" controls></video>
-      </view>
-    </block>
-  </view>
-  <view class="images">
-    <block wx:for="{{images}}">
-      <view class="image">
-        <image src="{{item.url}}"></image>
-      </view>
-    </block>
-  </view>
-  <view class="buttons">
-    <button class="customize-button" bindtap="onCustomizeClick">旅游线路定制</button>
-    <button class="guide-button" bindtap="onGuideClick">智慧导览</button>
-  </view>
-</view>
+<div class="container">
+  <div class="videos">
+    <div v-for="video in videos" class="video">
+      <video :src="video.url" controls></video>
+    </div>
+  </div>
+  <div class="images">
+    <div v-for="image in images" class="image">
+      <img :src="image.url" />
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="customize-button" @click="onCustomizeClick">旅游线路定制</button>
+    <button class="guide-button" @click="onGuideClick">智慧导览</button>
+  </div>
+</div>

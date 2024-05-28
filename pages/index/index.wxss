@@ -5,19 +5,21 @@
   justify-content: center;
 }
 
-.videos {
+/* Section for videos */
+.video-container {
   margin-bottom: 20px;
 }
 
-.video {
+.video-item {
   margin-bottom: 10px;
 }
 
-.images {
+/* Section for images */
+.image-container {
   margin-bottom: 20px;
 }
 
-.image {
+.image-item {
   margin-bottom: 10px;
 }
 
