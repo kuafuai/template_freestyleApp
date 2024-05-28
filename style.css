@@ -1,0 +1,81 @@
+/* This file is responsible for custom styles of the game interface */
+
+/* Game container */
+#game-container {
+  /* Add styles for the game container */
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Grid container */
+#grid-container {
+  /* Add styles for the grid container */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Pokémon styles */
+.pokemon {
+  /* Add styles for Pokémon */
+  background-color: #ffcc00;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+/* Score container */
+#score-container {
+  /* Add styles for the score container */
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* Goal container */
+#goal-container {
+  /* Add styles for the goal container */
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* Toolbox container */
+#toolbox-container {
+  /* Add styles for the toolbox container */
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Message container */
+#message-container {
+  /* Add styles for the message container */
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* Button container */
+#button-container {
+  /* Add styles for the button container */
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Additional styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
