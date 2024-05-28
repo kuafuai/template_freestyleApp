@@ -4,11 +4,27 @@
     <title>Travel Information</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/script.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .column {
+            flex: 1;
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="column">
-            <video src="video/travel_video.mp4" controls></video>
+            <div class="video-container">
+                <video src="video/travel_video.mp4" controls></video>
+                <div>磐安文旅</div>
+            </div>
         </div>
         <div class="column">
             <img src="images/travel_image1.jpg" alt="Travel Image 1">
@@ -21,5 +37,29 @@
         <button id="customizationButton" onclick="goToCustomization()">Travel Route Customization</button>
         <button id="guideButton" onclick="goToGuide()">Smart Guide</button>
     </div>
+
+    <script>
+        function goToCustomization() {
+            try {
+                // Add code to navigate to the customization page
+                window.location.href = "customization.html";
+            } catch (error) {
+                console.error("Error navigating to customization page:", error);
+                // Display an error message to the user
+                alert("An error occurred while navigating to the customization page. Please try again later.");
+            }
+        }
+
+        function goToGuide() {
+            try {
+                // Add code to navigate to the guide page
+                window.location.href = "guide.html";
+            } catch (error) {
+                console.error("Error navigating to guide page:", error);
+                // Display an error message to the user
+                alert("An error occurred while navigating to the guide page. Please try again later.");
+            }
+        }
+    </script>
 </body>
 </html>
