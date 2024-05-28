@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Route Customization</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <h1>Travel Route Customization</h1>
+    <form id="customizationForm" onsubmit="submitCustomization(event)">
+        <label for="travelers">Number of Travelers:</label>
+        <input type="number" id="travelers" name="travelers" required><br><br>
+        <label for="preferences">Preferences:</label>
+        <textarea id="preferences" name="preferences" required></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="recommendation"></div>
+    <div id="transportation"></div>
+</body>
+</html>
