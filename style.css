@@ -1,43 +1,89 @@
-/* style.css */
-body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
 
-.ui.grid {
-    margin-top: 50px;
-}
+        .ui.grid {
+            margin-top: 50px;
+        }
 
-.column {
-    padding: 10px;
-}
+        .column {
+            padding: 10px;
+        }
 
-#game-area {
-    width: 400px;
-    height: 400px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-}
+        #game-area {
+            width: 400px;
+            height: 400px;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+        }
 
-#score-area {
-    height: 50px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
+        #score-area {
+            height: 50px;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
 
-#control-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        #control-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-button {
-    margin-bottom: 10px;
-    width: 100px;
-    height: 30px;
-    font-size: 16px;
-}
+        button {
+            margin-bottom: 10px;
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui grid">
+        <div class="column">
+            <div id="game-area"></div>
+            <div id="score-area"></div>
+            <div id="control-area">
+                <button id="start-button">Start</button>
+                <button id="stop-button">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        const gameArea = document.getElementById('game-area');
+        const scoreArea = document.getElementById('score-area');
+        const startButton = document.getElementById('start-button');
+        const stopButton = document.getElementById('stop-button');
+
+        let score = 0;
+        let intervalId;
+
+        function startGame() {
+            intervalId = setInterval(increaseScore, 1000);
+        }
+
+        function stopGame() {
+            clearInterval(intervalId);
+        }
+
+        function increaseScore() {
+            score++;
+            scoreArea.textContent = `Score: ${score}`;
+        }
+
+        startButton.addEventListener('click', startGame);
+        stopButton.addEventListener('click', stopGame);
+    </script>
+</body>
+</html>

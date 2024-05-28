@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var snakeElement = document.createElement("div");
         snakeElement.classList.add("snake");
         gameArea.appendChild(snakeElement);
+        positionElement(snakeElement, snake[0]);
     }
 
     // Function to create the food
@@ -52,6 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
         var foodElement = document.createElement("div");
         foodElement.classList.add("food");
         gameArea.appendChild(foodElement);
+        positionElement(foodElement, food);
+    }
+
+    // Function to position an element on the game area
+    function positionElement(element, coordinates) {
+        element.style.left = coordinates.x + "px";
+        element.style.top = coordinates.y + "px";
     }
 
     // Function to update the score
@@ -61,7 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to start the game
     function startGame() {
-        // Game logic goes here
+        setInterval(function() {
+            moveSnake();
+            checkCollisions();
+        }, 200);
     }
 
     // Function to change the direction of the snake
@@ -71,22 +82,70 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to move the snake
     function moveSnake() {
-        // Move the snake based on the current direction
+        var head = Object.assign({}, snake[0]);
+        switch (direction) {
+            case "up":
+                head.y -= 20;
+                break;
+            case "down":
+                head.y += 20;
+                break;
+            case "left":
+                head.x -= 20;
+                break;
+            case "right":
+                head.x += 20;
+                break;
+        }
+        snake.unshift(head);
+        var snakeElement = document.getElementsByClassName("snake")[0];
+        positionElement(snakeElement, head);
+        if (!checkFoodCollision()) {
+            snake.pop();
+        }
     }
 
     // Function to check for collisions
     function checkCollisions() {
-        // Check for collisions with the boundaries and the snake's body
+        var head = snake[0];
+        if (head.x < 0 || head.x >= gameArea.offsetWidth || head.y < 0 || head.y >= gameArea.offsetHeight) {
+            endGame();
+        }
+        for (var i = 1; i < snake.length; i++) {
+            if (head.x === snake[i].x && head.y === snake[i].y) {
+                endGame();
+            }
+        }
+    }
+
+    // Function to check for food collision
+    function checkFoodCollision() {
+        var head = snake[0];
+        if (head.x === food.x && head.y === food.y) {
+            consumeFood();
+            return true;
+        }
+        return false;
     }
 
     // Function to handle food consumption
     function consumeFood() {
-        // Increase the score and update the score area
-        // Generate a new food element
+        score++;
+        updateScore();
+        createFood();
     }
 
     // Function to end the game
     function endGame() {
-        // Display the final score and provide an option to restart the game
+        clearInterval(startGame);
+        alert("Game Over! Final Score: " + score);
+        var restart = confirm("Do you want to restart the game?");
+        if (restart) {
+            gameArea.innerHTML = "";
+            snake = [{x: 0, y: 0}];
+            direction = "right";
+            score = 0;
+            initializeGame();
+        }
     }
 });
