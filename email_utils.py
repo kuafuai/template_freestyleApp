@@ -7,6 +7,7 @@ def connect_email():
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login('your_email@gmail.com', 'your_password')
+    return server
 
 # Build email subject
 def build_email_subject(customers):
@@ -20,9 +21,23 @@ def build_email_attachment(customers):
 
 # Send email
 def send_email(subject, attachment):
+    global server
     # Create email message
     message = f"Subject: {subject}\n\n{attachment}"
 
-    # Send email
-    server.sendmail('your_email@gmail.com', 'your_email@gmail.com', message)
-    server.quit()
+    try:
+        # Send email
+        server.sendmail('your_email@gmail.com', 'your_email@gmail.com', message)
+        server.quit()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
+
+# Connect to email server
+server = connect_email()
+
+# Example usage
+customers = {'Name': ['John', 'Jane', 'Mike']}
+subject = build_email_subject(customers)
+attachment = build_email_attachment(customers)
+send_email(subject, attachment)
