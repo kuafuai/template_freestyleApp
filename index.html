@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zhejiang University Food Map</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .map {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        .food-list {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <ul>
+                <li><a href="#" id="campus1">Campus 1</a></li>
+                <li><a href="#" id="campus2">Campus 2</a></li>
+                <li><a href="#" id="campus3">Campus 3</a></li>
+            </ul>
+        </div>
+        <div class="map">
+            <div id="map"></div>
+        </div>
+        <div class="food-list">
+            <ul id="foodLocations"></ul>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Add comments to explain the purpose of each section or element in the HTML code
+
+            // Handle click event for campus links
+            $("#campus1").click(function() {
+                // Display food locations for campus 1
+                displayFoodLocations("Campus 1");
+            });
+
+            $("#campus2").click(function() {
+                // Display food locations for campus 2
+                displayFoodLocations("Campus 2");
+            });
+
+            $("#campus3").click(function() {
+                // Display food locations for campus 3
+                displayFoodLocations("Campus 3");
+            });
+
+            // Function to display food locations based on selected campus
+            function displayFoodLocations(campus) {
+                // Clear previous food locations
+                $("#foodLocations").empty();
+
+                // Get food locations for the selected campus from the server
+                $.ajax({
+                    url: "/api/foodLocations",
+                    method: "GET",
+                    data: { campus: campus },
+                    success: function(response) {
+                        // Iterate over the food locations and add them to the list
+                        response.forEach(function(location) {
+                            $("#foodLocations").append("<li>" + location.name + "</li>");
+                        });
+                    },
+                    error: function() {
+                        alert("Failed to get food locations. Please try again later.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

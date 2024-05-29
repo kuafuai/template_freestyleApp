@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 20%;
+    background-color: #f2f2f2;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar li {
+    padding: 10px;
+}
+
+.map {
+    width: 60%;
+}
+
+.food-list {
+    width: 20%;
+    background-color: #f2f2f2;
+}
+
+#map {
+    height: 400px;
+}
+
+#foodLocations {
+    list-style-type: none;
+    padding: 0;
+}
+
+#foodLocations li {
+    padding: 10px;
+    cursor: pointer;
+}
