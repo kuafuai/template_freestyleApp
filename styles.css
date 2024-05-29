@@ -1,8 +1,21 @@
 /* styles.css */
 .scroll-window {
     /* Add styles for the scroll window */
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
 .entry {
     /* Add styles for the entry images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
 }

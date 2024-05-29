@@ -1,28 +1,45 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>磐安旅游</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="jssemantic-ui.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
     <div class="scroll-window">
-        <!-- Add code to display the promotional video and images -->
+        <video controls>
+            <source src="promotional_video.mp4" type="video/mp4">
+        </video>
+        <img src="image1.jpg" alt="Promotional Image 1">
+        <img src="image2.jpg" alt="Promotional Image 2">
+        <img src="image3.jpg" alt="Promotional Image 3">
     </div>
     <div class="entry">
-        <img src="tour_customization.png" alt="旅游线路定制" onclick="goToTourCustomization()">
-        <img src="smart_guide.png" alt="智慧导览" onclick="goToSmartGuide()">
+        <img src="tour_customization.png" alt="旅游线路定制" id="tourCustomization">
+        <img src="smart_guide.png" alt="智慧导览" id="smartGuide">
     </div>
 
     <script>
+        document.getElementById("tourCustomization").addEventListener("click", goToTourCustomization);
+        document.getElementById("smartGuide").addEventListener("click", goToSmartGuide);
+
         function goToTourCustomization() {
-            // Add code to navigate to tour_customization.html
-            window.location.href = "tour_customization.html";
+            try {
+                window.location.href = "tour_customization.html";
+            } catch (error) {
+                console.error("Error navigating to tour_customization.html:", error);
+            }
         }
 
         function goToSmartGuide() {
-            // Add code to navigate to smart_guide.html
-            window.location.href = "smart_guide.html";
+            try {
+                window.location.href = "smart_guide.html";
+            } catch (error) {
+                console.error("Error navigating to smart_guide.html:", error);
+            }
         }
     </script>
 </body>

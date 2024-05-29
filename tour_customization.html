@@ -3,48 +3,100 @@
 <html>
 <head>
     <title>旅游线路定制</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' type='text/css' href='styles.css'>
 </head>
 <body>
     <h1>旅游线路定制</h1>
     <form>
-        <label for="personnel">出行人员情况:</label>
-        <input type="number" id="personnel" name="personnel" required>
+        <label for='personnel'>出行人员情况:</label>
+        <input type='number' id='personnel' name='personnel' required>
         <br>
-        <label for="member-type">成员类型:</label>
-        <select id="member-type" name="member-type" required>
-            <option value="young">年轻人</option>
-            <option value="family">家庭团</option>
-            <option value="elderly">老年团</option>
+        <label for='member-type'>成员类型:</label>
+        <select id='member-type' name='member-type' required>
+            <option value='young'>年轻人</option>
+            <option value='family'>家庭团</option>
+            <option value='elderly'>老年团</option>
         </select>
         <br>
-        <label for="days">游玩天数:</label>
-        <input type="number" id="days" name="days" required>
+        <label for='days'>游玩天数:</label>
+        <input type='number' id='days' name='days' required>
         <br>
-        <label for="scenic-spot">游览景点特点:</label>
-        <select id="scenic-spot" name="scenic-spot" required>
-            <option value="natural">自然风光</option>
-            <option value="summer">夏日嬉水</option>
-            <option value="cultural">人文景观</option>
-            <option value="camping">露营烧烤</option>
+        <label for='scenic-spot'>游览景点特点:</label>
+        <select id='scenic-spot' name='scenic-spot' required>
+            <option value='natural'>自然风光</option>
+            <option value='summer'>夏日嬉水</option>
+            <option value='cultural'>人文景观</option>
+            <option value='camping'>露营烧烤</option>
         </select>
         <br>
-        <button type="button" onclick="calculateRoute()">计算</button>
+        <button type='button' onclick='calculateRoute()'>计算</button>
     </form>
 
     <script>
         function calculateRoute() {
-            // Add code to calculate the route and cost based on user input
-            const personnel = document.getElementById("personnel").value;
-            const memberType = document.getElementById("member-type").value;
-            const days = document.getElementById("days").value;
-            const scenicSpot = document.getElementById("scenic-spot").value;
+            const personnel = document.getElementById('personnel').value;
+            const memberType = document.getElementById('member-type').value;
+            const days = document.getElementById('days').value;
+            const scenicSpot = document.getElementById('scenic-spot').value;
 
-            // Add code to calculate the route and cost based on the user's input
-            // ...
+            // Validate the input values
+            if (personnel <= 0 || days <= 0) {
+                alert('人员数量和天数必须是正整数');
+                return;
+            }
 
-            // Redirect to the result page
-            window.location.href = "tour_result.html";
+            // Calculate the route and cost based on the user's input
+            let route = '';
+            let cost = 0;
+
+            // Add logic to calculate the route and cost based on the user's input
+            if (memberType === 'young') {
+                if (scenicSpot === 'natural') {
+                    route = 'A';
+                    cost = personnel * 1000 * days;
+                } else if (scenicSpot === 'summer') {
+                    route = 'B';
+                    cost = personnel * 1200 * days;
+                } else if (scenicSpot === 'cultural') {
+                    route = 'C';
+                    cost = personnel * 1500 * days;
+                } else if (scenicSpot === 'camping') {
+                    route = 'D';
+                    cost = personnel * 800 * days;
+                }
+            } else if (memberType === 'family') {
+                if (scenicSpot === 'natural') {
+                    route = 'E';
+                    cost = personnel * 1500 * days;
+                } else if (scenicSpot === 'summer') {
+                    route = 'F';
+                    cost = personnel * 1800 * days;
+                } else if (scenicSpot === 'cultural') {
+                    route = 'G';
+                    cost = personnel * 2000 * days;
+                } else if (scenicSpot === 'camping') {
+                    route = 'H';
+                    cost = personnel * 1000 * days;
+                }
+            } else if (memberType === 'elderly') {
+                if (scenicSpot === 'natural') {
+                    route = 'I';
+                    cost = personnel * 1200 * days;
+                } else if (scenicSpot === 'summer') {
+                    route = 'J';
+                    cost = personnel * 1500 * days;
+                } else if (scenicSpot === 'cultural') {
+                    route = 'K';
+                    cost = personnel * 1800 * days;
+                } else if (scenicSpot === 'camping') {
+                    route = 'L';
+                    cost = personnel * 900 * days;
+                }
+            }
+
+            // Redirect to the result page with the calculated route and cost
+            window.location.href = 'tour_result.html?route=' + encodeURIComponent(route) + '&cost=' + encodeURIComponent(cost);
         }
     </script>
 </body>
