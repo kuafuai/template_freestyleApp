@@ -1,0 +1,20 @@
+/* style.css */
+
+/* Set the background color and border of the game scene */
+#gameScene {
+    background-color: #000;
+    border: 1px solid #fff;
+}
+
+/* Add styles for the score and game over elements */
+#score {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#gameOver {
+    color: #fff;
+    font-size: 36px;
+    display: none;
+}
