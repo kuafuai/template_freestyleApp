@@ -9,19 +9,26 @@
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <div class="scroll-window">
-        <video controls>
-            <source src="promotional_video.mp4" type="video/mp4">
-        </video>
-        <img src="image1.jpg" alt="Promotional Image 1">
-        <img src="image2.jpg" alt="Promotional Image 2">
-        <img src="image3.jpg" alt="Promotional Image 3">
+    <div class="video-container">
+        <!-- Display the promotional video -->
+        <video src="promo_video.mp4" autoplay loop muted></video>
     </div>
-    <div class="entry">
-        <img src="tour_customization.png" alt="旅游线路定制" id="tourCustomization">
-        <img src="smart_guide.png" alt="智慧导览" id="smartGuide">
+    <div class="image-container">
+        <!-- Display the promotional images -->
+        <img src="promo_image1.jpg" alt="Promo Image 1">
+        <img src="promo_image2.jpg" alt="Promo Image 2">
+        <img src="promo_image3.jpg" alt="Promo Image 3">
     </div>
-
+    <div class="entry-container">
+        <!-- Entry point for tour customization -->
+        <a href="tour_customization.html">
+            <img src="tour_customization.jpg" alt="Tour Customization">
+        </a>
+        <!-- Entry point for smart guide -->
+        <a href="smart_guide.html">
+            <img src="smart_guide.jpg" alt="Smart Guide">
+        </a>
+    </div>
     <script>
         document.getElementById("tourCustomization").addEventListener("click", goToTourCustomization);
         document.getElementById("smartGuide").addEventListener("click", goToSmartGuide);

@@ -1,16 +1,16 @@
-<!-- tour_customization.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>旅游线路定制</title>
     <meta charset='UTF-8'>
     <link rel='stylesheet' type='text/css' href='styles.css'>
+    <script src='tour_customization.js'></script>
 </head>
 <body>
     <h1>旅游线路定制</h1>
-    <form>
-        <label for='personnel'>出行人员情况:</label>
-        <input type='number' id='personnel' name='personnel' required>
+    <form id='tour-form'>
+        <label for='personnel'>出行人员数量:</label>
+        <input type='number' id='personnel' name='personnel' min='1' required>
         <br>
         <label for='member-type'>成员类型:</label>
         <select id='member-type' name='member-type' required>
@@ -20,25 +20,29 @@
         </select>
         <br>
         <label for='days'>游玩天数:</label>
-        <input type='number' id='days' name='days' required>
+        <input type='number' id='days' name='days' min='1' required>
         <br>
-        <label for='scenic-spot'>游览景点特点:</label>
-        <select id='scenic-spot' name='scenic-spot' required>
+        <label for='scenic-type'>游览景点特点:</label>
+        <select id='scenic-type' name='scenic-type' required>
             <option value='natural'>自然风光</option>
             <option value='summer'>夏日嬉水</option>
             <option value='cultural'>人文景观</option>
             <option value='camping'>露营烧烤</option>
         </select>
         <br>
-        <button type='button' onclick='calculateRoute()'>计算</button>
+        <button type='submit'>计算</button>
     </form>
+
+    <div id='tour-results'>
+        <!-- Display the recommended tour plans and routes -->
+    </div>
 
     <script>
         function calculateRoute() {
             const personnel = document.getElementById('personnel').value;
             const memberType = document.getElementById('member-type').value;
             const days = document.getElementById('days').value;
-            const scenicSpot = document.getElementById('scenic-spot').value;
+            const scenicSpot = document.getElementById('scenic-type').value;
 
             // Validate the input values
             if (isNaN(personnel) || isNaN(days) || personnel <= 0 || days <= 0) {
