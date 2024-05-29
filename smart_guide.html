@@ -9,8 +9,8 @@
 <body>
     <h1>智慧导览</h1>
     <div id="location"></div>
-    <button onclick="startGuide()">开始导览</button>
-    <button onclick="checkIn()">打卡</button>
+    <button id="startGuideBtn">开始导览</button>
+    <button id="checkInBtn">打卡</button>
 
     <script src="script.js"></script>
 </body>
@@ -20,9 +20,16 @@
 function startGuide() {
     // Add code to start the guide and trigger the audio based on user location
     // ...
+    const locationDiv = document.getElementById("location");
+    locationDiv.innerHTML = "Guide started";
 }
 
 function checkIn() {
     // Add code to check in the user at the current location and provide rewards
     // ...
+    const locationDiv = document.getElementById("location");
+    locationDiv.innerHTML = "Checked in";
 }
+
+document.getElementById("startGuideBtn").addEventListener("click", startGuide);
+document.getElementById("checkInBtn").addEventListener("click", checkIn);

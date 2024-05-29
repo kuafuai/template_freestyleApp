@@ -41,7 +41,7 @@
             const scenicSpot = document.getElementById('scenic-spot').value;
 
             // Validate the input values
-            if (personnel <= 0 || days <= 0) {
+            if (isNaN(personnel) || isNaN(days) || personnel <= 0 || days <= 0) {
                 alert('人员数量和天数必须是正整数');
                 return;
             }
@@ -51,48 +51,52 @@
             let cost = 0;
 
             // Add logic to calculate the route and cost based on the user's input
-            if (memberType === 'young') {
-                if (scenicSpot === 'natural') {
-                    route = 'A';
-                    cost = personnel * 1000 * days;
-                } else if (scenicSpot === 'summer') {
-                    route = 'B';
-                    cost = personnel * 1200 * days;
-                } else if (scenicSpot === 'cultural') {
-                    route = 'C';
-                    cost = personnel * 1500 * days;
-                } else if (scenicSpot === 'camping') {
-                    route = 'D';
-                    cost = personnel * 800 * days;
-                }
-            } else if (memberType === 'family') {
-                if (scenicSpot === 'natural') {
-                    route = 'E';
-                    cost = personnel * 1500 * days;
-                } else if (scenicSpot === 'summer') {
-                    route = 'F';
-                    cost = personnel * 1800 * days;
-                } else if (scenicSpot === 'cultural') {
-                    route = 'G';
-                    cost = personnel * 2000 * days;
-                } else if (scenicSpot === 'camping') {
-                    route = 'H';
-                    cost = personnel * 1000 * days;
-                }
-            } else if (memberType === 'elderly') {
-                if (scenicSpot === 'natural') {
-                    route = 'I';
-                    cost = personnel * 1200 * days;
-                } else if (scenicSpot === 'summer') {
-                    route = 'J';
-                    cost = personnel * 1500 * days;
-                } else if (scenicSpot === 'cultural') {
-                    route = 'K';
-                    cost = personnel * 1800 * days;
-                } else if (scenicSpot === 'camping') {
-                    route = 'L';
-                    cost = personnel * 900 * days;
-                }
+            switch (memberType) {
+                case 'young':
+                    if (scenicSpot === 'natural') {
+                        route = 'A';
+                        cost = personnel * 1000 * days;
+                    } else if (scenicSpot === 'summer') {
+                        route = 'B';
+                        cost = personnel * 1200 * days;
+                    } else if (scenicSpot === 'cultural') {
+                        route = 'C';
+                        cost = personnel * 1500 * days;
+                    } else if (scenicSpot === 'camping') {
+                        route = 'D';
+                        cost = personnel * 800 * days;
+                    }
+                    break;
+                case 'family':
+                    if (scenicSpot === 'natural') {
+                        route = 'E';
+                        cost = personnel * 1500 * days;
+                    } else if (scenicSpot === 'summer') {
+                        route = 'F';
+                        cost = personnel * 1800 * days;
+                    } else if (scenicSpot === 'cultural') {
+                        route = 'G';
+                        cost = personnel * 2000 * days;
+                    } else if (scenicSpot === 'camping') {
+                        route = 'H';
+                        cost = personnel * 1000 * days;
+                    }
+                    break;
+                case 'elderly':
+                    if (scenicSpot === 'natural') {
+                        route = 'I';
+                        cost = personnel * 1200 * days;
+                    } else if (scenicSpot === 'summer') {
+                        route = 'J';
+                        cost = personnel * 1500 * days;
+                    } else if (scenicSpot === 'cultural') {
+                        route = 'K';
+                        cost = personnel * 1800 * days;
+                    } else if (scenicSpot === 'camping') {
+                        route = 'L';
+                        cost = personnel * 900 * days;
+                    }
+                    break;
             }
 
             // Redirect to the result page with the calculated route and cost
