@@ -1,89 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>山海经传说故事</title>
-  <link rel="stylesheet" type="text/css" href="jssemantic-ui.css">
+  <title>储能订单系统</title>
   <link rel="stylesheet" type="text/css" href="semantic.min.css">
-  <script src="jquery.js"></script>
   <script src="main.js"></script>
-  <script>
-    // JavaScript code to handle the search functionality, populate the story list, display the story detail, and handle the back button functionality
-
-    // Function to handle the search functionality
-    function searchMonsters() {
-      var searchInput = document.getElementById("searchInput").value;
-      var monsterList = document.getElementById("monsterList");
-      monsterList.innerHTML = ""; // Clear the monster list
-
-      // Perform the search and populate the monster list
-      // Replace this code with the actual implementation of the search functionality
-      var monsters = getMonsters(); // Assuming getMonsters() is a function that returns an array of monsters
-      for (var i = 0; i < monsters.length; i++) {
-        var monster = monsters[i];
-        if (monster.name.includes(searchInput)) {
-          var listItem = document.createElement("div");
-          listItem.className = "item";
-          listItem.innerHTML = monster.name;
-          monsterList.appendChild(listItem);
-        }
-      }
-    }
-
-    // Function to display the monster detail
-    function showMonsterDetail(monsterName) {
-      var monsterDetail = document.getElementById("monsterDetail");
-      monsterDetail.innerHTML = ""; // Clear the monster detail
-
-      // Display the monster detail
-      // Replace this code with the actual implementation of displaying the monster detail
-      var monster = getMonsterByName(monsterName); // Assuming getMonsterByName() is a function that returns the monster object based on the name
-      var monsterContent = document.createElement("div");
-      monsterContent.innerHTML = monster.description;
-      monsterDetail.appendChild(monsterContent);
-    }
-
-    // Function to handle the back button functionality
-    function goBack() {
-      var monsterDetail = document.getElementById("monsterDetail");
-      monsterDetail.innerHTML = ""; // Clear the monster detail
-    }
-
-    // Event listener for the search input
-    document.getElementById("searchInput").addEventListener("input", searchMonsters);
-
-    // Event listener for the monster list
-    document.getElementById("monsterList").addEventListener("click", function(event) {
-      var target = event.target;
-      if (target && target.nodeName === "DIV" && target.className === "item") {
-        showMonsterDetail(target.innerHTML);
-      }
-    });
-
-    // Event listener for the back button
-    document.getElementById("backButton").addEventListener("click", goBack);
-
-    // Function to get the monsters
-    function getMonsters() {
-      // Replace this code with the actual implementation of getting the monsters
-      return [
-        { name: "Monster 1", description: "Description of Monster 1" },
-        { name: "Monster 2", description: "Description of Monster 2" },
-        { name: "Monster 3", description: "Description of Monster 3" }
-      ];
-    }
-
-    // Function to get the monster object based on the name
-    function getMonsterByName(name) {
-      // Replace this code with the actual implementation of getting the monster object based on the name
-      var monsters = getMonsters();
-      for (var i = 0; i < monsters.length; i++) {
-        if (monsters[i].name === name) {
-          return monsters[i];
-        }
-      }
-      return null;
-    }
-  </script>
 </head>
 <body>
   <div class="ui three column grid">
@@ -95,14 +15,14 @@
       <!-- Monster list section -->
       <div class="ui segment">
         <h2 class="ui header">妖怪列表</h2>
-        <div id="monsterList" class="ui divided list"></div>
+        <div id="monster-list"></div>
       </div>
     </div>
     <div class="column">
       <!-- Monster details section -->
       <div class="ui segment">
         <h2 class="ui header">妖怪详细信息</h2>
-        <div id="monsterDetail"></div>
+        <div id="monster-details"></div>
       </div>
     </div>
   </div>

@@ -1,29 +1,3 @@
-// main.js
-$(document).ready(function() {
-  // Load the map
-  loadMap();
-
-  // Load the monster list
-  loadMonsterList();
-
-  // Search button click event
-  $("#searchButton").click(function() {
-    var keyword = $("#searchInput").val();
-    showMonsterDetails(keyword);
-  });
-
-  // Monster title click event
-  $(document).on("click", ".monsterTitle", function() {
-    var monsterId = $(this).data("id");
-    showMonsterDetails(monsterId);
-  });
-
-  // Back button click event
-  $("#backButton").click(function() {
-    showMonsterList();
-  });
-});
-
 // Load the map
 function loadMap() {
   // TODO: Implement the logic to load the map
@@ -39,9 +13,9 @@ function showMonsterDetails(monsterId) {
   // TODO: Implement the logic to show the details of the selected monster
 }
 
-// Show monster list
-function showMonsterList() {
-  // TODO: Implement the logic to show the list of monsters
+// Add event listeners
+function addEventListeners() {
+  // TODO: Implement the logic to add event listeners for clicking on monsters in the list and on the map
 }
 
 // Initialize the page
