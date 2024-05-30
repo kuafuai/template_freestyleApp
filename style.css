@@ -1,14 +1,41 @@
-/* Define the style for the background image div */
-#background-image {
-  /* Set the background image to the Zhejiang University's main building */
-  background-image: url("path/to/zju-main-building.jpg");
-  /* Set the background image to cover the entire div */
-  background-size: cover;
-  /* Set the background image to be centered within the div */
-  background-position: center;
-  /* Set the background image to repeat if necessary */
-  background-repeat: no-repeat;
-  /* Set the div to take up the entire viewport */
-  width: 100vw;
-  height: 100vh;
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 20%;
+    background-color: #f2f2f2;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar li {
+    padding: 10px;
+}
+
+.map {
+    width: 60%;
+}
+
+.food-list {
+    width: 20%;
+    background-color: #f2f2f2;
+}
+
+#map {
+    height: 400px;
+}
+
+#foodLocations {
+    list-style-type: none;
+    padding: 0;
+}
+
+#foodLocations li {
+    padding: 10px;
+    cursor: pointer;
 }
