@@ -1,0 +1,35 @@
+<!-- This file is responsible for creating the layout of the login page -->
+
+<!-- Include the necessary CSS and JavaScript files -->
+<link rel="stylesheet" href="./css/style.css">
+<script src="./js/main.js"></script>
+
+<!-- Create the layout of the login page -->
+<div class="container">
+  <h1>Freight Logistics Management System</h1>
+  <div class="login-form">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="verificationCode" placeholder="Verification Code">
+    <button id="loginButton">Login</button>
+    <p id="errorMessage"></p>
+  </div>
+</div>
+
+<script>
+  // Add event listener to the login button
+  document.getElementById("loginButton").addEventListener("click", function() {
+    // Get the values from the input fields
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var verificationCode = document.getElementById("verificationCode").value;
+    
+    // Validate the input fields
+    if (username === "" || password === "" || verificationCode === "") {
+      document.getElementById("errorMessage").innerHTML = "Please fill in all fields.";
+    } else {
+      // Perform login logic here
+      // ...
+    }
+  });
+</script>

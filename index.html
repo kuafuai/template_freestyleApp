@@ -1,0 +1,49 @@
+<!-- This file is responsible for creating the layout of the backend homepage -->
+
+<!-- Include the necessary CSS and JavaScript files -->
+<link rel="stylesheet" href="./css/style.css">
+<script src="./js/main.js"></script>
+
+<!-- Create the layout of the backend homepage -->
+<div class="container">
+  <div class="sidebar">
+    <!-- Menu list -->
+    <ul>
+      <li><a href="#">Order Management</a></li>
+      <li><a href="#">Driver Management</a></li>
+      <li><a href="#">Contract Template Configuration</a></li>
+      <li><a href="#">Order QR Code Template Configuration</a></li>
+      <li><a href="#">System Management</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <!-- Statistics data -->
+    <h2>Statistics</h2>
+    <div class="statistics">
+      <div class="statistic">
+        <h3>Pending Orders</h3>
+        <p id="pendingOrdersCount"></p>
+      </div>
+      <div class="statistic">
+        <h3>Total Orders</h3>
+        <p id="totalOrdersCount"></p>
+      </div>
+      <div class="statistic">
+        <h3>Ongoing Orders</h3>
+        <p id="ongoingOrdersCount"></p>
+      </div>
+      <div class="statistic">
+        <h3>Completed Orders</h3>
+        <p id="completedOrdersCount"></p>
+      </div>
+      <div class="statistic">
+        <h3>Total Drivers</h3>
+        <p id="totalDriversCount"></p>
+      </div>
+      <div class="statistic">
+        <h3>New Drivers</h3>
+        <p id="newDriversCount"></p>
+      </div>
+    </div>
+  </div>
+</div>
