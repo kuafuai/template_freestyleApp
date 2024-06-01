@@ -1,0 +1,84 @@
+<!-- main.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Equipment Marketplace</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search by device type">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="device-list">
+            <ul id="device-list"></ul>
+        </div>
+        <div class="device-details">
+            <h2 id="device-name"></h2>
+            <p id="device-description"></p>
+            <p id="device-price"></p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the necessary elements
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const deviceList = document.getElementById('device-list');
+        const deviceName = document.getElementById('device-name');
+        const deviceDescription = document.getElementById('device-description');
+        const devicePrice = document.getElementById('device-price');
+
+        // Define an array of devices
+        const devices = [
+            {
+                name: 'Device 1',
+                description: 'This is the description of Device 1.',
+                price: '$100'
+            },
+            {
+                name: 'Device 2',
+                description: 'This is the description of Device 2.',
+                price: '$200'
+            },
+            {
+                name: 'Device 3',
+                description: 'This is the description of Device 3.',
+                price: '$300'
+            }
+        ];
+
+        // Function to display the device list
+        function displayDeviceList() {
+            deviceList.innerHTML = '';
+            devices.forEach(device => {
+                const li = document.createElement('li');
+                li.textContent = device.name;
+                li.addEventListener('click', () => {
+                    displayDeviceDetails(device);
+                });
+                deviceList.appendChild(li);
+            });
+        }
+
+        // Function to display the device details
+        function displayDeviceDetails(device) {
+            deviceName.textContent = device.name;
+            deviceDescription.textContent = device.description;
+            devicePrice.textContent = device.price;
+        }
+
+        // Event listener for search button click
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredDevices = devices.filter(device => device.name.toLowerCase().includes(searchTerm));
+            displayDeviceList(filteredDevices);
+        });
+
+        // Display the initial device list
+        displayDeviceList();
+    </script>
+</body>
+</html>

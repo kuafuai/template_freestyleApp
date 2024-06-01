@@ -1,0 +1,108 @@
+/* main.css */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.search-bar {
+    width: 20%;
+}
+
+.device-list {
+    width: 40%;
+}
+
+.device-details {
+    width: 35%;
+}
+
+.device-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.device-card img {
+    width: 100%;
+    height: auto;
+}
+
+.buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
+
+/* Additional styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.device-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.device-list-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.device-list-item .device-info {
+    flex-grow: 1;
+}
+
+.device-list-item .device-name {
+    font-weight: bold;
+}
+
+.device-list-item .device-price {
+    color: #4CAF50;
+}
+
+.device-details-container {
+    padding: 10px;
+}
+
+.device-details-container h2 {
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.device-details-container p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.device-details-container .buy-button {
+    margin-top: 20px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
