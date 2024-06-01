@@ -1,0 +1,34 @@
+<!-- This file is responsible for setting up the game interface and importing necessary scripts -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Match</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-board"></div>
+        <div id="score-container">
+            <span id="score-label">Score:</span>
+            <span id="score-value">0</span>
+        </div>
+        <div id="moves-container">
+            <span id="moves-label">Moves:</span>
+            <span id="moves-value">0</span>
+        </div>
+        <div id="target-container">
+            <span id="target-label">Target:</span>
+            <span id="target-value">0</span>
+        </div>
+        <button id="restart-button">Restart</button>
+    </div>
+
+    <script src="./pokemon.js"></script>
+    <script src="./game.js"></script>
+    <script src="./animation.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
