@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hawaii Introduction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px;
+    }
+
+    .card {
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex-basis: 30%;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .related-links {
+      margin-bottom: 20px;
+    }
+
+    .related-links h3 {
+      margin-top: 0;
+    }
+
+    .advertisements img {
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+
+      .card {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <div class="card">
+      <h2>Welcome to Hawaii</h2>
+      <p>Hawaii is a beautiful island paradise located in the Pacific Ocean.</p>
+    </div>
+
+    <div class="card">
+      <h2>Things to Do</h2>
+      <ul>
+        <li>Relax on the stunning beaches</li>
+        <li>Explore the lush rainforests</li>
+        <li>Visit the historic sites</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Related Links</h2>
+      <div class="related-links">
+        <h3>Visit Hawaii Tourism Website</h3>
+        <a href="https://www.gohawaii.com/">https://www.gohawaii.com/</a>
+      </div>
+      <div class="related-links">
+        <h3>Learn about Hawaiian Culture</h3>
+        <a href="https://www.hawaii.com/discover/hawaiian-culture/">https://www.hawaii.com/discover/hawaiian-culture/</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="advertisements">
+    <img src="advertisement1.jpg" alt="Advertisement 1">
+    <img src="advertisement2.jpg" alt="Advertisement 2">
+  </div>
+</body>
+</html>
