@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Invoice</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Upload Invoice</h1>
+    <form action="/upload_invoice" method="POST" onsubmit="return validateForm()">
+        <label for="content">Content:</label>
+        <input type="text" id="content" name="content" required><br><br>
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" required><br><br>
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="number" required><br><br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var content = document.getElementById("content").value;
+            var date = document.getElementById("date").value;
+            var number = document.getElementById("number").value;
+            var amount = document.getElementById("amount").value;
+
+            if (content === "") {
+                alert("Content field cannot be empty");
+                return false;
+            }
+
+            if (!isValidDate(date)) {
+                alert("Invalid date format. Please enter a valid date (YYYY-MM-DD)");
+                return false;
+            }
+
+            if (!isPositiveInteger(number)) {
+                alert("Number field must be a positive integer");
+                return false;
+            }
+
+            if (!isPositiveNumber(amount)) {
+                alert("Amount field must be a positive number");
+                return false;
+            }
+
+            return true;
+        }
+
+        function isValidDate(date) {
+            var pattern = /^\d{4}-\d{2}-\d{2}$/;
+            return pattern.test(date);
+        }
+
+        function isPositiveInteger(number) {
+            return Number.isInteger(Number(number)) && Number(number) > 0;
+        }
+
+        function isPositiveNumber(amount) {
+            return Number(amount) > 0;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Invoices</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin-right: 5px;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editButtons = document.querySelectorAll('.edit-button');
+            var deleteButtons = document.querySelectorAll('.delete-button');
+            var calculateButton = document.getElementById('calculate-button');
+            var totalAmount = document.getElementById('totalAmount');
+
+            editButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var invoiceId = button.dataset.invoiceId;
+                    editInvoice(invoiceId);
+                });
+            });
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var invoiceId = button.dataset.invoiceId;
+                    deleteInvoice(invoiceId);
+                });
+            });
+
+            calculateButton.addEventListener('click', function() {
+                var confirmCalculate = confirm('Are you sure you want to calculate the total amount?');
+                if (confirmCalculate) {
+                    calculateTotalAmount();
+                }
+            });
+
+            function editInvoice(invoiceId) {
+                // Implement the edit invoice functionality
+                console.log("Edit invoice with ID: " + invoiceId);
+            }
+
+            function deleteInvoice(invoiceId) {
+                // Implement the delete invoice functionality
+                console.log("Delete invoice with ID: " + invoiceId);
+            }
+
+            function calculateTotalAmount() {
+                // Implement the calculate total amount functionality
+                var invoices = document.querySelectorAll('.invoice-amount');
+                var total = 0;
+                invoices.forEach(function(invoice) {
+                    total += parseFloat(invoice.textContent);
+                });
+                totalAmount.textContent = "Total Amount: " + total.toFixed(2);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>View Invoices</h1>
+    <table>
+        <tr>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Number</th>
+            <th>Amount</th>
+            <th>Actions</th>
+        </tr>
+        {% for invoice in invoices %}
+        <tr>
+            <td>{{ invoice[1] }}</td>
+            <td>{{ invoice[2] }}</td>
+            <td>{{ invoice[3] }}</td>
+            <td class="invoice-amount">{{ invoice[4] }}</td>
+            <td>
+                <button class="edit-button" data-invoice-id="{{ invoice[0] }}">Edit</button>
+                <button class="delete-button" data-invoice-id="{{ invoice[0] }}">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button id="calculate-button">Calculate Total Amount</button>
+    <p id="totalAmount"></p>
+</body>
+</html>
