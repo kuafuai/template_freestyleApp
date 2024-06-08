@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+#data-container {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px;
+}
+
+h2 {
+    color: #333333;
+}
+
+p {
+    color: #666666;
+}
+
+#emergency-contact-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
