@@ -1,0 +1,59 @@
+/* style.css */
+/* Game container */
+.game-container {
+    margin: 20px auto;
+    width: 400px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Timer */
+#timer {
+    font-size: 24px;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+}
+
+/* Grid cell */
+.cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Cell states */
+.cell.clicked {
+    background-color: #fff;
+}
+
+.cell.mine {
+    background-color: #f00;
+    color: #fff;
+}
+
+.cell.flag {
+    background-color: #00f;
+    color: #fff;
+}
+
+.cell.question {
+    background-color: #0f0;
+    color: #fff;
+}
