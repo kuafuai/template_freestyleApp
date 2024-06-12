@@ -1,0 +1,30 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="snake"></div>
+        <div id="food"></div>
+    </div>
+    <div id="score-container">
+        <div id="current-score">Current Score: 0</div>
+        <div id="high-score">High Score: 0</div>
+    </div>
+    <div id="level-container">
+        <label for="level-select">Select Level:</label>
+        <select id="level-select">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+    <div id="leaderboard-container">
+        <button id="leaderboard-button">Leaderboard</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

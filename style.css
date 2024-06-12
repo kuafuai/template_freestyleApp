@@ -1,0 +1,40 @@
+/* style.css */
+#game-container {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    position: relative;
+}
+
+#snake {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+}
+
+#food {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+}
+
+#score-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#level-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#leaderboard-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#leaderboard-button {
+    padding: 10px 20px;
+}
