@@ -1,0 +1,64 @@
+/* This is the CSS file for the Anhui University Zhejiang Alumni Association promotional webpage */
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Navigation */
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav__item {
+    margin-bottom: 10px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Content */
+.content {
+    width: 60%;
+    padding: 20px;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 40px;
+}
+
+/* Related Links */
+.related-links {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.related-links__item {
+    margin-bottom: 10px;
+}
+
+.related-links__link {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Advertisement */
+.advertisement img {
+    width: 100%;
+    height: auto;
+}
