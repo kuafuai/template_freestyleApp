@@ -1,0 +1,30 @@
+/* style.css */
+/* Set game canvas styles */
+#gameCanvas {
+    background-color: #000;
+    border: 1px solid #fff;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+/* Set snake styles */
+.snake {
+    background-color: #0f0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+/* Set food styles */
+.food {
+    background-color: #f00;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+/* Set game score and length styles */
+#score, #length {
+    font-weight: bold;
+}

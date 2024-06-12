@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="gameCanvas"></div>
+    <script>
+        // Display game title and instructions
+        document.getElementById("gameCanvas").innerHTML = `
+            <h1>贪吃蛇游戏</h1>
+            <p>使用W、A、S、D键控制贪吃蛇的移动方向。</p>
+        `;
+        
+        // Display game score and length
+        document.getElementById("gameCanvas").innerHTML += `
+            <p>得分: <span id="score">0</span></p>
+            <p>长度: <span id="length">1</span></p>
+        `;
+        
+        // Listen for keyboard events to control snake movement
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "w") {
+                // Move snake up
+                moveSnake("up");
+            } else if (event.key === "a") {
+                // Move snake left
+                moveSnake("left");
+            } else if (event.key === "s") {
+                // Move snake down
+                moveSnake("down");
+            } else if (event.key === "d") {
+                // Move snake right
+                moveSnake("right");
+            }
+        });
+    </script>
+</body>
+</html>
