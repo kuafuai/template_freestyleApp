@@ -1,0 +1,25 @@
+/* style.css */
+
+/* Set the game container size and position */
+#game-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border: 1px solid black;
+}
+
+/* Set the snake's initial position and style */
+#snake {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: green;
+}
+
+/* Set the food's initial position and style */
+#food {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: red;
+}
