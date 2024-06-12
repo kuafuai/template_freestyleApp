@@ -37,3 +37,4 @@ if meeting_record is not None:
         logging.error("Failed to connect to WeChat interface")
 else:
     logging.error("Failed to read meeting record file")
+

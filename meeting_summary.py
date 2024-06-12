@@ -1,15 +1,15 @@
 # meeting_summary.py
 
 # Generate meeting summary
-def generate_summary(parsed_data):
+def generate_summary(parsed_record):
     try:
-        # Check if parsed_data is valid
-        if not parsed_data:
-            raise ValueError("Invalid input: parsed_data is empty")
+        # Check for invalid input
+        if not parsed_record:
+            raise ValueError("Invalid input: parsed_record is empty")
 
         summary = ""
 
-        # Logic to generate meeting summary based on parsed_data
+        # Logic to generate meeting summary based on parsed_record
         # ...
 
         return summary
