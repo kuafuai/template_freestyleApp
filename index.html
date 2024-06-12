@@ -1,48 +1,42 @@
-<!-- index.html -->
+<!-- The purpose of this file is to create the structure and content of a webpage for a "储能订单系统" (Energy Storage Order System).
+     It contains HTML markup and uses the Semantic UI library for styling. -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>贪吃蛇游戏</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+  <title>储能订单系统</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <style>
+    /* Define the style of the game area */
+    .game-area {
+      width: 400px;
+      height: 400px;
+      background-color: blue;
+    }
+    
+    /* Define the style of the scoreboard */
+    .scoreboard {
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    /* Define the style of the start button */
+    .start-button {
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div id="gameCanvas"></div>
-    <script src="game.js"></script>
+  <div class="ui container">
+    <h1 class="ui header">储能订单系统</h1>
+    <div class="game-area"></div>
+    <div class="scoreboard">Score: <span id="score">0</span></div>
+    <div class="start-button">
+      <button class="ui primary button" id="start-button">Start</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
-
-<!-- game.js -->
-// Display game title and instructions
-document.getElementById("gameCanvas").innerHTML = `
-    <h1>贪吃蛇游戏</h1>
-    <p>使用W、A、S、D键控制贪吃蛇的移动方向。</p>
-`;
-
-// Display game score and length
-document.getElementById("gameCanvas").innerHTML += `
-    <p>得分: <span id="gameScore">0</span></p>
-    <p>长度: <span id="gameLength">1</span></p>
-`;
-
-// Listen for keyboard events to control snake movement
-document.addEventListener("keydown", function(event) {
-    if (event.key === "w") {
-        // Move snake up
-        moveSnake("up");
-    } else if (event.key === "a") {
-        // Move snake left
-        moveSnake("left");
-    } else if (event.key === "s") {
-        // Move snake down
-        moveSnake("down");
-    } else if (event.key === "d") {
-        // Move snake right
-        moveSnake("right");
-    }
-});
-
-function moveSnake(direction) {
-    // Implementation details of moving the snake
-    // ...
-}
