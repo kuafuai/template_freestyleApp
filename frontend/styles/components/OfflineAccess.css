@@ -1,0 +1,53 @@
+/* Define the styles for the OfflineAccess component */
+
+.offline-access {
+  margin: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.offline-access h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.offline-access p {
+  font-size: 16px;
+  color: #666;
+}
+
+.offline-access .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.offline-access .button:hover {
+  background-color: #0056b3;
+}
+
+.offline-access .button:active {
+  background-color: #004080;
+}
+
+.offline-access .button:focus {
+  outline: none;
+}
+
+.offline-access .button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.offline-access .button:disabled:hover {
+  background-color: #ccc;
+}

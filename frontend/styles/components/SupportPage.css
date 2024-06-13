@@ -1,0 +1,9 @@
+/* Define the styles for the SupportPage component */
+
+import { css } from 'jssemantic-ui';
+
+const supportPageStyles = css`
+  /* Add your CSS styles for the SupportPage component here */
+`;
+
+export default supportPageStyles;

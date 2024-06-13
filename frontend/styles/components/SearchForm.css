@@ -1,0 +1,20 @@
+/* Define the styles for the SearchForm component */
+
+import React from 'react';
+import { Form, Input, Button } from 'jssemantic-ui';
+
+const SearchForm = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Input type="text" placeholder="Search" />
+      <Button type="submit">Search</Button>
+    </Form>
+  );
+};
+
+export default SearchForm;

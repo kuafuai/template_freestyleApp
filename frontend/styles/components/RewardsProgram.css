@@ -1,0 +1,47 @@
+/* Define the styles for the RewardsProgram component */
+
+.RewardsProgram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.RewardsProgram-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.RewardsProgram-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.RewardsProgram-points {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.RewardsProgram-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.RewardsProgram-button:hover {
+  background-color: #0056b3;
+}
+
+.RewardsProgram-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

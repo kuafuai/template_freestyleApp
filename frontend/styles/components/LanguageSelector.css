@@ -1,0 +1,27 @@
+/* Define the styles for the LanguageSelector component */
+
+import { css } from 'jssemantic-ui';
+
+const styles = css`
+  .language-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .language-selector select {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+  }
+`;
+
+export default styles;
