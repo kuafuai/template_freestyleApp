@@ -1,95 +1,69 @@
-// Implement the logic for displaying the recommended travel options and promotions
-function displayTravelOptionsAndPromotions() {
-  // Fetch data from the backend API
-  fetch('/api/travel-options')
-    .then(response => response.json())
-    .then(data => {
-      // Update the UI with the retrieved data
-      const travelOptionsContainer = document.getElementById('travel-options-container');
-      travelOptionsContainer.innerHTML = '';
+// Function to display travel options
+function displayTravelOptions(options) {
+    // Clear existing options
+    clearTravelOptions();
 
-      data.forEach(option => {
+    // Loop through options and create HTML elements
+    options.forEach(option => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('travel-option');
-
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = option.title;
-        optionElement.appendChild(titleElement);
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = option.description;
-        optionElement.appendChild(descriptionElement);
-
-        travelOptionsContainer.appendChild(optionElement);
-      });
+        optionElement.innerHTML = `
+            <h2>${option.title}</h2>
+            <p>${option.description}</p>
+            <button onclick="bookOption(${option.id})">Book Now</button>
+        `;
+        document.querySelector('#travel-options').appendChild(optionElement);
     });
+}
 
-  // Fetch data from the backend API
-  fetch('/api/promotions')
-    .then(response => response.json())
-    .then(data => {
-      // Update the UI with the retrieved data
-      const promotionsContainer = document.getElementById('promotions-container');
-      promotionsContainer.innerHTML = '';
+// Function to clear travel options
+function clearTravelOptions() {
+    const travelOptionsElement = document.querySelector('#travel-options');
+    while (travelOptionsElement.firstChild) {
+        travelOptionsElement.removeChild(travelOptionsElement.firstChild);
+    }
+}
 
-      data.forEach(promotion => {
+// Function to book a travel option
+function bookOption(optionId) {
+    // Logic to book the option
+}
+
+// Function to display promotions
+function displayPromotions(promotions) {
+    // Clear existing promotions
+    clearPromotions();
+
+    // Loop through promotions and create HTML elements
+    promotions.forEach(promotion => {
         const promotionElement = document.createElement('div');
         promotionElement.classList.add('promotion');
-
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = promotion.title;
-        promotionElement.appendChild(titleElement);
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = promotion.description;
-        promotionElement.appendChild(descriptionElement);
-
-        promotionsContainer.appendChild(promotionElement);
-      });
+        promotionElement.innerHTML = `
+            <h2>${promotion.title}</h2>
+            <p>${promotion.description}</p>
+            <button onclick="claimPromotion(${promotion.id})">Claim Now</button>
+        `;
+        document.querySelector('#promotions').appendChild(promotionElement);
     });
 }
 
-// Implement the logic for handling user interactions, such as search, booking, etc.
-function handleUserInteractions() {
-  const searchForm = document.getElementById('search-form');
-  searchForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const searchInput = document.getElementById('search-input');
-    const searchQuery = searchInput.value;
-
-    // Perform search logic
-    performSearch(searchQuery);
-  });
-
-  // Implement booking logic
-  const bookButton = document.getElementById('book-button');
-  bookButton.addEventListener('click', function() {
-    const selectedOption = document.querySelector('.travel-option.selected');
-
-    if (selectedOption) {
-      const optionTitle = selectedOption.querySelector('h2').textContent;
-      const optionDescription = selectedOption.querySelector('p').textContent;
-
-      // Perform booking logic
-      performBooking(optionTitle, optionDescription);
+// Function to clear promotions
+function clearPromotions() {
+    const promotionsElement = document.querySelector('#promotions');
+    while (promotionsElement.firstChild) {
+        promotionsElement.removeChild(promotionsElement.firstChild);
     }
-  });
 }
 
-// Implement the logic for fetching data from the backend API and updating the UI
-function fetchDataAndUpdateUI() {
-  // Fetch data from the backend API
-  fetch('/api/data')
-    .then(response => response.json())
-    .then(data => {
-      // Update the UI with the retrieved data
-      const dataContainer = document.getElementById('data-container');
-      dataContainer.textContent = data;
-    });
+// Function to claim a promotion
+function claimPromotion(promotionId) {
+    // Logic to claim the promotion
 }
 
-// Call the necessary functions to initialize the website
-displayTravelOptionsAndPromotions();
-handleUserInteractions();
-fetchDataAndUpdateUI();
+// Function to fetch travel options and promotions from the backend API
+function fetchData() {
+    // Logic to fetch data from the backend API
+}
+
+// Call the fetchData function to initialize the page
+fetchData();
