@@ -2,8 +2,10 @@
 
 /* Container styles */
 .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
   text-align: center;
-  margin-top: 50px;
 }
 
 /* Heading styles */
@@ -18,14 +20,19 @@ h1 {
 }
 
 /* Button styles */
-.button {
+button {
   padding: 10px 20px;
-  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 /* Custom input styles */
 .custom-input {
-  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 /* Custom activity styles */
@@ -35,6 +42,7 @@ h1 {
 
 /* Result styles */
 .result {
+  font-size: 18px;
   margin-top: 20px;
 }
 
