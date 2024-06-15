@@ -1,0 +1,68 @@
+/* style.css */
+/* This file contains the CSS styles for the sales assistant application. It defines the layout, colors, and other visual aspects of the application. */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.content {
+    width: 60%;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#productInfo {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+#productDetails {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"],
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #45a049;
+}
+
+#demoResults,
+#qaResults {
+    margin-top: 20px;
+}
