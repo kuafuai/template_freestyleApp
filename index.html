@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Registration</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <form id="asset-form">
+            <label for="asset-name">Asset Name:</label>
+            <input type="text" id="asset-name" name="asset-name" required><br><br>
+            <label for="asset-type">Asset Type:</label>
+            <select id="asset-type" name="asset-type" required>
+                <option value="">Select Asset Type</option>
+                <option value="Computer">Computer</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Equipment">Equipment</option>
+            </select><br><br>
+            <label for="asset-quantity">Asset Quantity:</label>
+            <input type="number" id="asset-quantity" name="asset-quantity" required><br><br>
+            <input type="submit" value="Register Asset">
+        </form>
+    </div>
+    <div class="sidebar">
+        <h3>Asset Information</h3>
+        <ul>
+            <li>Asset 1</li>
+            <li>Asset 2</li>
+            <li>Asset 3</li>
+        </ul>
+    </div>
+</body>
+</html>
