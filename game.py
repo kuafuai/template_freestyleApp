@@ -2,6 +2,7 @@
 from player import Player
 from obstacle import Obstacle
 from timer import Timer
+from interface import Interface
 
 class Game:
     def __init__(self):
@@ -58,3 +59,47 @@ class Game:
     def display_result(self):
         # Display the game result based on game logic
         # ...
+
+class Interface:
+    def __init__(self):
+        # Initialize the game interface
+        # ...
+
+    def display(self):
+        # Display the game interface
+        # ...
+
+class Player:
+    def __init__(self):
+        # Initialize the player
+        # ...
+
+    def handle_input(self):
+        # Handle player input
+        # ...
+
+    def update_position(self):
+        # Update player position
+        # ...
+
+class Obstacle:
+    def __init__(self):
+        # Initialize the obstacle
+        # ...
+
+    def move(self):
+        # Move the obstacle
+        # ...
+
+class Timer:
+    def __init__(self):
+        # Initialize the timer
+        # ...
+
+    def update(self):
+        # Update the timer
+        # ...
+
+# Create a new instance of the Game class and start the game
+game = Game()
+game.start()
