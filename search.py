@@ -1,26 +1,46 @@
 # This file contains the implementation of the Search class.
 
-# Define the Search class
 class Search:
-    # Constructor
+    """
+    The Search class represents a search for tennis rackets and has an attribute for the search keyword.
+    """
+
     def __init__(self, keyword):
+        """
+        Constructor for the Search class.
+
+        Args:
+            keyword (str): The search keyword.
+        """
         self.keyword = keyword
 
-# Function to search for tennis rackets based on a keyword
 def search_tennis_rackets(keyword):
-    # Create a search object with the keyword
+    """
+    Function to search for tennis rackets based on a keyword.
+
+    Args:
+        keyword (str): The search keyword.
+
+    Returns:
+        list: The search results.
+    """
     search = Search(keyword)
-
-    # Perform the search and retrieve the search results
     search_results = perform_search(keyword)
-
     return search_results
 
-# Function to perform the search
 def perform_search(keyword):
-    # Perform the search and retrieve the search results
+    """
+    Function to perform the search.
+
+    Args:
+        keyword (str): The search keyword.
+
+    Returns:
+        list: The search results.
+    """
     search_results = []
 
+    # Perform the search and retrieve the search results
     # Add search results to the list
     result1 = "Search Result 1"
     result2 = "Search Result 2"
