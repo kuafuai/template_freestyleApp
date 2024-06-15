@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小叮当逛动物园</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="background"></div>
+        <div id="zoo-map"></div>
+        <div id="player"></div>
+        <div class="animal" id="tiger"></div>
+        <div class="animal" id="lion"></div>
+        <div class="animal" id="panda"></div>
+        <div class="animal" id="peacock"></div>
+    </div>
+    <div id="animal-popup">
+        <div id="animal-video"></div>
+        <div id="animal-info"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Game logic implementation
+        $(document).ready(function() {
+            // Add event listeners for user input
+            $(document).keydown(function(event) {
+                // Handle player movement based on key press
+                if (event.keyCode === 37) {
+                    // Move player left
+                    movePlayer("left");
+                } else if (event.keyCode === 38) {
+                    // Move player up
+                    movePlayer("up");
+                } else if (event.keyCode === 39) {
+                    // Move player right
+                    movePlayer("right");
+                } else if (event.keyCode === 40) {
+                    // Move player down
+                    movePlayer("down");
+                }
+            });
+
+            // Function to move the player
+            function movePlayer(direction) {
+                // Get the current position of the player
+                var player = $("#player");
+                var currentPosition = player.position();
+
+                // Calculate the new position based on the direction
+                var newPosition = {
+                    left: currentPosition.left,
+                    top: currentPosition.top
+                };
+
+                if (direction === "left") {
+                    newPosition.left -= 10;
+                } else if (direction === "up") {
+                    newPosition.top -= 10;
+                } else if (direction === "right") {
+                    newPosition.left += 10;
+                } else if (direction === "down") {
+                    newPosition.top += 10;
+                }
+
+                // Update the position of the player
+                player.css(newPosition);
+            }
+
+            // Function to handle animal click
+            $(".animal").click(function() {
+                var animalId = $(this).attr("id");
+                showAnimalPopup(animalId);
+            });
+
+            // Function to show animal popup
+            function showAnimalPopup(animalId) {
+                // Show the animal video and info based on the animalId
+                var animalVideo = $("#animal-video");
+                var animalInfo = $("#animal-info");
+
+                // Update the animal video and info based on the animalId
+                animalVideo.html("<video src='" + animalId + ".mp4' controls></video>");
+                animalInfo.html("<h2>" + animalId + "</h2><p>Some information about the " + animalId + ".</p>");
+
+                // Show the animal popup
+                $("#animal-popup").show();
+            }
+
+            // Function to hide animal popup
+            function hideAnimalPopup() {
+                // Hide the animal popup
+                $("#animal-popup").hide();
+            }
+
+            // Add event listener for animal popup close button
+            $("#animal-popup").on("click", function(event) {
+                if ($(event.target).is("#animal-popup")) {
+                    hideAnimalPopup();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
