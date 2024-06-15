@@ -13,12 +13,15 @@ body {
 
 .main-content {
     /* Main content styles */
-    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
 }
 
 .sidebar {
     /* Sidebar styles */
-    width: 200px;
     background-color: #f2f2f2;
     padding: 10px;
+    width: 200px;
+    float: left;
 }
