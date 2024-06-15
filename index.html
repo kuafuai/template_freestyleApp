@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小叮当逛动物园游戏</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Add the game layout here -->
+        <h1>Welcome to the Zoo Game!</h1>
+        <p>Click on the animals to interact with them.</p>
+        <div id="animals">
+            <img src="lion.png" alt="Lion" onclick="interact('lion')">
+            <img src="elephant.png" alt="Elephant" onclick="interact('elephant')">
+            <img src="giraffe.png" alt="Giraffe" onclick="interact('giraffe')">
+        </div>
+    </div>
+    <div id="controls">
+        <!-- Add the game controls here -->
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="resetGame()">Reset Game</button>
+    </div>
+    <script>
+        // Add event listeners and other JavaScript code here
+        function interact(animal) {
+            alert("You interacted with the " + animal + "!");
+        }
+
+        function startGame() {
+            alert("Game started!");
+        }
+
+        function resetGame() {
+            alert("Game reset!");
+        }
+    </script>
+</body>
+</html>
