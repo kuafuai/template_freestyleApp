@@ -1,0 +1,45 @@
+/* main.css */
+
+/* Container styles */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Heading styles */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Button group styles */
+.button-group {
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.button {
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+/* Custom input styles */
+.custom-input {
+  margin-top: 20px;
+}
+
+/* Custom activity styles */
+.custom-activity {
+  margin-right: 10px;
+}
+
+/* Result styles */
+.result {
+  margin-top: 20px;
+}
+
+/* Activity result styles */
+.activity-result {
+  font-size: 18px;
+  font-weight: bold;
+}
