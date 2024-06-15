@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Princess Development</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="game-area"></div>
+  <div id="score-board"></div>
+  <div id="countdown-timer"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Game logic implementation
+    // Create game elements
+    const gameArea = document.getElementById("game-area");
+    const scoreBoard = document.getElementById("score-board");
+    const countdownTimer = document.getElementById("countdown-timer");
+
+    // Update score
+    function updateScore(score) {
+      scoreBoard.innerText = "Score: " + score;
+    }
+
+    // Implement countdown timer
+    function countdown() {
+      let timeLeft = 60; // 60 seconds countdown
+      countdownTimer.innerText = "Time Left: " + timeLeft;
+
+      const timer = setInterval(() => {
+        timeLeft--;
+        countdownTimer.innerText = "Time Left: " + timeLeft;
+
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          // Game over logic
+          gameArea.innerHTML = "<h1>Game Over</h1>";
+        }
+      }, 1000);
+    }
+
+    // Call countdown function to start the game
+    countdown();
+  </script>
+</body>
+</html>

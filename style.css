@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #game-area {
+      width: 500px;
+      height: 500px;
+      background-color: #f2f2f2;
+    }
+
+    #score-board {
+      width: 100%;
+      height: 50px;
+      background-color: #ccc;
+      text-align: center;
+      line-height: 50px;
+      font-size: 24px;
+    }
+
+    #countdown-timer {
+      width: 100%;
+      height: 50px;
+      background-color: #ccc;
+      text-align: center;
+      line-height: 50px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-area"></div>
+  <div id="score-board"></div>
+  <div id="countdown-timer"></div>
+</body>
+</html>
