@@ -11,9 +11,9 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="#" data-page="register">Product Registration</a></li>
-                <li><a href="#" data-page="demo">Product Demo</a></li>
-                <li><a href="#" data-page="qa">Product Q&A</a></li>
+                <li><a href="#" onclick="showPage('register')">Product Registration</a></li>
+                <li><a href="#" onclick="showPage('demo')">Product Demo</a></li>
+                <li><a href="#" onclick="showPage('qa')">Product Q&A</a></li>
             </ul>
         </div>
         <div class="content">
@@ -38,14 +38,14 @@
                 <!-- Product Demo Search -->
                 <h2>Product Demo</h2>
                 <input type="text" id="searchDemo" placeholder="Enter keyword">
-                <button id="searchDemoBtn">Search</button>
+                <button onclick="searchDemo()">Search</button>
                 <div id="demoResults"></div>
             </div>
             <div id="qa" style="display: none;">
                 <!-- Product Q&A -->
                 <h2>Product Q&A</h2>
                 <input type="text" id="question" placeholder="Enter question or keyword">
-                <button id="askQuestionBtn">Ask</button>
+                <button onclick="askQuestion()">Ask</button>
                 <div id="qaResults"></div>
             </div>
         </div>
@@ -57,47 +57,44 @@
             </div>
         </div>
     </div>
+
     <script>
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            var links = document.querySelectorAll('.sidebar ul li a');
-            links.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    var page = this.getAttribute('data-page');
-                    showPage(page);
-                });
-            });
-
-            var registrationForm = document.getElementById('registrationForm');
-            registrationForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Handle form submission logic here
-            });
-
-            var searchDemoBtn = document.getElementById('searchDemoBtn');
-            searchDemoBtn.addEventListener('click', function() {
-                var keyword = document.getElementById('searchDemo').value;
-                // Handle search demo logic here
-            });
-
-            var askQuestionBtn = document.getElementById('askQuestionBtn');
-            askQuestionBtn.addEventListener('click', function() {
-                var question = document.getElementById('question').value;
-                // Handle ask question logic here
-            });
-        });
-
-        // Function to show page
         function showPage(page) {
-            var pages = document.querySelectorAll('.content > div');
-            pages.forEach(function(pageElement) {
-                if (pageElement.id === page) {
-                    pageElement.style.display = 'block';
-                } else {
-                    pageElement.style.display = 'none';
-                }
-            });
+            var register = document.getElementById("register");
+            var demo = document.getElementById("demo");
+            var qa = document.getElementById("qa");
+
+            register.style.display = "none";
+            demo.style.display = "none";
+            qa.style.display = "none";
+
+            if (page === "register") {
+                register.style.display = "block";
+            } else if (page === "demo") {
+                demo.style.display = "block";
+            } else if (page === "qa") {
+                qa.style.display = "block";
+            }
+        }
+
+        function searchDemo() {
+            var searchKeyword = document.getElementById("searchDemo").value;
+            var demoResults = document.getElementById("demoResults");
+
+            // Perform search logic here
+
+            // Display search results
+            demoResults.innerHTML = "Search results for: " + searchKeyword;
+        }
+
+        function askQuestion() {
+            var question = document.getElementById("question").value;
+            var qaResults = document.getElementById("qaResults");
+
+            // Perform question logic here
+
+            // Display question results
+            qaResults.innerHTML = "Question: " + question;
         }
     </script>
 </body>
