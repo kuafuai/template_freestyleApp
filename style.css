@@ -1,0 +1,36 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    width: 800px;
+    height: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.garden-container {
+    width: 800px;
+    height: 200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.story-container {
+    width: 800px;
+    height: 200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.social-container {
+    width: 800px;
+    height: 100px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
