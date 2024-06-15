@@ -17,16 +17,32 @@ class TrainingRecordResource(Resource):
         # Parse request data
         data = request.get_json()
         
+        # Validate input data
+        if not all(key in data for key in ['user_id', 'date', 'training_program', 'training_time', 'training_completion', 'weight', 'circumference', 'heart_rate']):
+            return {'message': 'Missing required fields'}, 400
+        
+        try:
+            # Convert data types
+            user_id = int(data['user_id'])
+            date = datetime.strptime(data['date'], '%Y-%m-%d').date()
+            training_time = datetime.strptime(data['training_time'], '%H:%M:%S').time()
+            training_completion = bool(data['training_completion'])
+            weight = float(data['weight'])
+            circumference = float(data['circumference'])
+            heart_rate = int(data['heart_rate'])
+        except (ValueError, TypeError):
+            return {'message': 'Invalid data types'}, 400
+        
         # Create a new training record object
         training_record = TrainingRecord(
-            user_id=data['user_id'],
-            date=data['date'],
+            user_id=user_id,
+            date=date,
             training_program=data['training_program'],
-            training_time=data['training_time'],
-            training_completion=data['training_completion'],
-            weight=data['weight'],
-            circumference=data['circumference'],
-            heart_rate=data['heart_rate']
+            training_time=training_time,
+            training_completion=training_completion,
+            weight=weight,
+            circumference=circumference,
+            heart_rate=heart_rate
         )
         
         # Add training record to the database

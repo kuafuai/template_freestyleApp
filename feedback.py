@@ -13,10 +13,27 @@ class FeedbackResource(Resource):
         # Parse request data
         data = request.get_json()
         
+        # Check if all required fields are present in the request data
+        if 'user_id' not in data or 'training_record_id' not in data or 'feedback' not in data:
+            return {'message': 'Missing required fields'}, 400
+        
+        # Validate the input data
+        try:
+            user_id = int(data['user_id'])
+            training_record_id = int(data['training_record_id'])
+        except ValueError:
+            return {'message': 'Invalid user_id or training_record_id'}, 400
+        
+        # Check if the user and training record exist
+        user = User.query.get(user_id)
+        training_record = TrainingRecord.query.get(training_record_id)
+        if not user or not training_record:
+            return {'message': 'User or training record does not exist'}, 404
+        
         # Create a new feedback object
         feedback = Feedback(
-            user_id=data['user_id'],
-            training_record_id=data['training_record_id'],
+            user_id=user_id,
+            training_record_id=training_record_id,
             feedback=data['feedback']
         )
         
