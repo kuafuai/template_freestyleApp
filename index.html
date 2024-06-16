@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Registration</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Asset Registration</h1>
+    
+    <!-- Asset Registration Form -->
+    <form id="assetForm">
+        <label for="assetNumber">Asset Number:</label>
+        <input type="text" id="assetNumber" required>
+        
+        <label for="assetName">Asset Name:</label>
+        <input type="text" id="assetName" required>
+        
+        <label for="assetSpec">Asset Specification:</label>
+        <input type="text" id="assetSpec" required>
+        
+        <label for="purchaseDate">Purchase Date:</label>
+        <input type="date" id="purchaseDate" required>
+        
+        <label for="purchasePrice">Purchase Price:</label>
+        <input type="number" id="purchasePrice" required>
+        
+        <button type="submit">Add Asset</button>
+    </form>
+    
+    <!-- Asset List -->
+    <h2>Asset List</h2>
+    <table id="assetTable">
+        <thead>
+            <tr>
+                <th>Asset Number</th>
+                <th>Asset Name</th>
+                <th>Asset Specification</th>
+                <th>Purchase Date</th>
+                <th>Purchase Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Asset list items will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Function to handle form submission
+        function addAsset(event) {
+            event.preventDefault();
+
+            // Get form values
+            var assetNumber = document.getElementById("assetNumber").value;
+            var assetName = document.getElementById("assetName").value;
+            var assetSpec = document.getElementById("assetSpec").value;
+            var purchaseDate = document.getElementById("purchaseDate").value;
+            var purchasePrice = document.getElementById("purchasePrice").value;
+
+            // Create new row for the asset table
+            var newRow = document.createElement("tr");
+
+            // Create cells for the new row
+            var assetNumberCell = document.createElement("td");
+            assetNumberCell.textContent = assetNumber;
+            newRow.appendChild(assetNumberCell);
+
+            var assetNameCell = document.createElement("td");
+            assetNameCell.textContent = assetName;
+            newRow.appendChild(assetNameCell);
+
+            var assetSpecCell = document.createElement("td");
+            assetSpecCell.textContent = assetSpec;
+            newRow.appendChild(assetSpecCell);
+
+            var purchaseDateCell = document.createElement("td");
+            purchaseDateCell.textContent = purchaseDate;
+            newRow.appendChild(purchaseDateCell);
+
+            var purchasePriceCell = document.createElement("td");
+            purchasePriceCell.textContent = purchasePrice;
+            newRow.appendChild(purchasePriceCell);
+
+            var actionsCell = document.createElement("td");
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", deleteAsset);
+            actionsCell.appendChild(deleteButton);
+            newRow.appendChild(actionsCell);
+
+            // Add the new row to the asset table
+            var assetTable = document.getElementById("assetTable");
+            var assetTableBody = assetTable.getElementsByTagName("tbody")[0];
+            assetTableBody.appendChild(newRow);
+
+            // Reset the form
+            document.getElementById("assetForm").reset();
+        }
+
+        // Function to handle asset deletion
+        function deleteAsset(event) {
+            var row = event.target.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        // Add event listener to the form
+        document.getElementById("assetForm").addEventListener("submit", addAsset);
+    </script>
+</body>
+</html>

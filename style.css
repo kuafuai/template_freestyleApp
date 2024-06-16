@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Explanation of the code */
+
+/* The body element is styled with a margin of 20px and the font-family is set to Arial, sans-serif. */
+/* The h1 element is centered using text-align: center. */
+/* The form element has a margin-bottom of 20px. */
+/* The label elements are displayed as block elements and have a margin-top of 10px. */
+/* The input elements have a width of 100%, padding of 5px, a border of 1px solid #ccc, and a border-radius of 4px. */
+/* The button elements have a margin-top of 10px, padding of 5px 10px, a background-color of #4CAF50, a color of white, no border, a border-radius of 4px, and a cursor of pointer. */
+/* The table element has a width of 100% and the border-collapse property is set to collapse. */
+/* The th and td elements have padding of 8px, text-align of left, and a border-bottom of 1px solid #ddd. */
+/* The th elements have a background-color of #4CAF50 and a color of white. */
+/* The .actions class is used to style a container element that displays its children elements with space-around justification. */
