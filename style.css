@@ -1,0 +1,33 @@
+/* style.css */
+
+.game-container {
+  width: 100%;
+  height: 500px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-character {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+.animal-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.animal-icons img {
+  width: 50px;
+  height: 50px;
+}
+
+.other-elements {
+  /* Pseudocode for other elements styles */
+  /* CODE */
+}

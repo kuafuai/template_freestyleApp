@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>小叮当动物园游戏</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Game functionality implementation
+      // ...
+
+      // Example implementation of game functionality
+      $('.game-character').click(function() {
+        alert('You clicked the game character!');
+      });
+
+      $('.animal-icons').click(function() {
+        alert('You clicked an animal icon!');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-character"></div>
+    <div class="animal-icons"></div>
+    <div class="other-elements"></div>
+  </div>
+</body>
+</html>
