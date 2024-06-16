@@ -5,7 +5,7 @@ FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
 # Copy all files from the Dockerfile's directory to the container
-COPY . .
+COPY . /usr/share/nginx/html
 
 # Expose the default Nginx port
 EXPOSE 80

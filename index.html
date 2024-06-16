@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emoji Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="ui three column grid">
+        <div class="column">
+            <div class="ui segment">
+                <h2>Emoji Generator</h2>
+                <div class="ui input">
+                    <input type="text" id="descriptionInput" placeholder="Enter emoji description">
+                </div>
+                <button class="ui primary button" id="generateButton">Generate</button>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <h2>Generated Emojis</h2>
+                <div id="emojisContainer" class="ui stackable three column grid"></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <h2>Actions</h2>
+                <button class="ui button" id="downloadButton">Download</button>
+                <button class="ui button" id="shareButton">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Add event listeners
+        document.getElementById("generateButton").addEventListener("click", generateEmojis);
+        document.getElementById("downloadButton").addEventListener("click", downloadEmoji);
+        document.getElementById("shareButton").addEventListener("click", shareEmoji);
+    </script>
+</body>
+</html>

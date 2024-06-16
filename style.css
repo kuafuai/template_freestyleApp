@@ -1,0 +1,47 @@
+/* style.css */
+
+/* Add comments to explain the purpose of each section of the code */
+
+/* Set padding for the body */
+body {
+    padding: 20px;
+}
+
+/* Set padding for the column */
+.column {
+    padding: 10px;
+}
+
+/* Set height for the segment */
+.segment {
+    height: 100%;
+}
+
+/* Set margin-bottom for the input */
+.ui.input {
+    margin-bottom: 10px;
+}
+
+/* Set margin-top for the emojisContainer */
+#emojisContainer {
+    margin-top: 20px;
+}
+
+/* Set text-align and cursor for the column in emojisContainer */
+#emojisContainer .column {
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Set width, height, object-fit, and border-radius for the images in emojisContainer */
+#emojisContainer .column img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Set margin-right for the buttons */
+button {
+    margin-right: 10px;
+}
