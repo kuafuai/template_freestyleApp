@@ -1,0 +1,38 @@
+/* Define navigation bar style */
+nav {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Define product display area style */
+#productDisplayArea {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Define product image style */
+.productImage {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+/* Define product price style */
+.productPrice {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* Define product details page style */
+.productDetailsPage {
+  margin: 20px;
+}
+
+.productDetailsPage h2 {
+  margin-bottom: 10px;
+}
+
+.productDetailsPage p {
+  margin-bottom: 5px;
+}

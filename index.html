@@ -1,0 +1,53 @@
+<!-- Import required CSS and JavaScript files -->
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<!-- Create navigation bar with add product button -->
+<nav>
+  <button id="addProductButton">Add Product</button>
+</nav>
+
+<!-- Create product display area -->
+<div id="productDisplayArea">
+  <!-- Product images and prices will be dynamically added here -->
+</div>
+
+<!-- Create product details page link -->
+<a href="productDetails.html" id="productDetailsLink" style="display: none;"></a>
+
+<script>
+  // Add event listener to addProductButton
+  document.getElementById("addProductButton").addEventListener("click", function() {
+    // Call function to add a new product to the product display area
+    addProduct();
+  });
+
+  // Function to add a new product to the product display area
+  function addProduct() {
+    // Create new product element
+    var productElement = document.createElement("div");
+    productElement.classList.add("product");
+
+    // Create product image element
+    var productImage = document.createElement("img");
+    productImage.src = "product_image.jpg";
+    productElement.appendChild(productImage);
+
+    // Create product price element
+    var productPrice = document.createElement("p");
+    productPrice.textContent = "$99.99";
+    productElement.appendChild(productPrice);
+
+    // Append new product element to the product display area
+    document.getElementById("productDisplayArea").appendChild(productElement);
+  }
+
+  // Add event listener to productDetailsLink
+  document.getElementById("productDetailsLink").addEventListener("click", function(event) {
+    // Prevent default link behavior
+    event.preventDefault();
+
+    // Navigate to the product details page
+    window.location.href = "productDetails.html";
+  });
+</script>
