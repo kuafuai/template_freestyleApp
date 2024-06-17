@@ -11,5 +11,16 @@
     <button onclick="search()">Search</button>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        function search() {
+            var searchInput = document.getElementById("searchInput").value;
+            if (searchInput.trim() === "") {
+                alert("Please enter a search term");
+                return;
+            }
+            // Perform search logic here
+            // ...
+        }
+    </script>
 </body>
 </html>

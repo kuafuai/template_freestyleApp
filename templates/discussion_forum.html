@@ -8,16 +8,13 @@
     <h1>Discussion Forum</h1>
     <h2>Posts</h2>
     <div id="posts">
+        {% for post in posts %}
         <div class="post">
-            <p>Post 1</p>
-            <p>Author: John Doe</p>
-            <p>Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>{{ post.title }}</p>
+            <p>Author: {{ post.author }}</p>
+            <p>Content: {{ post.content }}</p>
         </div>
-        <div class="post">
-            <p>Post 2</p>
-            <p>Author: Jane Smith</p>
-            <p>Content: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
+        {% endfor %}
     </div>
 
     <h2>Create Post</h2>
@@ -25,5 +22,22 @@
     <button onclick="createPost()">Create</button>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        function createPost() {
+            var postInput = document.getElementById("postInput").value;
+            if (postInput.trim() !== "") {
+                var post = {
+                    title: "Post " + (document.getElementsByClassName("post").length + 1),
+                    author: "John Doe",
+                    content: postInput
+                };
+                var postElement = document.createElement("div");
+                postElement.className = "post";
+                postElement.innerHTML = "<p>" + post.title + "</p><p>Author: " + post.author + "</p><p>Content: " + post.content + "</p>";
+                document.getElementById("posts").appendChild(postElement);
+                document.getElementById("postInput").value = "";
+            }
+        }
+    </script>
 </body>
 </html>

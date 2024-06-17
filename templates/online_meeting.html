@@ -3,6 +3,25 @@
 <head>
     <title>Online Meeting</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        #videoCall, #audioCall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #videoCall video, #audioCall audio {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        #videoCall h3, #audioCall h3 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Online Meeting</h1>
@@ -18,6 +37,56 @@
         <audio id="remoteAudio" autoplay></audio>
     </div>
 
+    <h3>Instructions:</h3>
+    <p>To start a video call, click on the "Start Video Call" button below the video elements. To join an existing video call, enter the call ID and click on the "Join Video Call" button.</p>
+    <h3>Video Call Controls:</h3>
+    <ul>
+        <li>Click on the "Start Video" button to start your video.</li>
+        <li>Click on the "Stop Video" button to stop your video.</li>
+        <li>Click on the "Mute Audio" button to mute your audio.</li>
+        <li>Click on the "Unmute Audio" button to unmute your audio.</li>
+        <li>Click on the "End Call" button to end the video call.</li>
+    </ul>
+
+    <h3>Instructions:</h3>
+    <p>To start an audio call, click on the "Start Audio Call" button below the audio elements. To join an existing audio call, enter the call ID and click on the "Join Audio Call" button.</p>
+    <h3>Audio Call Controls:</h3>
+    <ul>
+        <li>Click on the "Start Audio" button to start your audio.</li>
+        <li>Click on the "Stop Audio" button to stop your audio.</li>
+        <li>Click on the "Mute Audio" button to mute your audio.</li>
+        <li>Click on the "Unmute Audio" button to unmute your audio.</li>
+        <li>Click on the "End Call" button to end the audio call.</li>
+    </ul>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // JavaScript code for handling video and audio calls
+        // ...
+
+        // Function to start a video call
+        function startVideoCall() {
+            // Code to start a video call
+            // ...
+        }
+
+        // Function to join a video call
+        function joinVideoCall(callId) {
+            // Code to join a video call with the provided call ID
+            // ...
+        }
+
+        // Function to start an audio call
+        function startAudioCall() {
+            // Code to start an audio call
+            // ...
+        }
+
+        // Function to join an audio call
+        function joinAudioCall(callId) {
+            // Code to join an audio call with the provided call ID
+            // ...
+        }
+    </script>
 </body>
 </html>

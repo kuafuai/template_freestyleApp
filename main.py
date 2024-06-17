@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
@@ -21,6 +21,10 @@ def discussion_forum():
 @app.route('/online_meeting')
 def online_meeting():
     return render_template('online_meeting.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html'), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,22 +5,36 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Student Account</h1>
-    <h2>Personal Information</h2>
-    <p>Name: John Doe</p>
-    <p>Email: john.doe@example.com</p>
-    <p>Student ID: 1234567890</p>
+    <header>
+        <h1>Student Account</h1>
+    </header>
+    <section>
+        <h2>Personal Information</h2>
+        <ul>
+            <li><strong>Name:</strong> John Doe</li>
+            <li><strong>Email:</strong> john.doe@example.com</li>
+            <li><strong>Student ID:</strong> 1234567890</li>
+        </ul>
+    </section>
 
-    <h2>Learning Progress</h2>
-    <p>Module 1: 80%</p>
-    <p>Module 2: 90%</p>
-    <p>Module 3: 75%</p>
-    <p>Module 4: 85%</p>
-    <p>Module 5: 95%</p>
+    <section>
+        <h2>Learning Progress</h2>
+        <ul>
+            <li>Module 1: 80%</li>
+            <li>Module 2: 90%</li>
+            <li>Module 3: 75%</li>
+            <li>Module 4: 85%</li>
+            <li>Module 5: 95%</li>
+        </ul>
+    </section>
 
-    <h2>Overall Score</h2>
-    <p>Score: 90%</p>
-    <p>Rank: 10th out of 100</p>
+    <section>
+        <h2>Overall Score</h2>
+        <ul>
+            <li><strong>Score:</strong> 90%</li>
+            <li><strong>Rank:</strong> 10th out of 100</li>
+        </ul>
+    </section>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
