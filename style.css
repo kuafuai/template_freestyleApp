@@ -1,0 +1,34 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+#task-list {
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    height: 20px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+}
+
+.task {
+    margin-bottom: 10px;
+}
+
+.task input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.task input[type="text"] {
+    width: 200px;
+}
+
+.task button {
+    margin-left: 10px;
+}
