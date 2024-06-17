@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Meeting</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Online Meeting</h1>
+    <h2>Video Call</h2>
+    <div id="videoCall">
+        <video id="localVideo" autoplay></video>
+        <video id="remoteVideo" autoplay></video>
+    </div>
+
+    <h2>Audio Call</h2>
+    <div id="audioCall">
+        <audio id="localAudio" autoplay></audio>
+        <audio id="remoteAudio" autoplay></audio>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

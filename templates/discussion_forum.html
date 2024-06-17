@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discussion Forum</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Discussion Forum</h1>
+    <h2>Posts</h2>
+    <div id="posts">
+        <div class="post">
+            <p>Post 1</p>
+            <p>Author: John Doe</p>
+            <p>Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="post">
+            <p>Post 2</p>
+            <p>Author: Jane Smith</p>
+            <p>Content: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+
+    <h2>Create Post</h2>
+    <input type="text" id="postInput">
+    <button onclick="createPost()">Create</button>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
