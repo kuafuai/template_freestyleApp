@@ -1,0 +1,44 @@
+<!-- This template displays the recommended clothing items -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendation</title>
+    <style>
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        .item h3 {
+            margin: 0;
+        }
+        .item p {
+            margin: 0;
+        }
+        .item a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommended Clothing Items</h1>
+    <ul>
+        {% for item in recommended_items %}
+            <li class="item">
+                <img src="{{ item.image }}" alt="{{ item.name }}">
+                <div>
+                    <h3>{{ item.name }}</h3>
+                    <p>Compatibility: {{ item.compatibility }}</p>
+                    <a href="/platform_link?clothing_item_id={{ item.id }}">Buy Now</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

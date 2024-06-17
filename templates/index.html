@@ -1,0 +1,54 @@
+<!-- This template displays the recommended clothing items on the homepage -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <style>
+        /* Add CSS styling for the recommended clothing items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        h3 {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommended Clothing Items</h1>
+    <ul>
+        {% if recommended_items %}
+            {% for item in recommended_items %}
+                <li>
+                    <img src="{{ item.image }}" alt="{{ item.name }}">
+                    <h3>{{ item.name }}</h3>
+                    <p>Compatibility: {{ item.compatibility }}</p>
+                    <a href="/platform_link?clothing_item_id={{ item.id }}">Buy Now</a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No recommended items available.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>

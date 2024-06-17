@@ -1,0 +1,88 @@
+<!-- This template allows users to upload their image and input body measurements -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Image</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var height = document.forms["imageForm"]["height"].value;
+            var weight = document.forms["imageForm"]["weight"].value;
+            var chest = document.forms["imageForm"]["chest"].value;
+            var waist = document.forms["imageForm"]["waist"].value;
+            var hips = document.forms["imageForm"]["hips"].value;
+
+            var isValid = true;
+
+            if (height <= 0 || height > 300) {
+                document.getElementById("heightError").innerHTML = "Please enter a valid height";
+                isValid = false;
+            } else {
+                document.getElementById("heightError").innerHTML = "";
+            }
+
+            if (weight <= 0 || weight > 500) {
+                document.getElementById("weightError").innerHTML = "Please enter a valid weight";
+                isValid = false;
+            } else {
+                document.getElementById("weightError").innerHTML = "";
+            }
+
+            if (chest <= 0 || chest > 200) {
+                document.getElementById("chestError").innerHTML = "Please enter a valid chest measurement";
+                isValid = false;
+            } else {
+                document.getElementById("chestError").innerHTML = "";
+            }
+
+            if (waist <= 0 || waist > 200) {
+                document.getElementById("waistError").innerHTML = "Please enter a valid waist measurement";
+                isValid = false;
+            } else {
+                document.getElementById("waistError").innerHTML = "";
+            }
+
+            if (hips <= 0 || hips > 200) {
+                document.getElementById("hipsError").innerHTML = "Please enter a valid hips measurement";
+                isValid = false;
+            } else {
+                document.getElementById("hipsError").innerHTML = "";
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Your Image</h1>
+    <form name="imageForm" action="/user_image" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <input type="file" name="image" accept="image/*" required>
+        <h2>Body Measurements</h2>
+        <label for="height">Height:</label>
+        <input type="number" name="height" required>
+        <span id="heightError" class="error"></span>
+        <br>
+        <label for="weight">Weight:</label>
+        <input type="number" name="weight" required>
+        <span id="weightError" class="error"></span>
+        <br>
+        <label for="chest">Chest:</label>
+        <input type="number" name="chest" required>
+        <span id="chestError" class="error"></span>
+        <br>
+        <label for="waist">Waist:</label>
+        <input type="number" name="waist" required>
+        <span id="waistError" class="error"></span>
+        <br>
+        <label for="hips">Hips:</label>
+        <input type="number" name="hips" required>
+        <span id="hipsError" class="error"></span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- This template displays the user's 3D image and clothing items available for try-on -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Try On</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .user-image {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .clothing-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .clothing-item img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        .buy-now-link {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Try On Clothing</h1>
+        <div>
+            <h2>Your 3D Image</h2>
+            <img class="user-image" src="{{ user_3d_image }}" alt="User 3D Image">
+        </div>
+        <div>
+            <h2>Clothing Items</h2>
+            <ul>
+                {% for item in clothing_items %}
+                    <li class="clothing-item">
+                        <img src="{{ item.image }}" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <a class="buy-now-link" href="{{ item.buy_now_link }}">Buy Now</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
