@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.content {
+    width: 60%;
+    padding: 20px;
+}
+
+.sidebar:last-child {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+h1 {
+    color: #333333;
+}
+
+h2 {
+    color: #666666;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.progress, .grades, .forum {
+    margin-bottom: 20px;
+}

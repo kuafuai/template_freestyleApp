@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Education Platform</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Course Categories</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to the Online Education Platform</h1>
+            <div class="course-list">
+                <h2>Course List</h2>
+                <ul>
+                    <li><a href="#">Course 1</a></li>
+                    <li><a href="#">Course 2</a></li>
+                    <li><a href="#">Course 3</a></li>
+                </ul>
+            </div>
+            <div class="course-details">
+                <h2>Course Details</h2>
+                <p>Course Name: Course 1</p>
+                <p>Course Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="quiz">
+                <h2>Quiz</h2>
+                <p>Question 1: What is the capital of France?</p>
+                <input type="radio" name="answer" value="Paris"> Paris<br>
+                <input type="radio" name="answer" value="London"> London<br>
+                <input type="radio" name="answer" value="Berlin"> Berlin<br>
+                <button onclick="submitQuiz()">Submit</button>
+            </div>
+            <div class="assignment">
+                <h2>Assignment</h2>
+                <textarea rows="4" cols="50"></textarea><br>
+                <button onclick="submitAssignment()">Submit</button>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="progress">
+                <h2>Progress</h2>
+                <p>Course 1: 50%</p>
+                <p>Course 2: 75%</p>
+                <p>Course 3: 100%</p>
+            </div>
+            <div class="grades">
+                <h2>Grades</h2>
+                <p>Course 1: A</p>
+                <p>Course 2: B</p>
+                <p>Course 3: A+</p>
+            </div>
+            <div class="forum">
+                <h2>Forum</h2>
+                <ul>
+                    <li><a href="#">Discussion 1</a></li>
+                    <li><a href="#">Discussion 2</a></li>
+                    <li><a href="#">Discussion 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
