@@ -1,0 +1,20 @@
+<!-- This template is used to display the add record page -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Record</title>
+</head>
+<body>
+    <h1>Add Record</h1>
+    <form action="/add_record" method="POST">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required><br><br>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br><br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

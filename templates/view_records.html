@@ -1,0 +1,25 @@
+<!-- This template is used to display the view records page -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Records</title>
+</head>
+<body>
+    <h1>View Records</h1>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.amount }}</td>
+            <td>{{ record.category }}</td>
+            <td>{{ record.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

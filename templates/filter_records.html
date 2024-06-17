@@ -1,0 +1,20 @@
+<!-- This template is used to display the filter records page -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Records</title>
+</head>
+<body>
+    <h1>Filter Records</h1>
+    <form action="/filter_records" method="POST">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br><br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+        <input type="submit" value="Filter">
+    </form>
+</body>
+</html>
