@@ -53,15 +53,3 @@ var randomNumber = generateRandomNumber(1, 10);
 console.log("Random number: " + randomNumber);
 
 // Additional custom JavaScript code can be added here as per the requirements of the application.
-
-// Handle search form submission
-$(document).ready(function() {
-  $('form').submit(function(event) {
-    event.preventDefault();
-    var searchQuery = $('input[name="search"]').val();
-    var categoryFilter = $('select[name="category"]').val();
-    var dateFilter = $('input[name="date"]').val();
-    var url = '/?search=' + searchQuery + '&category=' + categoryFilter + '&date=' + dateFilter;
-    window.location.href = url;
-  });
-});
