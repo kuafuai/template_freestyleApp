@@ -1,3 +1,9 @@
 #!/bin/bash
 
-echo "Please complete the compilation script ./build.sh"
+docker build -t power-company-navigation .
+
+docker login
+
+docker push power-company-navigation
+
+docker image inspect power-company-navigation

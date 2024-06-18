@@ -1,14 +1,11 @@
-# Use the official Nginx base image
-FROM nginx:latest
+FROM nginx
 
-# Set a working directory inside the container
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 
-# Copy all files from the Dockerfile's directory to the container
-COPY . .
+COPY index.html .
+COPY main.js .
+COPY style.css .
 
-# Expose the default Nginx port
 EXPOSE 80
 
-# Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
