@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense List</h1>
+        <form method="GET" action="/">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search" placeholder="Search">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="category">
+                    <option value="">All Categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Accommodation">Accommodation</option>
+                    <option value="Transportation">Transportation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="date">
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.name }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Total Amount: {{ total_amount }}</h2>
+        <h2>Individual Shares:</h2>
+        <ul>
+            {% for name, share in individual_shares %}
+            <li>{{ name }}: {{ share }}</li>
+            {% endfor %}
+        </ul>
+        <canvas id="chart"></canvas>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Get chart data from Flask template variable
+            var chartLabels = {{ chart_labels|tojson }};
+            var chartValues = {{ chart_values|tojson }};
+
+            // Create chart using Chart.js
+            var ctx = document.getElementById('chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Expense Amount',
+                        data: chartValues,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
