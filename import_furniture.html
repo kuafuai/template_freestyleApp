@@ -7,23 +7,23 @@
 <body>
     <h1>Import Furniture</h1>
     <form id="import-furniture-form">
-        <label for="size">Size:</label>
-        <input type="text" id="size" name="size"><br><br>
+        <label for="size">Size (in cm):</label>
+        <input type="number" id="size" name="size" required><br><br>
         
         <label for="color">Color:</label>
-        <input type="text" id="color" name="color"><br><br>
+        <input type="text" id="color" name="color" required><br><br>
         
         <label for="material">Material:</label>
-        <input type="text" id="material" name="material"><br><br>
+        <input type="text" id="material" name="material" required><br><br>
         
         <label for="image">Image:</label>
-        <input type="file" id="image" name="image"><br><br>
+        <input type="file" id="image" name="image" required><br><br>
         
         <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="product-name"><br><br>
+        <input type="text" id="product-name" name="product-name" required><br><br>
         
         <label for="price">Price:</label>
-        <input type="text" id="price" name="price"><br><br>
+        <input type="number" id="price" name="price" required><br><br>
         
         <input type="submit" value="Submit">
     </form>
