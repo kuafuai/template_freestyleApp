@@ -1,0 +1,49 @@
+/* style.css */
+/* Add your custom styles here */
+
+/* Example of adding CSS styles */
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+p {
+  color: #666666;
+  font-size: 16px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  padding: 10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Add more custom styles here */

@@ -1,0 +1,84 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>同学录应用</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./script.js"></script>
+    <style>
+        .personal-info {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabs = document.querySelectorAll(".menu .item");
+            const tabContents = document.querySelectorAll(".ui.tab");
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener("click", function() {
+                    const tabName = this.getAttribute("data-tab");
+                    tabContents.forEach(function(content) {
+                        content.classList.remove("active");
+                    });
+                    document.querySelector(`.ui.tab[data-tab="${tabName}"]`).classList.add("active");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="four wide column">
+                <div class="ui vertical fluid tabular menu">
+                    <a class="item active" data-tab="class-management">班级管理</a>
+                    <a class="item" data-tab="student-management">学生管理</a>
+                    <a class="item" data-tab="grouping">分班分组</a>
+                    <a class="item" data-tab="summary">汇总信息</a>
+                    <a class="item" data-tab="settings">个人设置</a>
+                </div>
+            </div>
+            <div class="twelve wide stretched column">
+                <div class="ui segment">
+                    <div class="ui active tab" data-tab="class-management">
+                        <!-- Class management content -->
+                        <h2>Class Management</h2>
+                        <p>This is the content for class management.</p>
+                    </div>
+                    <div class="ui tab" data-tab="student-management">
+                        <!-- Student management content -->
+                        <h2>Student Management</h2>
+                        <p>This is the content for student management.</p>
+                    </div>
+                    <div class="ui tab" data-tab="grouping">
+                        <!-- Grouping content -->
+                        <h2>Grouping</h2>
+                        <p>This is the content for grouping.</p>
+                    </div>
+                    <div class="ui tab" data-tab="summary">
+                        <!-- Summary content -->
+                        <h2>Summary</h2>
+                        <p>This is the content for summary.</p>
+                    </div>
+                    <div class="ui tab" data-tab="settings">
+                        <!-- Settings content -->
+                        <h2>Settings</h2>
+                        <p>This is the content for settings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui segment personal-info">
+                    <!-- Personal information display -->
+                    <h2>Personal Information</h2>
+                    <p>This is the personal information display.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
