@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI综合能源管理软件</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" id="home">首页</a></li>
+                <li><a href="#" id="product">产品信息</a></li>
+                <li><a href="#" id="search">关键字查询</a></li>
+                <li><a href="#" id="inquiry">咨询产品信息</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>AI综合能源管理软件</h1>
+            <p>介绍AI综合能源管理软件的功能和特点。</p>
+        </div>
+        <div class="product-info">
+            <h2>产品信息</h2>
+            <div id="product-list"></div>
+        </div>
+        <div class="search-results">
+            <h2>查询结果</h2>
+            <div id="search-list"></div>
+        </div>
+        <div class="inquiry-form">
+            <h2>咨询产品信息</h2>
+            <form id="inquiry-form">
+                <label for="name">姓名:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">邮箱:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">咨询内容:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+                <input type="submit" value="提交">
+            </form>
+            <div id="inquiry-message"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
