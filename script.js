@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     homeLink.addEventListener("click", function(event) {
         event.preventDefault();
-        content.innerHTML = "<h1>AI综合能源管理软件</h1><p>介绍AI综合能源管理软件的功能和特点。</p>";
+        content.innerHTML = getContent("AI综合能源管理软件", "介绍AI综合能源管理软件的功能和特点。");
         productInfo.classList.remove("active");
         searchResults.classList.remove("active");
         inquiryForm.classList.remove("active");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     productLink.addEventListener("click", function(event) {
         event.preventDefault();
-        content.innerHTML = "<h1>AI综合能源管理软件</h1><p>介绍AI综合能源管理软件的功能和特点。</p>";
+        content.innerHTML = getContent("AI综合能源管理软件", "介绍AI综合能源管理软件的功能和特点。");
         productInfo.classList.add("active");
         searchResults.classList.remove("active");
         inquiryForm.classList.remove("active");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     searchLink.addEventListener("click", function(event) {
         event.preventDefault();
-        content.innerHTML = "<h1>AI综合能源管理软件</h1><p>介绍AI综合能源管理软件的功能和特点。</p>";
+        content.innerHTML = getContent("AI综合能源管理软件", "介绍AI综合能源管理软件的功能和特点。");
         productInfo.classList.remove("active");
         searchResults.classList.add("active");
         inquiryForm.classList.remove("active");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     inquiryLink.addEventListener("click", function(event) {
         event.preventDefault();
-        content.innerHTML = "<h1>AI综合能源管理软件</h1><p>介绍AI综合能源管理软件的功能和特点。</p>";
+        content.innerHTML = getContent("AI综合能源管理软件", "介绍AI综合能源管理软件的功能和特点。");
         productInfo.classList.remove("active");
         searchResults.classList.remove("active");
         inquiryForm.classList.add("active");
@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const message = document.getElementById("message").value;
         submitInquiryForm(name, email, message);
     });
+
+    function getContent(title, description) {
+        return `<h1>${title}</h1><p>${description}</p>`;
+    }
 
     function fetchProductInfo() {
         // Fetch product information from the backend and generate HTML elements to display the information
