@@ -5,7 +5,50 @@
     <meta charset="UTF-8">
     <title>AI综合能源管理软件介绍</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/script.js"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+        header {
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        nav ul li {
+            margin-right: 10px;
+        }
+        main section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        footer {
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -23,29 +66,36 @@
     </header>
     <main>
         <section id="product-introduction">
-            <!-- Display product features, functions, and advantages -->
+            <h2>产品介绍</h2>
+            <p>这里是产品介绍的内容。</p>
         </section>
         <section id="usage-method">
-            <!-- Display how to use the AI energy management software and operation process -->
+            <h2>使用方法</h2>
+            <p>这里是使用方法的内容。</p>
         </section>
         <section id="application-scenarios">
-            <!-- Display application scenarios and real cases -->
+            <h2>应用场景</h2>
+            <p>这里是应用场景的内容。</p>
         </section>
         <section id="technology-principles">
-            <!-- Display technology principles and algorithm models -->
+            <h2>技术原理</h2>
+            <p>这里是技术原理的内容。</p>
         </section>
         <section id="user-reviews">
-            <!-- Display user reviews and feedback -->
+            <h2>用户评价</h2>
+            <p>这里是用户评价的内容。</p>
         </section>
         <section id="pricing">
-            <!-- Display pricing and purchase options -->
+            <h2>价格</h2>
+            <p>这里是价格的内容。</p>
         </section>
         <section id="contact-us">
-            <!-- Display contact information for sales team or customer service -->
+            <h2>联系我们</h2>
+            <p>这里是联系我们的内容。</p>
         </section>
     </main>
     <footer>
-        <!-- Display latest updates and news -->
+        <p>这里是最新更新和新闻。</p>
     </footer>
 </body>
 </html>
