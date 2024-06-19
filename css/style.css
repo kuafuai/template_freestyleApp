@@ -1,0 +1,103 @@
+/* style.css */
+/* Set styles for the layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Set styles for the content sections */
+section {
+    margin-bottom: 20px;
+}
+
+/* Set responsive design for different screen sizes */
+@media screen and (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* style.css */
+/* Set styles for the layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Set styles for the content sections */
+section {
+    margin-bottom: 20px;
+}
+
+/* Set responsive design for different screen sizes */
+@media screen and (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
