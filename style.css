@@ -1,0 +1,30 @@
+/* Styling for the body of the webpage */
+body {
+    background-color: #ADD8E6;
+}
+
+/* Container for centering content vertically and horizontally */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Centering text within an element */
+.centered {
+    text-align: center;
+}
+
+/* Styling for the icon */
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Styling for the success message */
+.success-message {
+    font-size: 20px;
+    color: green;
+    margin: 10px;
+}
