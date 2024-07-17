@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Efficiency Platform</title>
+</head>
+<body>
+  <header>
+    <!-- Navigation bar with quick links to common functionalities -->
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+  <aside>
+    <!-- Side bar with tool and resource category navigation -->
+    <ul>
+      <li>Category 1</li>
+      <li>Category 2</li>
+      <li>Category 3</li>
+    </ul>
+  </aside>
+  <main>
+    <!-- Main content area for displaying tools and resources -->
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="search()">Search</button>
+    <div id="toolsAndResources">
+      <!-- Display tools and resources with filtering options -->
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    function search() {
+      // Implementation for search functionality
+      var searchTerm = document.getElementById('searchInput').value;
+      // Use the search term to fetch and display relevant tools and resources
+    }
+    // Code to fetch and display tools and resources with filtering options
+    // For example using AJAX to fetch data and dynamically update the 'toolsAndResources' section
+  </script>
+</body>
+</html>
