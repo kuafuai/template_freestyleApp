@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Add comments to explain the purpose of each script tag and class/id -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>  <!-- Semantic UI library -->
+  <script src="app.js"></script>  <!-- Custom application script -->
+</head>
+<body>
+  <div class="ui three column grid" id="employeeGrid">
+    <!-- Sample data/placeholder content to demonstrate dynamic content display -->
+    <div class="column">Employee: John Doe, Vacation Status: Approved, Vacation Time: 2022-08-15 to 2022-08-20</div>
+    <div class="column">Employee: Jane Smith, Vacation Status: Pending, Vacation Time: 2022-09-10 to 2022-09-15</div>
+    <div class="column">Employee: Michael Johnson, Vacation Status: Approved, Vacation Time: 2022-07-05 to 2022-07-10</div>
+  </div>
+  <div class="ui modal" id="filterModal">
+    <!-- Filter modal content will be added here -->
+    Filter by:
+    <div class="ui input">
+      <input type="text" placeholder="Search...">
+    </div>
+  </div>
+  <!-- Add comments or placeholders for the indication of working days/holidays in the vacation time range -->
+  Working days/holidays in vacation time range: 
+  <div class="ui holidays">
+    <!-- Add working days/holidays here -->
+  </div>
+</body>
+</html>
