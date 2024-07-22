@@ -19,13 +19,15 @@ class Game:
             self.process_input()  # Handle user input
             if not self.paused:
                 self.snake.move()      # Move the Snake
-                if self.snake.check_collision(self.boundary) or self.snake.check_self_collision():
+                if self.snake.check_collision(self.boundary) or self.check_self_collision():
                     self.game_over()   # Check for collision and end game if necessary
                 if self.food.is_eaten(self.snake.body[0]):
                     self.snake.grow()   # Grow Snake if it eats food
                     self.score += 1      # Increase score
                     self.food.reset_food()  # Reset food position
                 self.ui.draw(self.snake.body, self.food.position, self.score)  # Draw elements on the screen
+            else:
+                self.ui.show_pause_message()  # Show pause message
             self.clock.tick(15)  # Control the speed of the game (15 frames per second)
 
     def process_input(self):
@@ -45,7 +47,7 @@ class Game:
                     self.snake.change_direction((10, 0))
                 elif event.key == pygame.K_p:  # Pause the game
                     self.paused = not self.paused
-                elif event.key == pygame.K_r and self.paused:  # Restart the game
+                elif event.key == pygame.K_r and not self.paused:  # Restart the game only when not paused
                     self.restart()
 
     def check_self_collision(self):
@@ -53,7 +55,7 @@ class Game:
         return self.snake.body[0] in self.snake.body[1:]
 
     def game_over(self):
-        # Display Game Over message and terminate the game
+        # Display Game Over message and wait for user input to restart
         print(f"Game Over! Your score was: {self.score}")
         self.show_restart_message()
     
@@ -78,4 +80,5 @@ class Game:
         self.score = 0
         self.paused = False
         print("Game Restarted!")
+        self.ui.reset_display()  # Reset UI display
 

@@ -4,15 +4,16 @@ import pygame
 INITIAL_POSITION = (100, 100)
 INITIAL_DIRECTION = (10, 0)
 GROWTH_INCREMENT = 1
+INITIAL_LENGTH = 1
 
 class Snake:
     def __init__(self):
         self.reset()
 
-    def reset(self):
-        self.body = [INITIAL_POSITION]  # Initial position of the Snake
-        self.direction = INITIAL_DIRECTION   # Initial movement direction (moving right)
-        self.length = 1            # Initial length of the Snake
+    def reset(self, position=INITIAL_POSITION, direction=INITIAL_DIRECTION, length=INITIAL_LENGTH):
+        self.body = [position]  # Initial position of the Snake
+        self.direction = direction   # Initial movement direction (moving right)
+        self.length = length            # Initial length of the Snake
 
     def move(self):
         # Move the Snake in the current direction

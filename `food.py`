@@ -2,9 +2,9 @@ import random
 from typing import Tuple
 
 class Food:
-    def __init__(self):
-        self.position = self.initialize_food_position()  # Generate initial food position
-        self.previous_positions = set()  # Store previously generated positions
+    def __init__(self) -> None:
+        self.previous_positions: set[Tuple[int, int]] = set()  # Store previously generated positions
+        self.position: Tuple[int, int] = self.initialize_food_position()  # Generate initial food position
 
     def initialize_food_position(self) -> Tuple[int, int]:
         # Generate a random position for food within the game area
