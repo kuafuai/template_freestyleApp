@@ -1,0 +1,81 @@
+import pygame
+from snake import Snake
+from food import Food
+from ui import UI
+
+class Game:
+    def __init__(self):
+        self.snake = Snake()  # Initialize the Snake
+        self.food = Food()    # Initialize the Food
+        self.ui = UI()        # Initialize UI for score and display
+        self.score = 0        # Initialize the player's score
+        self.boundary = (400, 400)  # Define the game area boundaries (width, height)
+        self.clock = pygame.time.Clock()  # Create a clock to manage game speed
+        self.paused = False   # Initialize paused state
+
+    def run(self):
+        # Main game loop
+        while True:
+            self.process_input()  # Handle user input
+            if not self.paused:
+                self.snake.move()      # Move the Snake
+                if self.snake.check_collision(self.boundary) or self.snake.check_self_collision():
+                    self.game_over()   # Check for collision and end game if necessary
+                if self.food.is_eaten(self.snake.body[0]):
+                    self.snake.grow()   # Grow Snake if it eats food
+                    self.score += 1      # Increase score
+                    self.food.reset_food()  # Reset food position
+                self.ui.draw(self.snake.body, self.food.position, self.score)  # Draw elements on the screen
+            self.clock.tick(15)  # Control the speed of the game (15 frames per second)
+
+    def process_input(self):
+        # Handle user input for Snake direction control
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    self.snake.change_direction((0, -10))
+                elif event.key == pygame.K_DOWN:
+                    self.snake.change_direction((0, 10))
+                elif event.key == pygame.K_LEFT:
+                    self.snake.change_direction((-10, 0))
+                elif event.key == pygame.K_RIGHT:
+                    self.snake.change_direction((10, 0))
+                elif event.key == pygame.K_p:  # Pause the game
+                    self.paused = not self.paused
+                elif event.key == pygame.K_r and self.paused:  # Restart the game
+                    self.restart()
+
+    def check_self_collision(self):
+        # Check if the snake collides with itself
+        return self.snake.body[0] in self.snake.body[1:]
+
+    def game_over(self):
+        # Display Game Over message and terminate the game
+        print(f"Game Over! Your score was: {self.score}")
+        self.show_restart_message()
+    
+    def show_restart_message(self):
+        # Display message and wait for user input to restart
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_r:  # Restart the game
+                        self.restart()
+                    elif event.key == pygame.K_q:  # Quit the game
+                        pygame.quit()
+                        quit()
+
+    def restart(self):
+        # Reset game state
+        self.snake = Snake()
+        self.food = Food()
+        self.score = 0
+        self.paused = False
+        print("Game Restarted!")
+

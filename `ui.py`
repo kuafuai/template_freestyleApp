@@ -1,0 +1,26 @@
+import pygame
+
+class UI:
+    def __init__(self):
+        self.font = pygame.font.SysFont(None, 35)  # Initialize font for score display
+
+    def draw(self, snake_body, food_position, score, segment_size=10):
+        # Check if the display surface is available
+        surface = pygame.display.get_surface()
+        if surface is None:
+            raise RuntimeError("Pygame display surface is not available")
+        
+        # Draw the Snake and Food on the screen
+        surface.fill((0, 0, 0))  # Fill the background with black
+        pygame.draw.rect(surface, (0, 255, 0), (snake_body[0][0], snake_body[0][1], segment_size, segment_size))  # Head
+        for segment in snake_body[1:]:
+            pygame.draw.rect(surface, (0, 200, 0), (segment[0], segment[1], segment_size, segment_size))  # Body segments
+        pygame.draw.rect(surface, (255, 0, 0), (food_position[0], food_position[1], segment_size, segment_size))  # Food
+        self.display_score(score)  # Update score display
+        
+        pygame.display.flip()  # Refresh the screen
+
+    def display_score(self, score):
+        # Render the score on the screen
+        score_surface = self.font.render(f'Score: {score}', True, (255, 255, 255))
+        pygame.display.get_surface().blit(score_surface, (10, 10))  # Blit score in the top-left corner

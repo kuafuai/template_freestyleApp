@@ -1,0 +1,39 @@
+# game.py
+import pygame
+
+class Game:
+    """
+    The Game class is responsible for initializing and managing the game loop,
+    handling events, updating game state, and rendering graphics.
+    """
+
+    def __init__(self):
+        """
+        Initializes the Game instance.
+        Sets up any necessary variables and prepares the game for starting.
+        """
+        self.running = True  # Game is running by default
+
+    def run(self):
+        """
+        The main game loop that handles events, updates the game state,
+        and renders graphics on the screen.
+        """
+        while self.running:
+            self.handle_events()  # Process user inputs and events
+            self.update()         # Update game state
+            self.render()        # Draw everything to the screen
+
+    def handle_events(self):
+        """Handles user inputs and events within the game."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False  # Exit the game loop on quit event
+
+    def update(self):
+        """Updates game state. Placeholder for actual game logic."""
+        pass  # Add game state updates here
+
+    def render(self):
+        """Renders graphics on the screen. Placeholder for actual drawing code."""
+        pass  # Add rendering code here

@@ -1,0 +1,25 @@
+import random
+from typing import Tuple
+
+class Food:
+    def __init__(self):
+        self.position = self.initialize_food_position()  # Generate initial food position
+        self.previous_positions = set()  # Store previously generated positions
+
+    def initialize_food_position(self) -> Tuple[int, int]:
+        # Generate a random position for food within the game area
+        while True:
+            x = random.randint(0, 39) * 10  # Assuming grid size is 400x400 and each cell is 10x10
+            y = random.randint(0, 39) * 10
+            new_position = (x, y)
+            if new_position not in self.previous_positions:
+                self.previous_positions.add(new_position)
+                return new_position
+
+    def reset_food(self) -> None:
+        # Reset food position to a new random position after being eaten
+        self.position = self.initialize_food_position()
+
+    def is_eaten(self, snake_head: Tuple[int, int]) -> bool:
+        # Check if the Snake's head collides with the food
+        return snake_head == self.position
