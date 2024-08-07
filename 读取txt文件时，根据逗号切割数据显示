@@ -1,0 +1,81 @@
+# app.py
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
+import pandas as pd
+from typing import Optional, List
+
+def select_file() -> None:
+    # Open file dialog to select a TXT file
+    file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
+    if file_path:
+        display_file_content(file_path)
+
+def validate_data_format(data: List[List[str]]) -> None:
+    num_columns = len(data[0]) if data else 0
+    for line in data:
+        if len(line) != num_columns:
+            raise ValueError("Inconsistent number of columns in the input data.")
+        if not all(line):  # Check for empty lines
+            raise ValueError("Empty line found in the input data.")
+
+def display_file_content(file_path: str) -> None:
+    # Read the selected TXT file and parse its content
+    try:
+        # Using open with universal_newlines for better compatibility
+        with open(file_path, 'r', encoding='utf-8', errors='replace', newline='') as file:
+            content = file.readlines()
+
+        # Process the content into a DataFrame for display
+        data = [line.strip().split(',') for line in content if line.strip()]  # Changed to split by comma and ignore empty lines
+        
+        validate_data_format(data)
+
+        df = pd.DataFrame(data)
+
+        # Clear previous content in the table
+        for widget in table_frame.winfo_children():
+            widget.destroy()
+        
+        # Create Treeview with scrollbar
+        tree = ttk.Treeview(table_frame, columns=list(df.columns), show='headings')
+        scrollbar = ttk.Scrollbar(table_frame, orient="vertical", command=tree.yview)
+        tree.configure(yscroll=scrollbar.set)
+
+        for col in df.columns:
+            tree.heading(col, text=col)
+            tree.column(col, width=100)
+
+        for index, row in df.iterrows():
+            tree.insert("", "end", values=list(row))
+
+        tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill='y')
+
+        # Show file information
+        file_info_label.config(text=f"Selected File: {file_path}")
+
+    except FileNotFoundError:
+        messagebox.showerror("Error", "File not found. Please select a valid file.")
+    except ValueError as ve:
+        messagebox.showerror("Error", str(ve))
+    except Exception as e:
+        messagebox.showerror("Error", f"An unexpected error occurred: {str(e)}")
+
+# Create main window
+root = tk.Tk()
+root.title("TXT File Reader")
+
+# File selection button
+select_button = tk.Button(root, text="Select TXT File", command=select_file)
+select_button.pack(pady=20)
+
+# Label for file information
+file_info_label = tk.Label(root, text="")
+file_info_label.pack(pady=10)
+
+# Frame for table display
+table_frame = tk.Frame(root)
+table_frame.pack(pady=20)
+
+# Start the GUI event loop
+root.mainloop()
