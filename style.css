@@ -1,0 +1,44 @@
+/* General styling for the game elements */
+body {
+    background-color: #f4f4f4;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-base, .right-spawn {
+    width: 45%;
+    height: 600px;
+    border: 2px solid #000;
+    position: relative;
+}
+
+/* Improved accessibility and contrasting colors */
+.left-base {
+    background-color: #e0e0e0; /* Light background for contrast */
+}
+
+.right-spawn {
+    background-color: #c0c0c0; /* Slightly darker for contrast */
+}
+
+.bottom-segment {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .game-area {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: center;
+    }
+
+    .left-base, .right-spawn {
+        width: 90%; /* Full width on smaller screens */
+        height: auto; /* Adjust height for content */
+        margin-bottom: 20px; /* Space between segments */
+    }
+}

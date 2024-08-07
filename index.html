@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>塔防大战</title>
+</head>
+<body>
+    <div class="ui container">
+        <div class="game-area">
+            <div id="player-base" class="left-base">
+                <h2>Player Base</h2>
+                <p>Health: <span id="player-health">100</span></p>
+            </div>
+            <div id="monster-spawn" class="right-spawn">
+                <h2>Monster Spawn Area</h2>
+                <p>Monsters: <span id="monster-count">0</span></p>
+            </div>
+        </div>
+        <div class="ui bottom attached segment" id="control-panel">
+            <h2>Control Panel</h2>
+            <button id="build-tower" class="ui button">Build Tower</button>
+            <button id="upgrade-tower" class="ui button">Upgrade Tower</button>
+            <div id="tower-list"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
