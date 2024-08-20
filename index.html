@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乒乓球游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" alt="游戏画布"></canvas>
+        <div id="scoreboard">
+            <span id="playerScore">0</span> : <span id="opponentScore">0</span>
+        </div>
+        <div id="controls">
+            <button id="startGame">开始游戏</button>
+        </div>
+        <div id="chat"></div>
+        <input type="text" id="chatInput" placeholder="输入消息..." type="text">
+        <button id="sendChat" type="button">发送</button>
+    </div>
+    <script src="game.js"></script>
+    <script src="chat.js"></script>
+    <script src="websocket.js"></script>
+    <script>
+        document.getElementById('sendChat').addEventListener('click', function() {
+            const chatInput = document.getElementById('chatInput');
+            const message = chatInput.value.trim();
+            if (message) {
+                // Logic to send the message
+                // For example, sendMessageFunction(message);
+                chatInput.value = ''; // Clear input after sending
+            } else {
+                alert('消息内容不能为空！');
+            }
+        });
+    </script>
+</body>
+</html>
