@@ -1,0 +1,9 @@
+# Required libraries for accessing Google APIs and handling OAuth2 authentication.
+# 
+# google-api-python-client: This library is used to interact with Google APIs.
+# oauth2client: (Deprecated) This was previously used for OAuth2 authentication.
+# Consider migrating to google-auth for improved security and maintainability.
+# google-auth: Recommended library for OAuth2 authentication to ensure up-to-date practices.
+
+google-api-python-client==2.56.0
+google-auth==2.16.1
